@@ -43,7 +43,9 @@ git add -A
 git commit -m "first commit"
 git push -u origin master
 ```
-然后在你的ide或者直接cmd从github上面clone到另外一个目录，导入完成之后会发现缺少public,themes目录，在此目录使用hugo server -D会提示缺少主题目录文件。这里引入一个git子模块概念(git submodule),普通导入是没有将git submodule引入的。此时输入git submodule init提示
+然后在你的ide或者直接cmd从github上面clone到另外一个目录，导入完成之后会发现缺少public,themes目录
+![xxx](import_docs.png)
+在此目录使用hugo server -D会提示缺少主题目录文件。这里引入一个git子模块概念(git submodule),普通导入是没有将git submodule引入的。此时输入git submodule init提示
 ```
 fatal: No url found for submodule path 'public' in .gitmodules
 ```
