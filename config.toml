@@ -1,0 +1,4 @@
+baseURL = "https://cr6588.github.io/"
+languageCode = "en-us"
+title = "Hugo Study"
+theme = "ananke"
