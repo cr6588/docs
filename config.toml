@@ -3,4 +3,25 @@ languageCode = "en-us"
 title = "Hugo Study"
 author = "chenyi"
 disqusShortname = "https-cr6588-github-io"
-theme = "code-editor"
+theme = "docdock"
+
+[params]
+
+enableGitInfo = true
+
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
+
+
+[[menu.shortcuts]]
+pre = "<h3>More</h3>"
+name = "<i class='fa fa-github'></i> <label>Github repo</label>"
+identifier = "ds"
+url = "https://github.com/cr6588/docs"
+weight = 10
+
+[[menu.shortcuts]]
+name = "<i class='fa fa-bookmark'></i> <label>Hugo Document</label>"
+identifier = "hugodoc"
+url = "https://gohugo.io/"
+weight = 20

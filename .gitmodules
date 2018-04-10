@@ -4,3 +4,6 @@
 [submodule "public"]
 	path = public
 	url = https://github.com/cr6588/cr6588.github.io.git
+[submodule "themes/docdock"]
+	path = themes/docdock
+	url = https://github.com/vjeantet/hugo-theme-docdock.git

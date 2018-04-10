@@ -1,7 +1,7 @@
 ---
 title: "Hugo Github Pages"
 date: 2018-04-10T11:48:57+08:00
-draft: true
+draft: false
 ---
 
 将hugo生成的静态网页部署至Github Pages
