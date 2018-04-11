@@ -7,3 +7,7 @@
 [submodule "themes/docdock"]
 	path = themes/docdock
 	url = https://github.com/vjeantet/hugo-theme-docdock.git
+
+[submodule "themes/potato-dark"]
+	path = themes/potato-dark
+	url = https://github.com/surajmandalcell/potato-dark
