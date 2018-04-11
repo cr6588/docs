@@ -1,7 +1,7 @@
 ---
-title: "Hugo Github Pages"
+title: "Github Pages"
 date: 2018-04-10T11:48:57+08:00
-draft: false
+weight : 2
 ---
 
 将hugo生成的静态网页部署至Github Pages
@@ -44,7 +44,7 @@ cr6588.github.io已经发布，但docs这个站点我也想发布至git保存，
     git push -u origin master
 
 然后在你的ide或者直接cmd从github上面clone到另外一个目录，导入完成之后会发现缺少public,themes目录
-{{% zoom-img src="/images/import_docs.png" %}}
+![x](/images/import_docs.png)
 在此目录使用hugo server -D会提示缺少主题目录文件。这里引入一个git子模块概念(git submodule),普通导入是没有将git submodule引入的。此时输入git submodule init提示
 
     fatal: No url found for submodule path 'public' in .gitmodules

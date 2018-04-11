@@ -3,74 +3,52 @@ languageCode = "en-us"
 title = "cr6588"
 author = "chenyi"
 disqusShortname = "https-cr6588-github-io"
-theme = "potato-dark"
-#theme = "docdock"
+copyright = "&copy; 2018 cr6588"
+#theme = "potato-dark"
+theme = "docdock"
 #theme = "code-editor"
+
+
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir= false
+enableMissingTranslationPlaceholders = false
+
+
+
+
+
 [params]
-  paginate = 10
-  # Social accounts. Link to these accounts are displayed in the header and
-  # footer
-  #twitter = "Your Twitter username"
-  #facebook = "Your Facebook username"
-  #instagram = "Your Instagram username"
-  #googleplus = "Your Google+ account URL" # https://plus.google.com/u/0/xxxxxx
-  github = "Your GitHub username"
-  #gitlab = "Your GitLab username"
-  #npm = "Your npm username"
-  #codepen = "Your CodePen username"
-  #dribbble = "Your Dribbble username"
-  #fivehundredpx = "Your 500px username" # 500px
-  #flickr = "Your Flickr username"
-  #pinterest = "Your Pinterest username"
-  #tumblr = "Your Tumblr username"
-  #vimeo = "Your Vimeo username"
-  #youtube = "Your YouTube username"
-  #linkedin = "Your LinkedIn username"
-  # Disqus shortname
-  disqus = "https-cr6588-github-io"
-  # Google Analytics API key.
-  #ga_api_key = "Your Google Analytics tracking id"
-  # Logo image. This is displayed ogp image.
-  #logo = "/path/to/logo"
-  #favicon = "/path/to/favicon"
+editURL = "https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/"
+showVisitedLinks = true # default is false
+themeStyle = "flex" # "original" or "flex" # default "flex"
+themeVariant = "" # choose theme variant "green", "gold" , "gray", "blue" (default)
+ordersectionsby = "weight" # ordersectionsby = "title"
+disableHomeIcon = false # default is false
+disableSearch = false # default is false
+disableNavChevron = false # set true to hide next/prev chevron, default is false
+highlightClientSide = false # set true to use highlight.pack.js instead of the default hugo chroma highlighter
+menushortcutsnewtab = false # set true to open shortcuts links to a new tab/window
+enableGitInfo = true
 
-[[menu.main]]
-    name = "Blog"
-    url = "/"
-    weight = 1
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
 
-[[menu.main]]
-    name = "About"
-    url = "/about"
-    weight = 2
 
-#[[menu.main]]
-#    identifier = "theme"
-#    name = "Theme"
-#    weight = 3
+[[menu.shortcuts]]
+pre = "<h3>More</h3>"
+name = "<i class='fa fa-github'></i> <label>Github repo</label>"
+identifier = "ds"
+url = "https://github.com/vjeantet/hugo-theme-docdock"
+weight = 10
 
-[related]
-  # Only include matches with rank >= threshold. This is a normalized rank between 0 and 100.
-  threshold = 80
+[[menu.shortcuts]]
+name = "<i class='fa fa-cloud-download'></i> <label>Download</label>"
+url = "https://github.com/vjeantet/hugo-theme-docdock/archive/master.zip"
+weight = 11
 
-  # To get stable "See also" sections we, by default, exclude newer related pages.
-  includeNewer = false
-
-  # Will lower case keywords in both queries and in the indexes.
-  toLower = false
-
-  [[related.indices]]
-  name = "keywords"
-  weight = 150
-  [[related.indices]]
-  name  = "author"
-  toLower = true
-  weight = 30
-  [[related.indices]]
-  name  = "tags"
-  weight = 100
-  [[related.indices]]
-  name  = "date"
-  weight = 10
-  pattern = "2017"
+[[menu.shortcuts]]
+name = "<i class='fa fa-bookmark'></i> <label>Hugo Document</label>"
+identifier = "hugodoc"
+url = "https://gohugo.io/"
+weight = 20
 
