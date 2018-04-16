@@ -60,7 +60,9 @@ git下载
 保存后生效
 
     . /etc/profile
-至此环境搭建初步完成，接下来按照[Spring Boot with Docker](https://spring.io/guides/gs/spring-boot-docker/)导入依赖git clone并添加相关代码后执行构建
+
+### 开始构建
+按照[Spring Boot with Docker](https://spring.io/guides/gs/spring-boot-docker/)导入依赖git clone并添加相关代码后执行构建
 
     ./mvnw install dockerfile:build
 运行
