@@ -85,7 +85,7 @@ draft: true
     Caused by: org.apache.ibatis.plugin.PluginException: Could not find method on interface org.apache.ibatis.executor.statement.StatementHandler named prepare. Cause: java.lang.NoSuchMethodException: org.apache.ibatis.executor.statement.StatementHandler.prepare(java.sql.Connection)
         at org.apache.ibatis.plugin.Plugin.getSignatureMap(Plugin.java:87)
         at org.apache.ibatis.plugin.Plugin.wrap(Plugin.java:44)
-参考https://www.cnblogs.com/EasonJim/p/7056700.html，加入, Integer.class解决
+参考https://www.cnblogs.com/EasonJim/p/7056700.html，加入, Integer.class解决,但是由于插件获取分页对象时与以前参数名不同，所以后续仍要重新更改
 
 转成spring-boot后断点发现分页插件没有被使用，原来是在yml文件写的plugins.参考官方文档http://www.mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/index.html 中Configuration处，发现根本没有plugins配置，后来将plugins配置写入config-location指向的xml文件中，注意plugins顺序，写错了会提示出错并说明了plugins顺序。最终application.yml文件中mybatis如
 
@@ -93,4 +93,24 @@ draft: true
         config-location: classpath:sqlMapConfig.xml
         mapper-locations: classpath*:com/sjdf/erp/user/dao/mapper/*.xml
 
+#####关于yml文件
+官方推荐使用yml文件，若使用application.yml且配置了spring.profiles在junit中一定要指定spring.profiles.active。类似
+
+    @SpringBootTest(properties = "spring.profiles.active=dev") 
+否则测试时会报依赖错误，类似
+
+    Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.cr6588.dao.UserDao' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+        at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1493) ~[spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+        at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1104) ~[spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+但是若使用application.properties文件则不需要指定。多种环境配置时最好指定。命令行使用--spring.profiles.active=prod会覆盖main方法中的代码。类似
+
+    public static void main(String[] args) throws Exception {
+        SpringApplication app = new SpringApplication(App.class);
+        Map<String, Object> defaultProperties = new HashMap<String, Object>();
+        defaultProperties.put("spring.profiles.active", "dev");
+        app.setDefaultProperties(defaultProperties);
+        app.run(args);
+    }
+
+    java -jar spring-boot-mybatis-xml-beanconfig-yml-0.0.1.jar --spring.profiles.active=prod
 

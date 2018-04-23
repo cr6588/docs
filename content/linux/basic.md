@@ -7,6 +7,7 @@ date: 2018-04-17T20:56:48+08:00
 //显示linux发行版本信息
 cat /etc/issue
 //查看内存
+
 free -m
 //防火墙
 vi /etc/sysconfig/iptables
