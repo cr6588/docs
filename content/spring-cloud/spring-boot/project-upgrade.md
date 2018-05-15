@@ -114,3 +114,17 @@ draft: true
 
     java -jar spring-boot-mybatis-xml-beanconfig-yml-0.0.1.jar --spring.profiles.active=prod
 
+
+1.5.10.RELEASE
+不要排除
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>log4j-over-slf4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
