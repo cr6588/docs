@@ -93,7 +93,7 @@ draft: true
         config-location: classpath:sqlMapConfig.xml
         mapper-locations: classpath*:com/sjdf/erp/user/dao/mapper/*.xml
 
-#####关于yml文件
+##### 关于yml文件
 官方推荐使用yml文件，若使用application.yml且配置了spring.profiles在junit中一定要指定spring.profiles.active。类似
 
     @SpringBootTest(properties = "spring.profiles.active=dev") 
