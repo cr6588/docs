@@ -160,4 +160,9 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-dev
     org.springframework.session.web.http.SessionRepositoryFilter$SessionRepositoryRequestWrapper$HttpSessionWrapper@6fbdb46d
     org.springframework.session.web.http.SessionRepositoryFilter$SessionRepositoryRequestWrapper$HttpSessionWrapper@6fbdb46d
 
-登录拦截器放开/error暂时避免这种错误
+登录拦截器放开/error暂时避免这种错误.
+
+将项目部署至eclipse的servers中的tomcat时，一直提示缺少web.xml，但项目并不需要web.xml.在.settings/org.eclipse.wst.common.component文件（对应项目右键->Properties->Deployment Assembly）中看到一行web.xml配置
+
+    <wb-resource deploy-path="/WEB-INF/web.xml" source-path="/src/main/webapp/WEB-INF/web.xml"/>
+将其注释后不再出现该提示。但取消注释后也不再出现该提示，另外一个web项目也有这行但从未出现这个提示。尚不清楚原因
