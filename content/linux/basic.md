@@ -42,7 +42,7 @@ mvn install:install-file -Dfile=ocean.client-1.0.jar -DgroupId=com.alibaba -Dart
 
 1、*.tar 用 tar –xvf 解压
 2、*.gz 用 gzip -d或者gunzip 解压
-3、*.tar.gz和*.tgz 用 tar –xzf 解压
+3、*.tar.gz和*.tgz 用 tar -xzf 解压
 4、*.bz2 用 bzip2 -d或者用bunzip2 解压
 5、*.tar.bz2用tar –xjf 解压
 6、*.Z 用 uncompress 解压
@@ -91,3 +91,13 @@ Linux centos重启命令：
 　　2、poweroff 立刻关机
 　　3、shutdown -h now 立刻关机(root用户使用)
 　　4、shutdown -h 10 10分钟后自动关机
+linux下查看当前目录属于哪个分区？
+    -h 单位g
+    df -h /opt/test
+linux安装redis 4.0
+下载解压
+make
+cd src
+./redis-server
+停止
+./redis-cli -h 127.0.0.1 -p 6379 shutdown
