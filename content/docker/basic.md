@@ -48,3 +48,8 @@ docker hub直接搜索官方centos镜像
 docker start -a <container_Id>
 crtl+d直接退出容器停止运行
 crtl+p之后crtl+q退出容器不会停止运行
+#redis后台启动
+redis.conf中
+daemonize yes
+#(iptables failed: iptables --wait -t nat -A DOCKER -p tcp -d 0/0 --dport 32777 -j DNAT --to-destination 172.17.0.2:8082 ! -i docker0: iptables: No chain/target/match by that name.
+再重启firewalld后映射端口可能报此错，重启docker即可
