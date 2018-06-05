@@ -14,7 +14,9 @@ draft: true
     docker stop <docker ps中的container id>
     #创建加载磁盘的容器
     docker run -it -v /data/dockerbuild:/mnt apline /bin/sh
+    docker run -p 127.0.0.1:6379:6379 -it -v /data/dockerbuild:/mnt --name erp-env2 erp-env:v0.1 /bin/bash
     #构建容器，最后加.表示当前目录
+    docker build -f redis-zookeeper -t redis-zookeeper-houtai .
     docker build -t jdk8/alpine:v0.1 .
 # 关于Dockerfile的ADD命令 https://blog.csdn.net/kiloveyousmile/article/details/80211351
 #添加文件
@@ -53,3 +55,7 @@ redis.conf中
 daemonize yes
 #(iptables failed: iptables --wait -t nat -A DOCKER -p tcp -d 0/0 --dport 32777 -j DNAT --to-destination 172.17.0.2:8082 ! -i docker0: iptables: No chain/target/match by that name.
 再重启firewalld后映射端口可能报此错，重启docker即可
+#映射多个指定端口使用多个-p，自动分配映射端口使用-P,
+docker run -d -p 80:80 -p 22:22
+docker run -p 6379:6379 -p 2181:2181 -it -v /data/dockerbuild:/mnt --name erp-env2 erp-env:v0.1
+

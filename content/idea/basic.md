@@ -15,6 +15,12 @@ File -> Settings -> Editor -> General -> Appearance -> Show whitespaces
 ##### 安装.ignore插件
 File->Settings->Plugins->Browse repositories,搜索.ignore，点击Install
 
+for循环，写出it后会有相应提示
+it
+Alt+Shift+Up/Down，上/下移一行
 
+手动提示默认是crtl+空格，由于被windows输入发快捷键占用改成alt+/
 
+手动提示时是区分大小写的，将case sensitive completion改为none
 
+Ctrl+F12，类似eclipse+o显示方法
