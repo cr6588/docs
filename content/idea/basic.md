@@ -13,7 +13,8 @@ File -> Settings -> Editor -> General -> Appearance -> Show whitespaces
 2018idea中会默认清除多余空格
 
 ##### 安装.ignore插件
-File->Settings->Plugins->Browse repositories,搜索.ignore，点击Install
+File->Settings->Plugins->Browse repositories,搜索.ignore，点击Install.
+在项目上右键->New ->.ignore file ->.gitignore file(Git) 
 
 for循环，写出it后会有相应提示
 it
