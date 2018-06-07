@@ -81,6 +81,7 @@ vi /etc/hosts即可编辑
 
 
 Linux centos重启命令：
+
 　　1、reboot
 　　2、shutdown -r now 立刻重启(root用户使用)
 　　3、shutdown -r 10 过10分钟自动重启(root用户使用)
@@ -101,3 +102,7 @@ cd src
 ./redis-server
 停止
 ./redis-cli -h 127.0.0.1 -p 6379 shutdown
+时间同步
+授时服务器采用阿里云 https://help.aliyun.com/knowledge_detail/40583.html
+
+ntpdate -u 服务器
