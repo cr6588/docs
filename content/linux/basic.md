@@ -105,4 +105,9 @@ cd src
 时间同步
 授时服务器采用阿里云 https://help.aliyun.com/knowledge_detail/40583.html
 
-ntpdate -u 服务器
+ntpdate -u ntp1.aliyun.com
+
+文件的属主和属组属性设置
+
+chown user:market f01　　//把文件f01给uesr，添加到market组
+ll -d f1  查看目录f1的属性

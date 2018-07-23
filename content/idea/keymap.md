@@ -88,6 +88,7 @@ http://www.cnblogs.com/tonycody/p/3257601.html
     Ctrl+Backspace，按单词删除
     Ctrl+"+/-"，当前方法展开、折叠
     Ctrl+Shift+"+/-"，全部展开、折叠
+    ctr+shift+u，大小写转换
 【调试部分、编译】
 
     Ctrl+F2，停止
