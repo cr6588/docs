@@ -57,7 +57,8 @@ https://www.elastic.co/guide/en/elastic-stack-overview/6.3/get-started-elastic-s
     Successfully created system startup script for Logstash
 
 4. Elasticsearch is still initializing the kibana index
-https://stackoverflow.com/questions/31201051/elasticsearch-is-still-initializing-the-kibana-index
+
+    https://stackoverflow.com/questions/31201051/elasticsearch-is-still-initializing-the-kibana-index
 
     Warning: Removing .kibana index will make you lose all your kibana settings (indexes, graphs, dashboards)
     
@@ -70,21 +71,23 @@ https://stackoverflow.com/questions/31201051/elasticsearch-is-still-initializing
     
     curl -XDELETE http://localhost:9200/*
     Followed by restarting Kibana.
-    
+
     Note: localhost:9200 is the elasticsearch server's host:port, which may be different in your case
+
 5. tar.gz安装Elasticsearch5.0时，root用户运行出错
 因为安全问题elasticsearch 不让用root用户直接运行，所以要创建新用户
 建议创建一个单独的用户用来运行ElasticSearch
 创建es用户组及es用户
-groupadd es
-useradd es -g es -p elasticsearch
-创建ELK目录
-mkdir ELK
-chown es:es ELK
-chown es:es elasticsearch-5.5.0.tar.gz
-su es
-tar -xzf elasticsearch-5.5.0.tar.gz
-vi config/elasticsearch.yml
+
+    groupadd es
+    useradd es -g es -p elasticsearch
+    #创建ELK目录
+    mkdir ELK
+    chown es:es ELK
+    chown es:es elasticsearch-5.5.0.tar.gz
+    su es
+    tar -xzf elasticsearch-5.5.0.tar.gz
+    vi config/elasticsearch.yml
 
      path.data: /data/ELK/elasticsearch-5.5.0/data
     #
