@@ -46,3 +46,5 @@ firewall-cmd --reload
 firewall-cmd --zone= public --query-port=80/tcp
 删除
 firewall-cmd --zone= public --remove-port=80/tcp --permanent
+指定ip
+firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.142.166" port protocol="tcp" port="5432" accept"

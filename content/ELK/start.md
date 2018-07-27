@@ -1,7 +1,7 @@
 ---
 title: "Start"
 date: 2018-07-17T11:00:28+08:00
-draft: true
+draft: false
 ---
 get-started-elastic-stack
 
@@ -101,7 +101,7 @@ https://www.elastic.co/guide/en/elastic-stack-overview/6.3/get-started-elastic-s
 
 6. 在kibana中输入filebeat*无法创建index
 有可能是filebeat已经将index存进es中且自身所在的data中也已记录相关，但index被删除导致再次创建时因为需要搜集的文件日志已经被记录所以无法创建，进而说明DELETE index时并没有删除filebeat中的相关记录。
-7. es集群配置
+7. es单机集群配置
 
 https://www.elastic.co/guide/en/elasticsearch/reference/5.5/important-settings.html#bootstrap.memory_lock
 
@@ -114,3 +114,23 @@ https://www.elastic.co/guide/en/elasticsearch/reference/5.5/important-settings.h
      discovery.zen.ping.unicast.hosts: ["127.0.0.1", "127.0.0.1:9201"]
      discovery.zen.minimum_master_nodes: 2
      action.destructive_requires_name: true
+8. es报错
+
+    [1]: max number of threads [1024] for user [es] is too low, increase to at least [2048]
+    [2]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+    [3]: system call filters failed to install; check the logs and fix your configuration or disable system call filters at your own risk
+
+[1]vi /etc/security/limits.conf
+添加es - nproc 2048 #es为运行ELK相关的用户
+另外一个65536使用es - nofile 65536
+[2] 
+
+    https://github.com/docker-library/elasticsearch/issues/111
+    set max_map_count value (Linux)
+    sudo sysctl -w vm.max_map_count=262144
+[3] es配置文件加入
+
+    bootstrap.memory_lock: false 
+9. 非内网集群时
+    https://www.jianshu.com/p/149a8da90bbc
+由于transport.tcp.port默认是9300，之间是以此端口通信而非9200所以当防火墙只开放了9200时虽然curl http://xxx:9200能正确显示，但是集群会一直提示节点
