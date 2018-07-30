@@ -4,6 +4,8 @@ date: 2018-05-24T10:34:19+08:00
 draft: true
 ---
 
+#### Docker基本命令
+
     #docker帮助
     docker --help
     #docker镜像列表
@@ -18,44 +20,61 @@ draft: true
     #构建容器，最后加.表示当前目录
     docker build -f redis-zookeeper -t redis-zookeeper-houtai .
     docker build -t jdk8/alpine:v0.1 .
-# 关于Dockerfile的ADD命令 https://blog.csdn.net/kiloveyousmile/article/details/80211351
-#添加文件
+
+#### [关于Dockerfile的ADD命令](https://blog.csdn.net/kiloveyousmile/article/details/80211351)
+##### 添加文件
 例如：
 
-ADD my.cnf /etc/mysql
-1
-ADD my.cnf /etc/mysql/
-1
+    ADD my.cnf /etc/mysql
+    ADD my.cnf /etc/mysql/
+
 以上两条命令均可以将my.cnf文件添加到/etc/mysql文件夹下面。
 
 添加文件夹
 
 Dockerfile添加文件夹，则必须镜像中存在和当前文件夹同名的文件夹才行。例如，我希望将当前目录下的views文件夹添加到docker镜像中的app文件夹下。也许你会采用这样的方式：
 
-ADD views /app
-1
+    ADD views /app
+
 这样其实并不能实现，应该通过下面的方式：
 
-ADD views /app/views
-1
+    ADD views /app/views
+
 也就是说：镜像中存在和当前需要拷贝或添加的文件夹同名的文件夹时，才能够拷贝或添加成功。
-#bash安装
-https://www.oschina.net/translate/alpine-linux-install-bash-using-apk-command
 
+#### [bash安装](https://www.oschina.net/translate/alpine-linux-install-bash-using-apk-command)
+#### Cenos基础镜像
 
-#Cenos基础镜像
-使用https://cr.console.aliyun.com/?spm=5176.2020520130.aliyun_topbar.7.PSGJpE#/accelerator 阿里云镜像加速
-docker hub直接搜索官方centos镜像
-启动并进入容器
-docker start -a <container_Id>
-crtl+d直接退出容器停止运行
-crtl+p之后crtl+q退出容器不会停止运行
-#redis后台启动
+1. 使用[阿里云镜像加速](https://cr.console.aliyun.com/?spm=5176.2020520130.aliyun_topbar.7.PSGJpE#/accelerator)[^1]
+
+2. docker hub直接搜索官方centos镜像
+
+3. 启动并进入容器
+
+    docker start -a <container_Id>
+
+4. 退出容器
+
+* crtl+d直接退出容器停止运行
+* crtl+p之后crtl+q退出容器不会停止运行
+
+#### redis后台启动
+
 redis.conf中
-daemonize yes
-#(iptables failed: iptables --wait -t nat -A DOCKER -p tcp -d 0/0 --dport 32777 -j DNAT --to-destination 172.17.0.2:8082 ! -i docker0: iptables: No chain/target/match by that name.
-再重启firewalld后映射端口可能报此错，重启docker即可
-#映射多个指定端口使用多个-p，自动分配映射端口使用-P,
-docker run -d -p 80:80 -p 22:22
-docker run -p 6379:6379 -p 2181:2181 -it -v /data/dockerbuild:/mnt --name erp-env2 erp-env:v0.1
 
+    daemonize yes
+
+#### iptables failed报错
+在重启firewalld后映射端口可能报
+
+    (iptables failed: iptables --wait -t nat -A DOCKER -p tcp -d 0/0 --dport 32777 -j DNAT --to-destination 172.17.0.2:8082 ! -i docker0: iptables: No chain/target/match by that name.
+    
+重启docker即可
+
+#### 映射多个指定端口使用多个-p，自动分配映射端口使用-P
+
+    docker run -d -p 80:80 -p 22:22
+    docker run -p 6379:6379 -p 2181:2181 -it -v /data/dockerbuild:/mnt --name erp-env2 erp-env:v0.1
+
+##### 说明
+[^1]: 登录阿里云->容器镜像服务->镜像加速器
