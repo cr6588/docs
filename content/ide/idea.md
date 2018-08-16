@@ -1,5 +1,5 @@
 ---
-title: "Basic"
+title: "idea"
 date: 2018-04-23T09:44:55+08:00
 draft: true
 ---
