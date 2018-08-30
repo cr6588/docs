@@ -7,7 +7,7 @@ draft: true
 ### git忽略已经被提交的文件
 https://www.jianshu.com/p/2345b2aede59
 
-git rm --cached xxx.xx
+git rm --cached xxx.xx *(所有)
 在.gitignore中添加要忽略的文件
 commit
 push

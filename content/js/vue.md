@@ -220,6 +220,7 @@ draft: true
 regis.vue中也进行相应更改。由此也说明根组件并不是App.vue而是在main.js中new的组件
 > 后来再看文档时发现[通过事件向父级组件发送消息](https://cn.vuejs.org/v2/guide/components.html#%E9%80%9A%E8%BF%87%E4%BA%8B%E4%BB%B6%E5%90%91%E7%88%B6%E7%BA%A7%E7%BB%84%E4%BB%B6%E5%8F%91%E9%80%81%E6%B6%88%E6%81%AF)更加合理即在login.vue中使用v-on:click="$emit('actionToRegis')"，在App.vue中加入 v-on:actionToRegis="action = 'regis'"，注册类似。所以多看官方文档很有必要，在实际做时才能真正体会到一些设计的作用
 #### 后台交互
+##### axios与跨域
 在之前项目中主要使用form提交与jquery封装的ajax提交，在vue中该如何把数据提交到后台呢?此时需要用到axios.
 
     npm install --save axios
@@ -245,4 +246,27 @@ main.js加入一个测试请求
     }).$mount('#app')
     
     axios.get('/user/login?name=1&password=2')
-启动后台服务与前台项目，访问http://localhost:8080/时打开控制台查看network多了一个http://localhost:8080/user/login?name=1&password=2请求且正常返回表示代理配置成功。现在要注册组件中使用，这时就需要[添加实例属性](https://cn.vuejs.org/v2/cookbook/adding-instance-properties.html)
+启动后台服务与前台项目，访问http://localhost:8080/时打开控制台查看network多了一个http://localhost:8080/user/login?name=1&password=2请求且正常返回表示代理配置成功。现在要注册组件中使用，这时就需要[添加实例属性](https://cn.vuejs.org/v2/cookbook/adding-instance-properties.html),即在main.js中添加
+Vue.prototype.$axios = axios。之后在其它组件直接使用this.$axios使用即可。
+
+##### 注册示例
+在注册组件添加注册事件以及方法在方法中需要注意的是this.$axios的回调里面不能再使用this,需要再此处之前使用一个额外的变量保存this.即
+
+  ````javascript
+    var vue = this;
+    this.$axios.post('/user/regis', this.user)
+        .then(function (res) {
+            var data = res.data
+            if(data.code == 0) {
+                vue.$message({
+                    message: "注册成功",
+                    type: 'success'
+                })
+            } else {
+                vue.$message.error(data.msg);
+            }
+        })
+        .catch(function (error) {
+            vue.$message.error("网络错误")
+        });
+
