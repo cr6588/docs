@@ -43,8 +43,19 @@ firewall-cmd --zone=public --add-port=80/tcp --permanent    （--permanent永久
 重新载入
 firewall-cmd --reload
 查看
-firewall-cmd --zone= public --query-port=80/tcp
+firewall-cmd --zone=public --query-port=80/tcp
 删除
-firewall-cmd --zone= public --remove-port=80/tcp --permanent
+firewall-cmd --zone=public --remove-port=80/tcp --permanent
 指定ip
 firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.142.166" port protocol="tcp" port="5432" accept"
+
+
+firewall-cmd --query-masquerade # 检查是否允许伪装IP
+firewall-cmd --permanent --add-masquerade # 允许防火墙伪装IP
+firewall-cmd --permanent --remove-masquerade# 禁止防火墙伪装IP
+firewall-cmd --permanent --add-forward-port=port=80:proto=tcp:toaddr=192.168.0.1:toport=8080
+
+---------------------
+
+---------------------
+iptables -t nat -L

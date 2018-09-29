@@ -17,9 +17,24 @@ draft: true
     #创建加载磁盘的容器
     docker run -it -v /data/dockerbuild:/mnt apline /bin/sh
     docker run -p 127.0.0.1:6379:6379 -it -v /data/dockerbuild:/mnt --name erp-env2 erp-env:v0.1 /bin/bash
+    docker run -p 20001:20001 -p 21001:21001 -p 22001:22001 -p 23001:23001 -p 24001:24001 -p 25001:25001 -p 26001:26001 -p 27001:27001 -it -v /data/dockerbuild:/mnt --name erp-base sjdf/erp-base:v0.1 --add-host=static.scdf.cn:118.123.12.120 --add-host=zookeeper.jtongi.cn:172.17.0.1 --add-host=user.mysql.jtongi.cn:172.17.0.1 --add-host=picture.scdf.cn:118.123.12.120 --add-host=es.jtongi.cn:118.123.12.107 /bin/bash 
+    
+    
+    
+    docker run -p 20001:20001 -p 21001:21001 -p 22001:22001 -p 23001:23001 -p 24001:24001 -p 25001:25001 -p 26001:26001 -p 27001:27001 -it -v /data/dockerbuild:/mnt --add-host=static.scdf.cn:118.123.12.120 --add-host=zookeeper.jtongi.cn:172.17.0.1 --add-host=user.mysql.jtongi.cn:172.17.0.1 --add-host=picture.scdf.cn:118.123.12.120 --add-host=es.jtongi.cn:118.123.12.107 --name jdk8-centos7 cr6588/jdk8-centos7 /bin/bash 
+    
+    docker run -p 127.0.0.1:8080:8080 -it -v /data/dockerbuild:/mnt --add-host=static.scdf.cn:118.123.12.120 --add-host=zookeeper.jtongi.cn:172.17.0.1 --add-host=user.mysql.jtongi.cn:172.17.0.1 --add-host=picture.scdf.cn:118.123.12.120 --add-host=es.jtongi.cn:118.123.12.107 --name 8080 8080 /bin/bash
+
+    # 添加单个hosts
+    docker run -it nginx --add-host=localhost:127.0.0.1
+    # 添加多个hosts
+    docker run -it nginx --add-host=localhost:127.0.0.1 --add-host=example.com:127.0.0.1 
+    # 一个ip对应多个hosts
+    docker run -it nginx --add-host="localhost example.com":127.0.0.1
     #构建容器，最后加.表示当前目录
     docker build -f redis-zookeeper -t redis-zookeeper-houtai .
     docker build -t jdk8/alpine:v0.1 .
+    
 
 #### [关于Dockerfile的ADD命令](https://blog.csdn.net/kiloveyousmile/article/details/80211351)
 ##### 添加文件
@@ -75,6 +90,26 @@ redis.conf中
 
     docker run -d -p 80:80 -p 22:22
     docker run -p 6379:6379 -p 2181:2181 -it -v /data/dockerbuild:/mnt --name erp-env2 erp-env:v0.1
+
+#### 磁盘占满
+docker默认存放目录在/var/lib/docker，磁盘满了之后将其移动到新目录并加入软连接
+
+    mv /var/lib/docker /docker
+    ln -s /docker/docker /var/lib/docker
+
+{
+    "server":"45.32.58.71",
+    "server_port":443,
+    "local_address": "127.0.0.1",
+    "local_port":1080,
+    "password":"f4i4s3hP@$$w0Rd",
+    "timeout":300,
+    "method":"aes-256-cfb",
+    "fast_open": false,
+    "workers": 1
+}
+
+
 
 ##### 说明
 [^1]: 登录阿里云->容器镜像服务->镜像加速器
