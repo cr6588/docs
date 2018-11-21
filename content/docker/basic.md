@@ -30,6 +30,8 @@ draft: true
     docker run -it nginx --add-host=localhost:127.0.0.1 --add-host=example.com:127.0.0.1 
     # 一个ip对应多个hosts
     docker run -it nginx --add-host="localhost example.com":127.0.0.1
+
+    docker run -p 20001:20001  -it -v /data/dockerbuild:/mnt --add-host=zookeeper.jtongi.cn:172.17.0.1 --name erp-cache erp-cache:latest
     #构建容器，最后加.表示当前目录
     docker build -f redis-zookeeper -t redis-zookeeper-houtai .
     docker build -t jdk8/alpine:v0.1 .
@@ -94,6 +96,37 @@ docker默认存放目录在/var/lib/docker，磁盘满了之后将其移动到�
 
     mv /var/lib/docker /docker
     ln -s /docker/docker /var/lib/docker
+#### docker私服搭建
+##### 生成个人证书
+mkdir -p certs
+openssl req \
+  -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \
+  -x509 -days 365 -out certs/domain.crt
+##### 创建用户
+ mkdir auth
+ docker run \
+  --entrypoint htpasswd \
+  registry:2 -Bbn testuser testpassword > auth/htpasswd
 
+vi docker-compose.yml
+
+
+registry:
+  restart: always
+  image: registry:2
+  ports:
+    - 5000:5000
+  environment:
+    REGISTRY_HTTP_TLS_CERTIFICATE: /certs/domain.crt
+    REGISTRY_HTTP_TLS_KEY: /certs/domain.key
+    REGISTRY_AUTH: htpasswd
+    REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+    REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+  volumes:
+    - /path/data:/var/lib/registry
+    - /path/certs:/certs
+    - /path/auth:/auth
+
+/path/data:宿主机挂载的磁盘
 ##### 说明
 [^1]: 登录阿里云->容器镜像服务->镜像加速器

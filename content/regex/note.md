@@ -19,3 +19,37 @@ draft: true
         while (matcher.find()) {
           System.out.println(matcher.group());
       }
+
+
+
+正则需要转义字符：'$', '(', ')', '*', '+', '.', '[', ']', '?', '\\', '^', '{', '}', '|'
+
+异常现象： java.util.regex.PatternSyntaxException: Dangling meta. character '*' near index 0
+解决方法： 对特殊字符加\\转义即可。
+
+注意：虽然使用[]在部分条件下也可以，但是在对于(、[、{范围边界开始符不匹配的情况下会报如下:
+异常现象：java.util.regex.PatternSyntaxException: Illegal repetition near index 50
+
+Java过滤正则表达式特殊字代码如下(注意:\\需要第一个替换，否则replace方法替换时会有逻辑bug)
+/**
+ * 转义正则特殊字符 （$()*+.[]?\^{},|）
+ * 
+ * @param keyword
+ * @return
+ */
+public static String escapeExprSpecialWord(String keyword) {
+	if (StringUtils.isNotBlank(keyword)) {
+		String[] fbsArr = { "\\", "$", "(", ")", "*", "+", ".", "[", "]", "?", "^", "{", "}", "|" };
+		for (String key : fbsArr) {
+			if (keyword.contains(key)) {
+				keyword = keyword.replace(key, "\\" + key);
+			}
+		}
+	}
+	return keyword;
+
+--------------------- 
+作者：青鸟天空 
+来源：CSDN 
+原文：https://blog.csdn.net/bbirdsky/article/details/45368709 
+版权声明：本文为博主原创文章，转载请附上博文链接！

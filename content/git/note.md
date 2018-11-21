@@ -9,3 +9,6 @@ draft: true
 
 ##### 历史版本切换
 在eclipse中右键team->shouw in history显示历史版本，选定版本右键Check out,恢复之前版本：项目右键->team->switch to master(当前分支即可)
+
+##### 在eclipse无法pull
+无法pull且大面积报红时，有可能是有冲突文件未提交导致不能pull,但大面报红又无法找到具体某一个时，切换至git视图pull,再次pull会提示某一个具体文件冲突

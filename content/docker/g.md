@@ -179,7 +179,7 @@ Proxy-Connection: keep-alive12345678910111213141516
 
 
 
-while read var; do unset $var; done < <(env | grep -i proxy | awk -F= '{print $1}')1
+while read var; do unset $var; done < <(env | grep -i proxy | awk -F= '{print $1}')
 
 
 再次 source /etc/profile 打开就行了
