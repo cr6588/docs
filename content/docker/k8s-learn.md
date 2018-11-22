@@ -1,5 +1,5 @@
 
-#### 1.minikube
+#### 1.minikube(主机非虚拟安装，否则直接跳过)
 
 ##### 1.1 [安装kubernetctl](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.12.md#client-binaries)
 ##### 1.3 [安装virtualbox](https://www.cnblogs.com/wangshuyi/p/6927113.html)
@@ -186,39 +186,148 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
     ![x](/images/k8s_login.png)
     #创建用户
     vi dashboard-adminuser.yaml
+
     apiVersion: v1
     kind: ServiceAccount
     metadata:
-    name: admin-user
-    namespace: kube-system
+      name: admin-user
+      namespace: kube-system
     ---
     apiVersion: rbac.authorization.k8s.io/v1beta1
     kind: ClusterRoleBinding
     metadata:
-    name: admin-user
+      name: admin-user
     roleRef:
-    apiGroup: rbac.authorization.k8s.io
-    kind: ClusterRole
-    name: cluster-admin
+      apiGroup: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: cluster-admin
     subjects:
     - kind: ServiceAccount
-    name: admin-user
-    namespace: kube-system
+      name: admin-user
+      namespace: kube-system
+
 
     kubectl apply -f dashboard-adminuser.yaml
-    #复制token
+    #查找，复制admin-user的token，登录即可
     kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
-    #找出admin-user的token，登录即可
     
     #查看日志
     kubectl describe pod kubernetes-dashboard-77fd78f978-4vzk2无法查看描述必须加上--namespace=kube-system
     kubectl describe pod kubernetes-dashboard-77fd78f978-4vzk2 --namespace=kube-system
+    kubectl logs kubernetes-dashboard-77fd78f978-4vzk2 -n kube-system
 
     ...failed to set bridge addr: "cni0" already has an IP address different from 10.244.1.1/24
 
     kubectl get pods --all-namespaces
     kubectl get service kubernetes-dashboard -n kube-system
 
+> 启用防火墙后dashboard可能无法安装，需要开启
+    firewall-cmd --permanent --add-masquerade # 允许防火墙伪装
+并开启相关端口，参照[install-kubeadm](https://kubernetes.io/docs/setup/independent/install-kubeadm/)开启
+
+#### redis安装
+
+    参见docker hub中[redis](https://hub.docker.com/_/redis/)官方镜像文档说明，直接在dashboard上进行图形化安装
+
+> 安装后查看服务的yaml文档中的端口发现
+        "protocol": "TCP",
+        "port": 6388,
+        "targetPort": 6379,
+        "nodePort": 31783
+其中port是集群内部的端口，31783是节点以及外部可以访问的端口，6388是pod的端口，也就是若外网链接访问时首先经过31783进入然后经过6388最后指向6379。使用kubectl expose deployment/redis --type="NodePort" --port 6379创建service时，port与targetPort都会是6379
+
+图形化安装之后删除,创建redis持久化安装
+
+    #创建pv与pvc
+    vi redis-pv.yaml
+
+    kind: PersistentVolume
+    apiVersion: v1
+    metadata:
+    name: redis-pv-volume
+    labels:
+        type: local
+    spec:
+    storageClassName: manual
+    capacity:
+        storage: 1Gi
+    accessModes:
+        - ReadWriteOnce
+    hostPath:
+        path: "/data/redis-data"
+    ---
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+    name: redis-pv-claim
+    spec:
+    storageClassName: manual
+    accessModes:
+        - ReadWriteOnce
+    resources:
+        requests:
+        storage: 1Gi
+
+    kubectl create -f redis-pv.yaml
+    #会在从节点生成/data/redis-data目录
+
+    #创建deployment
+	{
+	  "kind": "Deployment",
+	  "apiVersion": "extensions/v1beta1",
+	  "metadata": {
+		"name": "redis-persistent",
+		"namespace": "default",
+		"labels": {
+		  "k8s-app": "redis-persistent"
+		}
+	  },
+	  "spec": {
+		"replicas": 1,
+		"selector": {
+		  "matchLabels": {
+			"k8s-app": "redis-persistent"
+		  }
+		},
+		"template": {
+		  "metadata": {
+			"name": "redis-persistent",
+			"labels": {
+			  "k8s-app": "redis-persistent"
+			}
+		  },
+		  "spec": {
+			"containers": [
+			  {
+				"name": "redis-persistent",
+				"image": "redis:5",
+				"command": [
+				  "redis-server"
+				],
+				"args": [
+				  "--appendonly yes"
+				],
+				"volumeMounts": [
+				  {
+					"name": "redis-persistent-storage",
+					"mountPath": "/data"
+				  }
+				]
+			  }
+			],
+			"volumes": [
+			  {
+				"name": "redis-persistent-storage",
+				"persistentVolumeClaim": {
+				  "claimName": "redis-pv-claim"
+				}
+			  }
+			],
+		  }
+		}
+	  }
+	}
+    #当要使用自己的redis.conf时将自己的conf文件复制到从节点/data/redis-data下，args改为/data/xxx.conf即可
 
 
 #### 参考文献
