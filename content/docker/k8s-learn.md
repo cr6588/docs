@@ -238,35 +238,38 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
 
 图形化安装之后删除,创建redis持久化安装
 
+
     #创建pv与pvc
     vi redis-pv.yaml
-
-    kind: PersistentVolume
-    apiVersion: v1
-    metadata:
-    name: redis-pv-volume
-    labels:
-        type: local
-    spec:
-    storageClassName: manual
-    capacity:
-        storage: 1Gi
-    accessModes:
-        - ReadWriteOnce
-    hostPath:
-        path: "/data/redis-data"
-    ---
-    apiVersion: v1
-    kind: PersistentVolumeClaim
-    metadata:
-    name: redis-pv-claim
-    spec:
-    storageClassName: manual
-    accessModes:
-        - ReadWriteOnce
-    resources:
-        requests:
-        storage: 1Gi
+    
+````
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: mysql-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pv-claim
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+````
 
     kubectl create -f redis-pv.yaml
     #会在从节点生成/data/redis-data目录
@@ -329,9 +332,59 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
 	}
     #当要使用自己的redis.conf时将自己的conf文件复制到从节点/data/redis-data下，args改为/data/xxx.conf即可
 
+> 挂载磁盘时注意路径，不要将磁盘挂载到镜像本身就有的路径，例如/data中本身含有应用相关文件，然后又挂载到/data时，会覆盖镜像已有的data
+
+#### 部署自己的应用
+
+在创建好自己的镜像并上传上去后，通过dashboard安装时发现镜像始终无法拉取。但是通过docker直接拉取私有镜像时可以的。搜寻一番之后发现是k8s拉取私有镜像时需要docker相关账号信息。
+##### 配置secret拉取私有仓库镜像
+  kubectl create secret docker-registry registrysecret --docker-server=ip或域名:端口号  --docker-username=admin --docker-password=xxxx
+有2种方式加载secret
+###### 1.将密钥加载到yaml文件
+
+	apiVersion: v1
+	kind: ReplicationController
+	metadata:
+	  name: webapp
+	spec:
+	  replicas: 2
+	  template:
+		metadata:
+		  name: webapp
+		  labels:
+			app: webapp
+		spec:
+		  containers:
+		  - name: webapp
+			imagePullPolicy: Always
+			image: e5:8889/tomcat:latest
+			ports:
+			  - containerPort: 80
+		  imagePullSecrets:
+		  - name: registrysecret
+###### 2.将secret直接加载到默认帐号中
+
+    kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "registrysecret"}]}'
+    #查看帐号配置
+    kubectl get serviceaccounts default -o yaml
+    #在dashboard更改下版本或者删除重建部署即可
+
+##### 启动应用后pod中容器不能访问外网
+
+  #进入容器查看
+  kubectl get pods
+  kubectl kubectl exec -it pod名称 -- /bin/bash
+  #退出
+  crtl+p && crtl+q
+
+> 如果Pod具有多个Container，请使用--container或-c在kubectl exec命令中指定Container 。例如，假设您有一个名为my-pod的Pod，而Pod有两个名为main-app和helper-app的容器。以下命令将打开主应用程序Container的shell。
+
+kubectl exec -it my-pod --container main-app -- /bin/bash
+
 
 #### 参考文献
 
 1. https://kubernetes.io/docs/setup/independent/install-kubeadm/
 2. https://www.cnblogs.com/crysmile/p/9648406.html
 3. http://blog.51cto.com/11887934/2050590
+4. https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/

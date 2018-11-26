@@ -53,6 +53,8 @@ mvn install:install-file -Dfile=ocean.client-1.0.jar -DgroupId=com.alibaba -Dart
 mv 源文件 目标文件
 //强制递归复制文件
 cp -rf erp-web-tomcat-7.0.82_9001_9002_9003 erp-admin-tomcat-7.0.82_9004_9005_9006
+#不提示覆盖
+\cp -rf t tt
 
 
 phantomjs用于保存标签图片
