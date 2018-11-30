@@ -57,6 +57,8 @@
         "registry-mirrors": ["https://xxx.com"],
         "insecure-registries" : ["ip:5000", "xxxxxx.xx.cn:5000"]
     }
+    #重启生效
+    systemctl restart docker
 
 #### 3.kubeadm安装（1.12.2）
 
@@ -96,12 +98,14 @@
         http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
     EOF
 
-    yum install -y kubelet kubeadm kubectl
+    yum install kubelet-1.12.2-0 kubeadm-1.12.2-0 kubectl-1.12.2-0
     systemctl enable kubelet && systemctl start kubelet
     # Run kubeadm config images pull prior to kubeadm init to verify connectivity to gcr.io registries.验证是否能拉取相关镜像，若不能则找到相关镜像库镜像拉取
     
     kubeadm config images pull
     #从私有库拉取相关镜像
+    docker login www.xxxx.cn:5000
+    #输入相用户密码
     docker pull www.xxxx.cn:5000/k8s.gcr.io/kube-controller-manager:v1.12.2
     docker pull www.xxxx.cn:5000/k8s.gcr.io/kube-apiserver:v1.12.2
     docker pull www.xxxx.cn:5000/k8s.gcr.io/kube-scheduler:v1.12.2
@@ -117,7 +121,7 @@
     docker tag www.xxxx.cn:5000/k8s.gcr.io/coredns:1.2.2 k8s.gcr.io/coredns:1.2.2
     docker tag www.xxxx.cn:5000/k8s.gcr.io/pause:3.1 k8s.gcr.io/pause:3.1
     docker tag www.xxxx.cn:5000/k8s.gcr.io/kube-proxy:v1.12.2 k8s.gcr.io/kube-proxy:v1.12.2
-    
+    #确认相关镜像在主从上都存在，否则有可能后面虽然加入节点成功，但一直是notready状态
     #master节点执行，network使用flannel前置条件
     kubeadm init --pod-network-cidr=10.244.0.0/16
     #出错时还原
@@ -136,13 +140,27 @@
     kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/bc79dd1505b0c8681ece4de4c0d86c5cd2643275/Documentation/kube-flannel.yml
     #查看flannel状态
     kubectl get pods --all-namespaces
+    #主节点向指定ip开放相关端口
+    firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="www.xxxx.cn" port protocol="tcp" port="6443" accept"
+    firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="www.xxxx.cn" port protocol="tcp" port="2379-2380" accept"
+    firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="www.xxxx.cn" port protocol="tcp" port="10250-10252" accept"
     #从节点向指定ip开放相关端口
     firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="www.xxxx.cn" port protocol="tcp" port="10250" accept"
     firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="www.xxxx.cn" port protocol="tcp" port="30000-32767" accept"
-    #从节点加入主节点使用刚刚的kubeadm join
+    #从节点加入主节点
+    #修改节点名称
+    hostnamectl --static set-hostname [主机名]
+    #在node的hosts文件加入解析
+    127.0.0.1 localhost [主机名]
+    #使用刚刚的kubeadm join
     kubeadm join xxx:6443 --token gd7nxxxxxx --discovery-token-ca-cert-hash sha256:xxxx
+    #token有效期24小时，过期之后用创建token，查找hash值即可
+    kubeadm token create
+    kubeadm token list
+    openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | openssl dgst -sha256 -hex | sed 's/^.* //'
     #主节点查看节点信息
     kubectl get nodes
+
 
 > init之后如果关机重启kubelet正常的话，root用户若使用kubelctl提示无法连接则
 export KUBECONFIG=/etc/kubernetes/admin.conf
