@@ -113,3 +113,8 @@ ntpdate -u ntp1.aliyun.com
 
 chown user:market f01　　//把文件f01给uesr，添加到market组
 ll -d f1  查看目录f1的属性
+
+javac *.java会生成对应的*.class文件
+java *.class就可以执行了，.class可以省略
+找不到主类，加入classpath=jdk/lib && export PATH=$classpath:PATH
+移除临时环境变量unset erp_version

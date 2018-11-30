@@ -325,7 +325,7 @@ spec:
 				  "claimName": "redis-pv-claim"
 				}
 			  }
-			],
+			]
 		  }
 		}
 	  }
@@ -369,7 +369,7 @@ spec:
     kubectl get serviceaccounts default -o yaml
     #在dashboard更改下版本或者删除重建部署即可
 
-##### 启动应用后pod中容器不能访问外网
+##### 启动应用后pod中容器不能通过域名访问外网
 
   #进入容器查看
   kubectl get pods
@@ -379,9 +379,103 @@ spec:
 
 > 如果Pod具有多个Container，请使用--container或-c在kubectl exec命令中指定Container 。例如，假设您有一个名为my-pod的Pod，而Pod有两个名为main-app和helper-app的容器。以下命令将打开主应用程序Container的shell。
 
-kubectl exec -it my-pod --container main-app -- /bin/bash
+    #交互模式进入容器
+    kubectl exec -it my-pod --container main-app -- /bin/bash
 
+网上搜索一番发现在https://github.com/kubernetes/kubernetes/issues/57096#issuecomment-351029125中看到是防火墙未开启udp端口的问题，但具体是哪一个端口不能确定，经过同事之前更改dns服务器之后就能在容器中ping通，应该是dns问题，在容器中更改/etc/resolv.conf之后发现可以ping通，但不能每次容器都要去更改吧，也不应该这样做，所以又寻找其它方法，又搜索了很久发现很多人都遇到过这个问题，一部分是通过sysctl net.bridge.bridge-nf-call-iptables=1可以恢复，但测试之后未能成功。在搜索过程看到一些处理这个问题的过程是弄清ping之后请求的走向，通过查看防火墙日志确定在哪一过程被拦截，但这方面积累比较薄弱，且dns的容器无法进入，于是又继续查找。之后把防火墙关了重启服务器发现可以ping通,kubectl exec my-pod ping www.baidu.com,认为是防火墙端口的问题，而dns是coredns是通过安装flanel带来的，最后去flanel的[Troubleshooting](https://github.com/coreos/flannel/blob/master/Documentation/troubleshooting.md#firewalls)的中firewalls指出
 
+    When using udp backend, flannel uses UDP port 8285 for sending encapsulated packets.
+    When using vxlan backend, kernel uses UDP port 8472 for sending encapsulated packets.
+但不能确定是哪一个就一个个测试，最终发现在节点启用8472/udp后，在master执行
+
+    systemctl daemon-reload
+    systemctl restart kubelet
+master再kubectl exec my-pod ping www.baidu.com就能ping通，但速度较慢，在master也启用8472/udp后ping的速度明显加快
+
+> 回顾整个过程可以发现在最初是找对方向的，但之后又跑偏了，说明对k8s的网络管理方面理解的很薄弱，然后对centos7如何监控请求走向还是不会，待提高的地方很多。
+
+##### 容器需要使用host
+在只有docker时可以通过docker run时加入--add-host="localhost example.com":127.0.0.1，而在k8s时可以在pod的[spec.hostAliases](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)实现。eg:
+
+    ...
+        spec:
+      hostAliases:
+      - ip: "10.101.4.13"
+        hostnames:
+        - "xxx.xx.xx"
+      - ip: "xxx.xx.xx.xxx"
+        hostnames:
+        - "user.xx.xxx.cn"
+      - ip: "118.xxx.xx.xxx"
+        hostnames:
+        - "picture.xxx.cn"
+        - "static.xxx.cn"
+      containers:
+      - name: ...
+      ...
+##### statefulset应用
+有状态应用于headless service搭配，它的主要特点是ClusterIP为None,以一个zookeeper应用为例
+````
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: zookeeper-pv-0
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/docker/pv/zookeeper"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zookeeper
+  labels:
+    app: zookeeper
+spec:
+  ports:
+  - port: 2181
+    name: zookeeper
+  clusterIP: None
+  selector:
+    app: zookeeper
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: zookeeper
+spec:
+  serviceName: "zookeeper"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zookeeper
+  template:
+    metadata:
+      labels:
+        app: zookeeper
+    spec:
+      containers:
+      - name: zookeeper
+        image: zookeeper
+        ports:
+        - containerPort: 2181
+          name: zookeeper
+        volumeMounts:
+        - name: zk
+          mountPath: /data
+  volumeClaimTemplates:
+  - metadata:
+      name: zk
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
+````
+由于未配置动态存储，先设置一个hostPath类型的pv，然后设置headless service,最后设置StatefulSet，其中volumeClaimTemplates中描述了pvc，会查询符合要求的pv后自动创建pvc,在StatefulSet中pod与pvc会绑定，当伸缩数量为2时，需要新建pv满足
 #### 参考文献
 
 1. https://kubernetes.io/docs/setup/independent/install-kubeadm/
