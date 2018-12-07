@@ -122,7 +122,7 @@
     docker tag www.xxxx.cn:5000/k8s.gcr.io/pause:3.1 k8s.gcr.io/pause:3.1
     docker tag www.xxxx.cn:5000/k8s.gcr.io/kube-proxy:v1.12.2 k8s.gcr.io/kube-proxy:v1.12.2
     #确认相关镜像在主从上都存在，否则有可能后面虽然加入节点成功，但一直是notready状态
-    #master节点执行，network使用flannel前置条件
+    #master节点执行，network使用flannel前置条件.若需要制定版本则加入--kubernetes-version=v1.12.2
     kubeadm init --pod-network-cidr=10.244.0.0/16
     #出错时还原
     kubeadm reset
@@ -140,6 +140,26 @@
     kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/bc79dd1505b0c8681ece4de4c0d86c5cd2643275/Documentation/kube-flannel.yml
     #查看flannel状态
     kubectl get pods --all-namespaces
+
+>     ...failed to set bridge addr: "cni0" already has an IP address different from 10.244.1.1/24
+>     删除cni0网卡（ip link delete cni0）可以解决，但为了预防以后莫名错误，完全重置一次，参见https://github.com/kubernetes/kubernetes/issues/39557
+>     kubeadm reset
+>     systemctl stop kubelet
+>     systemctl stop docker
+>     rm -rf /var/lib/cni/
+>     rm -rf /var/lib/kubelet/*
+>     rm -rf /etc/cni/
+>     ifconfig cni0 down
+>     ifconfig flannel.1 down
+>     ifconfig docker0 down
+>     ip link delete cni0
+>     ip link delete flannel.1
+>     ifconfig docker0 up
+>     systemctl start docker
+>     systemctl start kubelet
+
+
+
     #主节点向指定ip开放相关端口
     firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="www.xxxx.cn" port protocol="tcp" port="6443" accept"
     firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="www.xxxx.cn" port protocol="tcp" port="2379-2380" accept"
@@ -147,6 +167,8 @@
     #从节点向指定ip开放相关端口
     firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="www.xxxx.cn" port protocol="tcp" port="10250" accept"
     firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="www.xxxx.cn" port protocol="tcp" port="30000-32767" accept"
+    #默认主节点不会编排容器，若希望启用则运行
+    kubectl taint nodes --all node-role.kubernetes.io/master-
     #从节点加入主节点
     #修改节点名称
     hostnamectl --static set-hostname [主机名]
@@ -494,6 +516,8 @@ spec:
           storage: 1Gi
 ````
 由于未配置动态存储，先设置一个hostPath类型的pv，然后设置headless service,最后设置StatefulSet，其中volumeClaimTemplates中描述了pvc，会查询符合要求的pv后自动创建pvc,在StatefulSet中pod与pvc会绑定，当伸缩数量为2时，需要新建pv满足
+
+
 #### 参考文献
 
 1. https://kubernetes.io/docs/setup/independent/install-kubeadm/

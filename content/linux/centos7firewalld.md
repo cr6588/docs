@@ -36,7 +36,10 @@ CentOS7使用firewalld打开关闭防火墙与端口
 拒绝所有包：firewall-cmd --panic-on
 取消拒绝状态： firewall-cmd --panic-off
 查看是否拒绝： firewall-cmd --query-panic
- 
+
+
+systemctl start firewalld && firewall-cmd --zone=public --add-port=51022/tcp --permanent  && firewall-cmd --reload
+
 那怎么开启一个端口呢
 添加
 firewall-cmd --zone=public --add-port=80/tcp --permanent    （--permanent永久生效，没有此参数重启后失效）
@@ -59,3 +62,6 @@ firewall-cmd --permanent --add-forward-port=port=80:proto=tcp:toaddr=192.168.0.1
 
 ---------------------
 iptables -t nat -L
+
+#修改hostname
+hostnamectl set-hostname name

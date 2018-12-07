@@ -108,7 +108,10 @@ openssl req \
   --entrypoint htpasswd \
   registry:2 -Bbn testuser testpassword > auth/htpasswd
 
+> 密码以2个!!结尾会出错
+
 vi docker-compose.yml
+
 
 
 registry:
@@ -128,5 +131,10 @@ registry:
     - /path/auth:/auth
 
 /path/data:宿主机挂载的磁盘
+
+docker-compose up -d
+
+##### 查看日志
+journalctl -u docker.service
 ##### 说明
 [^1]: 登录阿里云->容器镜像服务->镜像加速器
