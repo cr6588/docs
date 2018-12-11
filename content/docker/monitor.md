@@ -52,6 +52,11 @@ https://prometheus.io/docs/prometheus/latest/installation/)进行docker安装.�
        prom/prometheus --config.file=/prometheus-data/prometheus.yml
     #浏览器访问http://ip:9090/targets，看到linux与mysql2个job的state都是down
 
+> 数据默认是存储在安装目录data文件夹中
+> --storage.tsdb.path：这决定了Prometheus写入数据库的位置。默认为data/。
+> --storage.tsdb.retention：这决定了何时删除旧数据。默认为15d。
+
+
 ## 安装Node-exporter
 官网有一个[Node-exporter](https://prometheus.io/docs/guides/node-exporter/)的引导可以参考,github见https://github.com/prometheus/node_exporter。
 下载在https://github.com/prometheus/node_exporter/releases中。
@@ -81,7 +86,8 @@ https://prometheus.io/docs/prometheus/latest/installation/)进行docker安装.�
 
     wget https://dl.grafana.com/oss/release/grafana-5.4.0-1.x86_64.rpm 
     yum localinstall grafana-5.4.0-1.x86_64.rpm
-    #安装仪表盘在/etc/grafana/grafana.ini的dashboards中加入
+
+    #安装已有的仪表盘在/etc/grafana/grafana.ini的dashboards中加入，可以在安装好后直接去官网下载相关仪表盘
     [dashboards.json]
     enabled = true
     path = /var/lib/grafana/dashboards
@@ -105,3 +111,25 @@ https://prometheus.io/docs/prometheus/latest/installation/)进行docker安装.�
     #开放3000端口
     firewall-cmd --zone=public --add-port=3000/tcp --permanent  && firewall-cmd --reload
     #访问ip:3000使用admin/admin登录并修改密码，然后添加datasource,选择prometheus
+    #由于之后的dashboard需要安装饼图插件，所以先安装
+    grafana-cli plugins install grafana-piechart-panel
+    #点击左侧+号，然后import，填入8919，prometheus一栏选择Prometheus
+## 安装[ALERTMANAGER](https://prometheus.io/docs/alerting/overview/)
+### 概述
+ALERTMANAGER是Prometheus警报管理器与Prometheus。首先Prometheus发送警报规则给ALERTMANAGER,然后ALERTMANAGER管理这些警报，它负责对它们进行重复数据删除，分组和路由，以及正确的接收器集成。最后通过电子邮件，PagerDuty等方式发送通知.
+#### [Grouping](https://prometheus.io/docs/alerting/alertmanager/#grouping)
+> Grouping categorizes alerts of similar nature into a single notification.
+分组将类似性质的警报分类为单个通知.
+例如：发生网络分区时，群集中正在运行数十或数百个服务实例。一半的服务实例无法再访问数据库。Prometheus中的警报规则配置为在每个服务实例无法与数据库通信时发送警报。结果，数百个警报被发送到Alertmanager。
+
+作为用户，只能想要获得单个页面，同时仍能够确切地看到哪些服务实例受到影响。因此，可以将Alertmanager配置为按群集和alertname对警报进行分组，以便发送单个紧凑通知。
+#### Inhibition
+> Inhibition is a concept of suppressing notifications for certain alerts if certain other alerts are already firing.
+在某些警报触发时，抑制某些警报
+例如：正在触发警报，通知无法访问整个集群。Alertmanager可以配置为在该特定警报触发时将与该集群有关的所有其他警报静音。这可以防止通知数百或数千个与实际问题无关的触发警报。
+
+#### Silences
+> Silences are a straightforward way to simply mute alerts for a given time
+在给定时间内简单地静音警报的简单方法
+### CONFIGURATION
+通过命令行与配置文件配置
