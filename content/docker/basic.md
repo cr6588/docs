@@ -32,9 +32,12 @@ draft: true
     docker run -it nginx --add-host="localhost example.com":127.0.0.1
 
     docker run -p 20001:20001  -it -v /data/dockerbuild:/mnt --add-host=zookeeper.jtongi.cn:172.17.0.1 --name erp-cache erp-cache:latest
+    
     #构建容器，最后加.表示当前目录
     docker build -f redis-zookeeper -t redis-zookeeper-houtai .
     docker build -t jdk8/alpine:v0.1 .
+    #重启docker时自动启动容器在run时加入--restart=always
+    
 
 #### [关于Dockerfile的ADD命令](https://blog.csdn.net/kiloveyousmile/article/details/80211351)
 ##### 添加文件
@@ -136,5 +139,8 @@ docker-compose up -d
 
 ##### 查看日志
 journalctl -u docker.service
+##### 容器图形化查看工具portainer
+$ docker volume create portainer_data
+$ docker run -d -p 9000:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
 ##### 说明
 [^1]: 登录阿里云->容器镜像服务->镜像加速器

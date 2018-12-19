@@ -118,3 +118,6 @@ javac *.java会生成对应的*.class文件
 java *.class就可以执行了，.class可以省略
 找不到主类，加入classpath=jdk/lib && export PATH=$classpath:PATH
 移除临时环境变量unset erp_version
+
+查看目录文件大小
+du -sh *

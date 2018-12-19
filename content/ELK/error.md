@@ -80,6 +80,7 @@ https://www.elastic.co/guide/en/elastic-stack-overview/6.3/get-started-elastic-s
 创建es用户组及es用户
 
     groupadd es
+    #创建用户名为es密码为elasticsearch的用户，并添加到es组
     useradd es -g es -p elasticsearch
     #创建ELK目录
     mkdir ELK

@@ -62,6 +62,8 @@
 
 #### 3.kubeadm安装（1.12.2）
 
+    #修改主机名称
+    hostnamectl set-hostname name
     #关闭swap
     swapoff -a
     vi /etc/fstab
@@ -77,6 +79,15 @@
     modprobe ip_vs_wrr
     modprobe ip_vs_sh
     modprobe ip_vs
+>     重启会失效，参考[Linux启动自动加载模块](https://www.jianshu.com/p/69e0430a7d20)在/etc/sysconfig/modules/建立ipvs.modules并写入
+>     #!/bin/bash
+>     modprobe ip_vs_rr
+>     modprobe ip_vs_wrr
+>     modprobe ip_vs_sh
+>     modprobe ip_vs
+>     给ipvs.modules加入执行权限
+>     chmod +x ipvs.modules
+
     查看是否成功
     lsmod| grep ip_vs
     2、开启内核转发，并使之生效，末尾EOF前不要有空格
@@ -124,6 +135,8 @@
     #确认相关镜像在主从上都存在，否则有可能后面虽然加入节点成功，但一直是notready状态
     #master节点执行，network使用flannel前置条件.若需要制定版本则加入--kubernetes-version=v1.12.2
     kubeadm init --pod-network-cidr=10.244.0.0/16
+    #master节点执行，network使用calico前置条件.若需要制定版本则加入
+    kubeadm init --pod-network-cidr=192.168.0.0/16
     #出错时还原
     kubeadm reset
     #记录下从节点加入命令
@@ -135,10 +148,13 @@
     # Alternatively, if you are the root user, you can run:
     export KUBECONFIG=/etc/kubernetes/admin.conf
 
-    #使用flannel
+    #使用flannel（不支持NetworkPolicy,部署的应用会无视firewalld完全暴露在公网中）
     sysctl net.bridge.bridge-nf-call-iptables=1
     kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/bc79dd1505b0c8681ece4de4c0d86c5cd2643275/Documentation/kube-flannel.yml
-    #查看flannel状态
+    #使用calico
+    kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
+kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
+    #查看状态
     kubectl get pods --all-namespaces
 
 >     ...failed to set bridge addr: "cni0" already has an IP address different from 10.244.1.1/24
@@ -158,6 +174,17 @@
 >     systemctl start docker
 >     systemctl start kubelet
 
+>     ...Readiness probe failed: calico/node is not ready: BIRD is not ready: BGP not established with 10.192.0.1
+>     calico健康检查出错，calico的ip自动检测给了一个错误IP10.192.0.1，在将https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml下载下来，在calico-node的env加入IP_AUTODETECTION_METHOD,其eth.*视其节点间通信的网卡决定
+
+````
+...
+            - name: IP
+              value: "autodetect"
+            - name: IP_AUTODETECTION_METHOD
+              value: "interface=eth.*"
+...
+````
 
 
     #主节点向指定ip开放相关端口
@@ -261,9 +288,13 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
     kubectl get pods --all-namespaces
     kubectl get service kubernetes-dashboard -n kube-system
 
-> 启用防火墙后dashboard可能无法安装，需要开启
+> 使用flannel启用防火墙后dashboard可能无法安装，需要开启
     firewall-cmd --permanent --add-masquerade # 允许防火墙伪装
 并开启相关端口，参照[install-kubeadm](https://kubernetes.io/docs/setup/independent/install-kubeadm/)开启
+> 使用calico必须启用防火墙，需要开启
+    firewall-cmd --permanent --add-masquerade # 允许防火墙伪装
+并开启相关端口，参照[System requirements](https://docs.projectcalico.org/v3.3/getting-started/kubernetes/requirements)开启
+5473需要开启否则应用内部无法通过服务名:端口访问
 
 #### redis安装
 
