@@ -135,8 +135,10 @@
     #确认相关镜像在主从上都存在，否则有可能后面虽然加入节点成功，但一直是notready状态
     #master节点执行，network使用flannel前置条件.若需要制定版本则加入--kubernetes-version=v1.12.2
     kubeadm init --pod-network-cidr=10.244.0.0/16
-    #master节点执行，network使用calico前置条件.若需要制定版本则加入
+    #master节点执行，network使用calico前置条件.
     kubeadm init --pod-network-cidr=192.168.0.0/16
+    #master节点执行，network使用weave net前置条件
+    kubeadm init
     #出错时还原
     kubeadm reset
     #记录下从节点加入命令
@@ -148,12 +150,14 @@
     # Alternatively, if you are the root user, you can run:
     export KUBECONFIG=/etc/kubernetes/admin.conf
 
-    #使用flannel（不支持NetworkPolicy,部署的应用会无视firewalld完全暴露在公网中）
+            #使用flannel（不支持NetworkPolicy,部署的应用会无视firewalld完全暴露在公网中）
     sysctl net.bridge.bridge-nf-call-iptables=1
     kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/bc79dd1505b0c8681ece4de4c0d86c5cd2643275/Documentation/kube-flannel.yml
-    #使用calico
+            #使用calico
     kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
-kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
+    kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
+    #使用weave net
+    kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
     #查看状态
     kubectl get pods --all-namespaces
 
