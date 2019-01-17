@@ -108,6 +108,8 @@ cd src
 授时服务器采用阿里云 https://help.aliyun.com/knowledge_detail/40583.html
 
 ntpdate -u ntp1.aliyun.com
+定时同步服务器时间
+*/10 * * * * ntpdate asia.pool.ntp.org
 
 文件的属主和属组属性设置
 

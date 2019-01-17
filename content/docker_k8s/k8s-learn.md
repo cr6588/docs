@@ -138,6 +138,8 @@
     kubeadm init --pod-network-cidr=10.244.0.0/16
     #master节点执行，network使用calico前置条件.若需要制定版本则加入
     kubeadm init --pod-network-cidr=192.168.0.0/16
+    #master节点执行，network使用weave net前置条件
+    kubeadm init
     #出错时还原
     kubeadm reset
     #记录下从节点加入命令
@@ -155,6 +157,8 @@
     #使用calico
     kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
 kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
+    #使用weave net
+    kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
     #查看状态
     kubectl get pods --all-namespaces
 
@@ -253,7 +257,7 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
     #访问子节点https://ip:31474, 需要登录。若没有登录界面，直接进入，访问https://192.168.199.206:31474/#!/login
     ![x](/images/k8s_login.png)
     #创建用户
-    vi dashboard-adminuser.yaml
+    cat <<EOF > dashboard-adminuser.yaml
 
     apiVersion: v1
     kind: ServiceAccount
@@ -273,7 +277,7 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
     - kind: ServiceAccount
       name: admin-user
       namespace: kube-system
-
+    EOF
 
     kubectl apply -f dashboard-adminuser.yaml
     #查找，复制admin-user的token，登录即可

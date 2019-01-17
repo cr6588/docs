@@ -149,3 +149,5 @@ ALERTMANAGER是Prometheus警报管理器与Prometheus。首先Prometheus发送�
 将其文件保存然后kubectl create -f .
 通过dashboard或kubectl查看相关pod是否正常
 grafana使用[1. Kubernetes Deployment Statefulset Daemonset metrics](https://grafana.com/dashboards/8588)查看
+8588中内存使用统计有问题，直接在prometheus中使用container_memory_working_set_bytes对某个deployment查看发现有三条数据，例如container_memory_working_set_bytes{pod_name=~"^erp-web.*?"}。但提示有一条数据是不含有container_name与image属性的，且不含数据的值大致等于另外2条数据值之和，所以需要排除这条数据。需要加上container_name!=""或者image!=""。
+cpu使用率类似。sum (rate (container_cpu_usage_seconds_total{image!="",name=~"^k8s_.*",io_kubernetes_container_name!="POD",pod_name=~"^$Deployment$Statefulset$Daemonset.*$",kubernetes_io_hostname=~"^$Node$"}[1m])) by (pod_name,kubernetes_io_hostname)取过去一分钟以秒为单位消耗cpu时间的平均值。cpu总的使用率对对该数据再进行一次sum即可。

@@ -142,5 +142,8 @@ journalctl -u docker.service
 ##### 容器图形化查看工具portainer
 $ docker volume create portainer_data
 $ docker run -d -p 9000:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+> (COMMAND_FAILED: '/usr/sbin/iptables -w2 -t filter -A DOCKER ! -i docker0 -o docker0 -p tcp -d 172.17.0.2 --dport 9000 -j ACCEPT' failed: iptables: No chain/target/match by that name.
+> 重启防火墙
+
 ##### 说明
 [^1]: 登录阿里云->容器镜像服务->镜像加速器
