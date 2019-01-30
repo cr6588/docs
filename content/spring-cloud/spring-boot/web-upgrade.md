@@ -166,3 +166,14 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-dev
 
     <wb-resource deploy-path="/WEB-INF/web.xml" source-path="/src/main/webapp/WEB-INF/web.xml"/>
 将其注释后不再出现该提示。但取消注释后也不再出现该提示，另外一个web项目也有这行但从未出现这个提示。尚不清楚原因
+
+javax/el/ELManager出错
+    Caused by: java.lang.NoClassDefFoundError: javax/el/ELManager
+
+加入
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+tomcat8不需要
