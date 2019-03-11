@@ -34,3 +34,5 @@ Ctrl+F12，类似eclipse+o显示方法
 psvm(public static void main缩写) main方法
 
 sout System.out.println
+##### 修改静态资源不用重启
+https://blog.csdn.net/Connie1451/article/details/80346981

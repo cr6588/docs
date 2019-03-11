@@ -470,6 +470,7 @@ spec:
 
     systemctl daemon-reload
     systemctl restart kubelet
+    systemctl restart docker
 master再kubectl exec my-pod ping www.baidu.com就能ping通，但速度较慢，在master也启用8472/udp后ping的速度明显加快
 
 > 回顾整个过程可以发现在最初是找对方向的，但之后又跑偏了，说明对k8s的网络管理方面理解的很薄弱，然后对centos7如何监控请求走向还是不会，待提高的地方很多。

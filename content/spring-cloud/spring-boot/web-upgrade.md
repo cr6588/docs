@@ -177,3 +177,9 @@ javax/el/ELManager出错
             <version>3.0.0</version>
         </dependency>
 tomcat8不需要
+
+tomcat version:7.0.47出现
+严重: Unable to process Jar entry [module-info.class] from Jar [jar:file:/D:/maven_repo/org/apache/logging/log4j/log4j-api/2.10.0/log4j-api-2.10.0.jar!/] for annotations
+org.apache.tomcat.util.bcel.classfile.ClassFormatException: Invalid byte tag in constant pool: 19
+..
+升级tomcat ，tomcat 8.0.45未出现

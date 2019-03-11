@@ -56,7 +56,7 @@ sudo vi /etc/shadowsocks/shadowsocks.json12
     "method":"aes-256-cfb",  # 加密方式
     "fast_open": false,  # true或false。开启fast_open以降低延迟，但要求Linux内核在3.7+
     "workers": 1  #工作线程数 
-}1234567891011
+}
 
 
 配置自启动 
@@ -93,7 +93,7 @@ systemctl status shadowsocks.service123
 
 
 
-curl --socks5 127.0.0.1:1080 http://httpbin.org/ip1
+curl --socks5 127.0.0.1:1080 http://httpbin.org/ip
 
 
 Shadowsock客户端服务已正常运行，则结果如下：
@@ -191,4 +191,13 @@ https://www.zybuluo.com/ncepuwanghui/note/954160
 
 ---------------------
 
-本文来自 shaonbean 的CSDN 博客 ，全文地址请点击：https://blog.csdn.net/wh211212/article/details/79165415?utm_source=copy 
+本文来自 shaonbean 的CSDN 博客 ，全文地址请点击：https://blog.csdn.net/wh211212/article/details/79165415?utm_source=copy
+
+
+
+https://brickyang.github.io/2017/01/14/CentOS-7-%E5%AE%89%E8%A3%85-Shadowsocks-%E5%AE%A2%E6%88%B7%E7%AB%AF/
+
+
+
+privoxy --user privoxy /usr/local/etc/privoxy/config
+https://app.hiwifi.com/store.php?m=plugins&a=install&sid=163116535&rid=r60861139934
