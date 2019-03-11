@@ -1,0 +1,82 @@
+#pv不区分namespace
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: erp-monitor
+  labels:
+    type: local
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+#按照实际情况更改相关存储，创建之后有可能没有相关权限，需要对文件夹增加权限
+    path: "/docker/erp-pv/erp-monitor"
+---
+#pvc区分namespace
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: erp-monitor-claim
+  namespace: kube-system
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  labels:
+    name: prometheus-deployment
+  name: prometheus
+  namespace: kube-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      containers:
+      - image: prom/prometheus
+        name: prometheus
+        command:
+        - "/bin/prometheus"
+        args:
+        - "--config.file=/etc/prometheus/prometheus.yml"
+        - "--storage.tsdb.path=/prometheus"
+        - "--storage.tsdb.retention=24h"
+        - "--web.enable-lifecycle"
+        ports:
+        - containerPort: 9090
+          protocol: TCP
+        volumeMounts:
+        - mountPath: "/prometheus"
+          name: data
+        - mountPath: "/etc/prometheus"
+          name: config-volume
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 500m
+            memory: 2500Mi
+      serviceAccountName: prometheus
+      imagePullSecrets: 
+        - name: regsecret
+      volumes:
+      - name: data
+#按照实际情况更改相关存储
+        persistentVolumeClaim: 
+          claimName: erp-monitor-claim
+      - name: config-volume
+        configMap:
+          name: prometheus-config

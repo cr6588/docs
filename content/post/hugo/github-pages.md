@@ -1,11 +1,9 @@
 ---
-title: "Github Pages"
+title: "hugo生成的静态网页部署至Github Pages"
 date: 2018-04-10T11:48:57+08:00
 weight : 2
 categories: ["hugo"]
 ---
-
-将hugo生成的静态网页部署至Github Pages
 
 ### 1.参见[Hugo](http://gohugo.io/)官方文档进行安装 
 ### 2.完成Quick Start
