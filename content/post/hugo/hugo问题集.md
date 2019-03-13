@@ -1,7 +1,6 @@
 ---
 title: "hugo问题集"
 date: 2018-04-10T19:17:21+08:00
-weight : 3
 categories: ["hugo"]
 ---
 
