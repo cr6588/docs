@@ -63,3 +63,5 @@ categories: ["hugo"]
 
 在content目录下新建post目录，将以前content目录下的内容移动到post下面。运行时发现有些文档在Archives无法显示,删除该文档所属目录下面的_index目录文件即可
 
+实际中只有最新的几个文档末尾的修改日期是正常的且有git的hash值链接其余则没有原因未知
+
