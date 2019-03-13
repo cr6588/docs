@@ -1,7 +1,7 @@
 ---
 title: "Webpack"
 date: 2018-08-08T10:38:04+08:00
-draft: true
+categories: ["Webpack"]
 ---
 
 #### 概念[^1]

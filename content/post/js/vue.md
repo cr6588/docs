@@ -1,7 +1,7 @@
 ---
 title: "Vue"
 date: 2018-08-17T09:54:47+08:00
-draft: true
+categories: ["vue"]
 ---
 
 #### 前言

@@ -1,7 +1,7 @@
 ---
 title: "Bitvise"
 date: 2018-10-17T09:22:38+08:00
-draft: true
+categories: ["linux"]
 ---
     
     #bat通过脚本上传文件，cenos7.tlp保存的profile,cenos7.pub保存的host key，sftp.bat脚本

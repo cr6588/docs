@@ -1,3 +1,9 @@
+---
+title: "缺少spring-web-xx.jar"
+date: 2019-01-28T10:34:56+08:00
+categories: ["java"]
+---
+
 # eclipse项目server无法启动，没有spring-web-XXXX.jar包
 
 eclipse项目server无法启动，没有spring-web-XXXX.jar包，运行时报错：
