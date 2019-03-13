@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on cr6588</title>
+    <link>https://cr6588.github.io/post/</link>
+    <description>Recent content in Posts on cr6588</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 10 Apr 2018 11:48:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://cr6588.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>hugo生成的静态网页部署至Github Pages</title>
+      <link>https://cr6588.github.io/post/hugo/hugo%E7%94%9F%E6%88%90%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E9%83%A8%E7%BD%B2%E8%87%B3github-pages/</link>
+      <pubDate>Tue, 10 Apr 2018 11:48:57 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/hugo/hugo%E7%94%9F%E6%88%90%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E9%83%A8%E7%BD%B2%E8%87%B3github-pages/</guid>
+      <description>1.参见Hugo官方文档进行安装 2.完成Quick Start 3.构建部署至Github Pages 若hugo产生的站点在D:/git/docs目录，进入doc</description>
+    </item>
+    
+    <item>
+      <title>hugo问题集</title>
+      <link>https://cr6588.github.io/post/hugo/hugo%E9%97%AE%E9%A2%98%E9%9B%86/</link>
+      <pubDate>Tue, 10 Apr 2018 19:17:21 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/hugo/hugo%E9%97%AE%E9%A2%98%E9%9B%86/</guid>
+      <description>1.关于主题 最先使用了一个叫code-editor的主题，按照官方文档中Menu的介绍试了下，始终没成功。于是去主题中换成docdock发现</description>
+    </item>
+    
+    <item>
+      <title>activiti 7 简介</title>
+      <link>https://cr6588.github.io/post/activiti/activiti_7/</link>
+      <pubDate>Mon, 18 Feb 2019 09:50:10 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/activiti/activiti_7/</guid>
+      <description>activiti 7 1.Activiti Cloud介绍 Activiti Cloud是第一个Cloud Native BPM框架，旨在为云环境中的BPM实施提供可扩展且透明的解决方案。 The BPM discipline was created to provide a better understanding of</description>
+    </item>
+    
+    <item>
+      <title>docker运行mysql8</title>
+      <link>https://cr6588.github.io/post/mysql/docker%E8%BF%90%E8%A1%8Cmysql8/</link>
+      <pubDate>Mon, 11 Feb 2019 15:34:04 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/mysql/docker%E8%BF%90%E8%A1%8Cmysql8/</guid>
+      <description>1 2 3 4 docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=密码 -d mysql:8 #由于密码加密方式与以前不同，所以需要进入容器更改密码加密方式 docker exec -it mysql</description>
+    </item>
+    
+    <item>
+      <title>dubbo xml报错</title>
+      <link>https://cr6588.github.io/post/dubbo/dubbo-xml%E6%8A%A5%E9%94%99/</link>
+      <pubDate>Mon, 11 Feb 2019 13:58:57 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/dubbo/dubbo-xml%E6%8A%A5%E9%94%99/</guid>
+      <description>1.解压dubbojar包，拿到dubbo.xsd文件 2.在eclipse中Windows-&amp;gt;Preferences-&amp;gt;XML-</description>
+    </item>
+    
+    <item>
+      <title>js正则</title>
+      <link>https://cr6588.github.io/post/js/js%E6%AD%A3%E5%88%99/</link>
+      <pubDate>Wed, 30 Jan 2019 16:35:31 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/js/js%E6%AD%A3%E5%88%99/</guid>
+      <description>在js中可以直接使用/正则表达式/.test(字符串)验证，例如 /^[1][3,4,5,7,8]+\d{9}$/.test(&amp;ldquo;18812345678&amp;rdquo;) 当把正则表达式赋予变量时需要考虑\转义的问题，例如 var s = &amp;ldquo;^[1][3,4,5,7,8]+\d{9}$&amp;ldquo;; RegExp(s).test(&amp;ldquo;18812345678&amp;rdquo;); 但当表达式在一</description>
+    </item>
+    
+    <item>
+      <title>Thumbnails</title>
+      <link>https://cr6588.github.io/post/java/thumbnails/</link>
+      <pubDate>Mon, 28 Jan 2019 10:34:56 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/java/thumbnails/</guid>
+      <description>后台用Thumbnails压缩时文件名的后缀会对图片大小产生影响，jpg格式改成png后缀后，原200多234007byte图片变成1.48</description>
+    </item>
+    
+    <item>
+      <title>缺少spring-web-xx.jar</title>
+      <link>https://cr6588.github.io/post/java/%E7%BC%BA%E5%B0%91spring-web-xx.jar/</link>
+      <pubDate>Mon, 28 Jan 2019 10:34:56 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/java/%E7%BC%BA%E5%B0%91spring-web-xx.jar/</guid>
+      <description>eclipse项目server无法启动，没有spring-web-XXXX.jar包 eclipse项目server无法启动，没有spring</description>
+    </item>
+    
+    <item>
+      <title>k8s搭建ELK环境</title>
+      <link>https://cr6588.github.io/post/elk/k8s%E6%90%AD%E5%BB%BAelk%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Mon, 17 Dec 2018 09:20:51 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/elk/k8s%E6%90%AD%E5%BB%BAelk%E7%8E%AF%E5%A2%83/</guid>
+      <description>elasticsearch部署（v6.5.3） elasticsearch.yml 1 2 3 4 5 6 7 #集群名，且不配置节点名称，避免多个k8s多个pod时，配置文件不同 cluster.name: es #ho</description>
+    </item>
+    
+    <item>
+      <title>windows笔记</title>
+      <link>https://cr6588.github.io/post/windows/windows%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 14 Dec 2018 10:36:37 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/windows/windows%E7%AC%94%E8%AE%B0/</guid>
+      <description>查找1080端口pid C:\Users\cr&amp;gt;netstat -aon|findstr &amp;ldquo;1080&amp;rdquo; TCP 127.0.0.1:1080 127.0.0.1:27015 ESTABLISHED 4304 TCP 127.0.0.1:27015 127.0.0.1:1080 ESTABLISHED 1876 查找pid对应进程 C:\Users\cr&amp;gt;tasklist|findstr &amp;ldquo;4304&amp;rdquo; iTunesHelper.exe 4304 Console 1 14,016 K</description>
+    </item>
+    
+    <item>
+      <title>使用prometheus与grafana进行监控</title>
+      <link>https://cr6588.github.io/post/docker_k8s/monitor/%E4%BD%BF%E7%94%A8prometheus%E4%B8%8Egrafana%E8%BF%9B%E8%A1%8C%E7%9B%91%E6%8E%A7/</link>
+      <pubDate>Fri, 07 Dec 2018 14:47:40 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/docker_k8s/monitor/%E4%BD%BF%E7%94%A8prometheus%E4%B8%8Egrafana%E8%BF%9B%E8%A1%8C%E7%9B%91%E6%8E%A7/</guid>
+      <description>使用prometheus与grafana进行监控 安装prometheus docker方式 参照官网installation进行docker安装</description>
+    </item>
+    
+    <item>
+      <title>html5通过load获取图片长宽</title>
+      <link>https://cr6588.github.io/post/js/html5%E9%80%9A%E8%BF%87load%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E9%95%BF%E5%AE%BD/</link>
+      <pubDate>Wed, 31 Oct 2018 17:48:43 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/js/html5%E9%80%9A%E8%BF%87load%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E9%95%BF%E5%AE%BD/</guid>
+      <description>html5有naturalWidth，naturalHeight属性获取图片的长宽，但是必须在图片加载完成之后才能获取。可以使用load事件</description>
+    </item>
+    
+    <item>
+      <title>正则笔记</title>
+      <link>https://cr6588.github.io/post/regex/%E6%AD%A3%E5%88%99%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Wed, 31 Oct 2018 17:40:05 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/regex/%E6%AD%A3%E5%88%99%E7%AC%94%E8%AE%B0/</guid>
+      <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 String str =&amp;#34;{&amp;amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SY450_.jpg&amp;amp;quot;:[450,384],&amp;amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX679_.jpg&amp;amp;quot;:[797,679],&amp;amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX522_.jpg&amp;amp;quot;:[612,522],&amp;amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX466_.jpg&amp;amp;quot;:[547,466],&amp;amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX425_.jpg&amp;amp;quot;:[499,425],&amp;amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SY355_.jpg&amp;amp;quot;:[355,303],&amp;amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX569_.jpg&amp;amp;quot;:[668,569]}&amp;#34;; Matcher matcher = Pattern.compile(&amp;#34;http.*?&amp;amp;quot&amp;#34;).matcher(str); &amp;#34;http.*&amp;amp;quot&amp;#34;：从http开始到最后一个&amp;amp;quot &amp;#34;http.*?&amp;amp;quot&amp;#34;</description>
+    </item>
+    
+    <item>
+      <title>Bitvise</title>
+      <link>https://cr6588.github.io/post/linux/bitvise/</link>
+      <pubDate>Wed, 17 Oct 2018 09:22:38 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/linux/bitvise/</guid>
+      <description>1 2 3 4 5 6 7 8 9 10 #bat通过脚本上传文件，cenos7.tlp保存的profile,cenos7.pub保存的host key，sftp.</description>
+    </item>
+    
+    <item>
+      <title>Docker与k8s简介</title>
+      <link>https://cr6588.github.io/post/docker_k8s/docker%E4%B8%8Ek8s%E7%AE%80%E4%BB%8B/</link>
+      <pubDate>Tue, 18 Sep 2018 10:20:11 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/docker_k8s/docker%E4%B8%8Ek8s%E7%AE%80%E4%BB%8B/</guid>
+      <description>Docker Docker是什么？ 是一个应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的Linux机器上。它</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes学习</title>
+      <link>https://cr6588.github.io/post/docker_k8s/kubernetes%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Tue, 18 Sep 2018 10:20:11 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/docker_k8s/kubernetes%E5%AD%A6%E4%B9%A0/</guid>
+      <description>1.minikube(主机非虚拟安装，否则直接跳过) 1.1 安装kubernetctl 1.3 安装virtualbox 1.2 安装minikube 1 2 3 4 5 6</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes实验</title>
+      <link>https://cr6588.github.io/post/docker_k8s/kubernetes%E5%AE%9E%E9%AA%8C/</link>
+      <pubDate>Tue, 18 Sep 2018 10:20:11 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/docker_k8s/kubernetes%E5%AE%9E%E9%AA%8C/</guid>
+      <description>安装多版本docker kubelet为什么关闭swap kubernetes的想法是将实例紧密包装到尽可能接近100％。 所有的部署应该与CPU</description>
+    </item>
+    
+    <item>
+      <title>RocketMQ</title>
+      <link>https://cr6588.github.io/post/mq/rocketmq/</link>
+      <pubDate>Mon, 03 Sep 2018 15:27:54 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/mq/rocketmq/</guid>
+      <description>http://rocketmq.apache.org/docs/quick-start/ nohup sh bin/mqnamesrv &amp;amp; 提示JAVA_HOME不存在。但实际已配置，echo $JAVA_HOME之后又正常 nohup sh bin/mqbroker -n localhost:9876 &amp;amp; 提示error=&amp;lsquo;Can</description>
+    </item>
+    
+    <item>
+      <title>git note</title>
+      <link>https://cr6588.github.io/post/git/git-note/</link>
+      <pubDate>Wed, 29 Aug 2018 19:55:29 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/git/git-note/</guid>
+      <description>获取新远程分支 从eclipse git远程时只选了一个远程分支之后，想要切换到新的远程分支在eclipse Git视图的Remote Tracki</description>
+    </item>
+    
+    <item>
+      <title>Vue</title>
+      <link>https://cr6588.github.io/post/js/vue/</link>
+      <pubDate>Fri, 17 Aug 2018 09:54:47 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/js/vue/</guid>
+      <description>前言 最初想使用vue+element UI搭建一个Demo项目以寻求能否解决已有项目的页面结构混乱、难以维护的痛点。在跟着vue、npm、we</description>
+    </item>
+    
+    <item>
+      <title>Eclipse问题集</title>
+      <link>https://cr6588.github.io/post/ide/eclipse%E9%97%AE%E9%A2%98%E9%9B%86/</link>
+      <pubDate>Tue, 14 Aug 2018 11:48:04 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/ide/eclipse%E9%97%AE%E9%A2%98%E9%9B%86/</guid>
+      <description>提示resource is out of sync with the filesystem 在学习webpack复制项目时经常出现resource is out of sync with the filesystem. Right-click &amp;gt; Refresh will always clear this.</description>
+    </item>
+    
+    <item>
+      <title>Webpack</title>
+      <link>https://cr6588.github.io/post/js/webpack/</link>
+      <pubDate>Wed, 08 Aug 2018 10:38:04 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/js/webpack/</guid>
+      <description>概念1 At its core, webpack is a static module bundler for modern JavaScript applications. When webpack processes your application, it internally builds a dependency graph which maps every module your project needs and generates one or more bundles. 作用 在getting-started说得很清楚 传统的html</description>
+    </item>
+    
+    <item>
+      <title>markdown测试</title>
+      <link>https://cr6588.github.io/post/markdown/markdown%E6%B5%8B%E8%AF%95/</link>
+      <pubDate>Mon, 30 Jul 2018 14:02:09 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/markdown/markdown%E6%B5%8B%E8%AF%95/</guid>
+      <description>Footnote 1 link1. asd f a asd f a asd f a asd f a asd f a asd f a Footnote 2 link[^second]. asd f a asd f a asd f a asd f a asd f a asd f a Inline footnote2 definition. asd f a asd f a asd f a asd f a asd f a asd f a Duplicated footnote reference[^second]. asd f a asd</description>
+    </item>
+    
+    <item>
+      <title>ELK问题集</title>
+      <link>https://cr6588.github.io/post/elk/elk%E9%97%AE%E9%A2%98%E9%9B%86/</link>
+      <pubDate>Tue, 17 Jul 2018 11:00:28 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/elk/elk%E9%97%AE%E9%A2%98%E9%9B%86/</guid>
+      <description>get-started-elastic-stack https://www.elastic.co/guide/en/elastic-stack-overview/6.3/get-started-elastic-stack.html#install-elasticsearch centos下start ok, curl失败，status提示which: no java in xxx. [root@localhost data]# sudo service elasticsearch start Starting elasticsearch (via systemctl): [ OK ] [root@localhost data]# curl http://127.0.0.1:9200 curl: (7) Failed connect to 127.0.0.1:9200; Connection refused [root@localhost data]# sudo service elasticsearch</description>
+    </item>
+    
+    <item>
+      <title>Eclipse与idea比较</title>
+      <link>https://cr6588.github.io/post/ide/eclipse%E4%B8%8Eidea%E6%AF%94%E8%BE%83/</link>
+      <pubDate>Wed, 13 Jun 2018 08:59:02 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/ide/eclipse%E4%B8%8Eidea%E6%AF%94%E8%BE%83/</guid>
+      <description>1.e设置模板代码后，在class名称上一行输入/*回车会自动带入模板代码，idea不行 2.e默认有序列化id不存在警告，idea需要设置 https://blog.csdn.net/tiantiandjava/article/details/8781776</description>
+    </item>
+    
+    <item>
+      <title>docker redis宿主机不能访问</title>
+      <link>https://cr6588.github.io/post/docker_k8s/docker-redis%E5%AE%BF%E4%B8%BB%E6%9C%BA%E4%B8%8D%E8%83%BD%E8%AE%BF%E9%97%AE/</link>
+      <pubDate>Thu, 31 May 2018 14:38:33 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/docker_k8s/docker-redis%E5%AE%BF%E4%B8%BB%E6%9C%BA%E4%B8%8D%E8%83%BD%E8%AE%BF%E9%97%AE/</guid>
+      <description>docker redis 宿主机不能访问 按照https://redis.io/download 下载并编译redis后 构建redis镜像，开放6379端口并设置密码</description>
+    </item>
+    
+    <item>
+      <title>Centos7笔记</title>
+      <link>https://cr6588.github.io/post/linux/centos7%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 25 May 2018 09:25:07 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/linux/centos7%E7%AC%94%E8%AE%B0/</guid>
+      <description>https://www.cnblogs.com/moxiaoan/p/5683743.html CentOS7使用firewalld打开关闭防火墙与端口 1、firewalld的基本使用 启动： systemctl start firewalld 查看状态： systemctl status firewalld 停止： systemctl disable firewalld 禁用： systemctl stop</description>
+    </item>
+    
+    <item>
+      <title>Docker基本命令</title>
+      <link>https://cr6588.github.io/post/docker_k8s/docker%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Thu, 24 May 2018 10:34:19 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/docker_k8s/docker%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</guid>
+      <description>Docker基本命令 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 #docker帮助 docker --help #docker镜像列表 docker images #dock</description>
+    </item>
+    
+    <item>
+      <title>virtualbox安装centos与docker</title>
+      <link>https://cr6588.github.io/post/docker_k8s/virtualbox%E5%AE%89%E8%A3%85centos%E4%B8%8Edocker/</link>
+      <pubDate>Thu, 24 May 2018 10:34:19 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/docker_k8s/virtualbox%E5%AE%89%E8%A3%85centos%E4%B8%8Edocker/</guid>
+      <description>通过virtualbox安装CentOS-7-x86_64-Minimal-1804.iso后网络模式选择桥接重启 #禁用防火墙 systemctl stop firewalld #yum install net-tools ifconfig</description>
+    </item>
+    
+    <item>
+      <title>maven错误集</title>
+      <link>https://cr6588.github.io/post/maven/maven%E9%94%99%E8%AF%AF%E9%9B%86/</link>
+      <pubDate>Thu, 17 May 2018 16:46:22 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/maven/maven%E9%94%99%E8%AF%AF%E9%9B%86/</guid>
+      <description>1. 编译时突然死机，重启后编译报错 1 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-install-plugin:2.4:install (default-install) on project erp: Failed to install metadata com.sjdf:erp/maven-metadata.xml: Could not parse metadata D:\maven_repo\com\sjdf\erp\maven-metadata-local.xml: only whitespace content allowed before start tag and not \u0 (position: START_DOCUMENT seen \u0... @1:1) -&amp;gt; [Help 1] 删除D:\maven_repo</description>
+    </item>
+    
+    <item>
+      <title>idea快捷键</title>
+      <link>https://cr6588.github.io/post/ide/idea%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
+      <pubDate>Mon, 23 Apr 2018 11:03:20 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/ide/idea%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
+      <description>http://www.cnblogs.com/tonycody/p/3257601.html 【常规】 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65</description>
+    </item>
+    
+    <item>
+      <title>idea配置</title>
+      <link>https://cr6588.github.io/post/ide/idea%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Mon, 23 Apr 2018 09:44:55 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/ide/idea%E9%85%8D%E7%BD%AE/</guid>
+      <description>配置maven,jdk 显示空格 File -&amp;gt; Settings -&amp;gt; Editor -&amp;gt; General -&amp;gt; Appearance -&amp;gt; Show whitespaces 1. 空格的点显示太小，如何居中或者更清晰？（字号调大仍然太小） 使用微软雅黑字体 File -&amp;gt; Settings -&amp;gt; Appearance</description>
+    </item>
+    
+    <item>
+      <title>git忽略已经被提交的文件</title>
+      <link>https://cr6588.github.io/post/git/git%E5%BF%BD%E7%95%A5%E5%B7%B2%E7%BB%8F%E8%A2%AB%E6%8F%90%E4%BA%A4%E7%9A%84%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Fri, 20 Apr 2018 13:50:56 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/git/git%E5%BF%BD%E7%95%A5%E5%B7%B2%E7%BB%8F%E8%A2%AB%E6%8F%90%E4%BA%A4%E7%9A%84%E6%96%87%E4%BB%B6/</guid>
+      <description>git忽略已经被提交的文件 https://www.jianshu.com/p/2345b2aede59 git rm &amp;ndash;cached xxx.xx *(所有) 在.gitignore中添加要忽略的文件 commit push 其他成员pull，working directory</description>
+    </item>
+    
+    <item>
+      <title>linux笔记</title>
+      <link>https://cr6588.github.io/post/linux/linux%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Tue, 17 Apr 2018 20:56:48 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/linux/linux%E7%AC%94%E8%AE%B0/</guid>
+      <description>//centos6 //显示linux发行版本信息 cat /etc/issue //查看内存 free -m //防火墙 vi /etc/sysconfig/iptables service iptables status service iptables restart //加权限 chmod u+rwx filename //后台运行 nohup java -jar erp-log.jar &amp;gt; base-service.log 2&amp;gt;&amp;amp;1 &amp;amp; //vi复制行 1）</description>
+    </item>
+    
+    <item>
+      <title>spring-boot错误集</title>
+      <link>https://cr6588.github.io/post/spring-cloud/spring-boot/spring-boot%E9%94%99%E8%AF%AF%E9%9B%86/</link>
+      <pubDate>Fri, 13 Apr 2018 13:51:23 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/spring-cloud/spring-boot/spring-boot%E9%94%99%E8%AF%AF%E9%9B%86/</guid>
+      <description>项目迁移至spring-boot 添加spring-boot 1 2 3 4 5 6 7 8 9 10 &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.0.1.RELEASE&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-test&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.0.1.RELEASE&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; 编译时报错 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16</description>
+    </item>
+    
+    <item>
+      <title>spring boot with Docker Quick Start</title>
+      <link>https://cr6588.github.io/post/spring-cloud/spring-boot/spring-boot-with-docker-quick-start/</link>
+      <pubDate>Wed, 11 Apr 2018 16:57:25 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/spring-cloud/spring-boot/spring-boot-with-docker-quick-start/</guid>
+      <description>准备环境 参考Spring Boot with Docker docker安装：https://docs.docker.com/install/linux/docker-c</description>
+    </item>
+    
+  </channel>
+</rss>

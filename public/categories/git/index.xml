@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on cr6588</title>
+    <link>https://cr6588.github.io/categories/git/</link>
+    <description>Recent content in git on cr6588</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 29 Aug 2018 19:55:29 +0800</lastBuildDate>
+    
+	<atom:link href="https://cr6588.github.io/categories/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>git note</title>
+      <link>https://cr6588.github.io/post/git/git-note/</link>
+      <pubDate>Wed, 29 Aug 2018 19:55:29 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/git/git-note/</guid>
+      <description>获取新远程分支 从eclipse git远程时只选了一个远程分支之后，想要切换到新的远程分支在eclipse Git视图的Remote Tracki</description>
+    </item>
+    
+    <item>
+      <title>git忽略已经被提交的文件</title>
+      <link>https://cr6588.github.io/post/git/git%E5%BF%BD%E7%95%A5%E5%B7%B2%E7%BB%8F%E8%A2%AB%E6%8F%90%E4%BA%A4%E7%9A%84%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Fri, 20 Apr 2018 13:50:56 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/git/git%E5%BF%BD%E7%95%A5%E5%B7%B2%E7%BB%8F%E8%A2%AB%E6%8F%90%E4%BA%A4%E7%9A%84%E6%96%87%E4%BB%B6/</guid>
+      <description>git忽略已经被提交的文件 https://www.jianshu.com/p/2345b2aede59 git rm &amp;ndash;cached xxx.xx *(所有) 在.gitignore中添加要忽略的文件 commit push 其他成员pull，working directory</description>
+    </item>
+    
+  </channel>
+</rss>

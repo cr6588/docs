@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Docker与k8s简介 - cr6588</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="cr6588" /><meta name="description" content="Docker Docker是什么？ 是一个应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的Linux机器上。它" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://cr6588.github.io/post/docker_k8s/docker%E4%B8%8Ek8s%E7%AE%80%E4%BB%8B/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Docker与k8s简介" />
+<meta property="og:description" content="Docker Docker是什么？ 是一个应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的Linux机器上。它" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cr6588.github.io/post/docker_k8s/docker%E4%B8%8Ek8s%E7%AE%80%E4%BB%8B/" />
+<meta property="article:published_time" content="2018-09-18T10:20:11&#43;08:00"/>
+<meta property="article:modified_time" content="2018-09-18T10:20:11&#43;08:00"/>
+
+<meta itemprop="name" content="Docker与k8s简介">
+<meta itemprop="description" content="Docker Docker是什么？ 是一个应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的Linux机器上。它">
+
+
+<meta itemprop="datePublished" content="2018-09-18T10:20:11&#43;08:00" />
+<meta itemprop="dateModified" content="2018-09-18T10:20:11&#43;08:00" />
+<meta itemprop="wordCount" content="2468">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Docker与k8s简介"/>
+<meta name="twitter:description" content="Docker Docker是什么？ 是一个应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的Linux机器上。它"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">cr6588</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">cr6588</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Docker与k8s简介</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-09-18 </span>
+        <div class="post-category">
+            <a href="/categories/docker/"> docker </a>
+            </div>
+          <span class="more-meta"> 约 2468 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#docker">Docker</a>
+<ul>
+<li><a href="#docker是什么">Docker是什么？</a>
+<ul>
+<li><a href="#docker-client客户端">Docker Client客户端</a></li>
+<li><a href="#docker-daemon守护进程">Docker Daemon守护进程</a></li>
+<li><a href="#docker-image镜像">Docker Image镜像</a></li>
+<li><a href="#docker-container容器">Docker Container容器</a></li>
+</ul></li>
+<li><a href="#作用">作用</a></li>
+<li><a href="#缺点">缺点</a>
+<ul>
+<li><a href="#与未用docker对比">与未用docker对比</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#kubernetes">kubernetes</a>
+<ul>
+<li><a href="#kubernetes是什么">kubernetes是什么？</a>
+<ul>
+<li><a href="#pod">Pod</a></li>
+<li><a href="#service">Service</a></li>
+<li><a href="#deployments">Deployments</a></li>
+</ul></li>
+<li><a href="#作用-1">作用</a>
+<ul>
+<li><a href="#自动包装">自动包装</a></li>
+<li><a href="#自我修复">自我修复</a></li>
+<li><a href="#横向缩放">横向缩放</a></li>
+<li><a href="#服务发现和负载均衡">服务发现和负载均衡</a></li>
+<li><a href="#自动部署和回滚">自动部署和回滚</a></li>
+<li><a href="#密钥和配置管理">密钥和配置管理</a></li>
+<li><a href="#存储编排">存储编排</a></li>
+<li><a href="#批处理">批处理</a></li>
+</ul></li>
+<li><a href="#参考文献">参考文献</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h3 id="docker">Docker</h3>
+
+<h4 id="docker是什么">Docker是什么？</h4>
+
+<p>是一个应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的Linux机器上。它会涉及到以下部分
+* Docker Client客户端
+* Docker Daemon守护进程
+* Docker Image镜像
+* DockerContainer容器</p>
+
+<h5 id="docker-client客户端">Docker Client客户端</h5>
+
+<p>即从官网下载的docker软件客户端</p>
+
+<h5 id="docker-daemon守护进程">Docker Daemon守护进程</h5>
+
+<p>下载的docker软件中含有服务端，启动服务端之后成为Docker Daemon守护进程。通过docker相关命令（即客户端）访问这个守护进程可以进行一系列操作。默认是不能远程访问的。</p>
+
+<h5 id="docker-image镜像">Docker Image镜像</h5>
+
+<p>一个特殊的文件系统，提供应用运行时所需的程序、库、资源、配置等文件，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。 镜像不包含任何动态数据，其内容在构建之后也不会被改变。镜像构建时，会一层层构建，前一层是后一层的基础。每一层构建完就不会再发生改变，后一层上的任何改变只发生在自己这一层。</p>
+
+<blockquote>
+<p>那么对于我们目前的应用应该需要哪些镜像？</p>
+</blockquote>
+
+<h5 id="docker-container容器">Docker Container容器</h5>
+
+<p>镜像的实例化。在镜像创建好了之后，就会创建容器来使用镜像。就像是类和实例 一样，镜像是静态的定义，容器是镜像运行时的实体。容器的实质是进程，但与直接在宿主执行的进程不同，它是通过基于 Linux 内核的 cgroup，namespace，以及 AUFS 类的 Union FS 等操作系统层面的虚拟化技术进行隔离的。但又与传统虚拟机vmware或virtualbox不同，后者需要虚拟出一套硬件并运行一个完整的操作系统，且虚拟机中的程序运行内核依赖虚拟机中的操作系统，而前者使用的是宿主机的内核。</p>
+
+<blockquote>
+<p>同样对于我们目前的应用应该会有哪些容器？</p>
+</blockquote>
+
+<h4 id="作用">作用</h4>
+
+<ul>
+<li>环境一致性：由于将应用的所有依赖都已打包，所以杜绝了“我的机器行，你的机器运行不了的情况”</li>
+<li>批量部署与迁移更加方便：将镜像制作好后，不必再去像以前一样处理应用所需的依赖，节省运维开发时间。</li>
+<li>维护和扩展更轻松：由于镜像的分层可以很好的切换历史应用的版本，同时也可以利用基础镜像进行扩展</li>
+</ul>
+
+<h4 id="缺点">缺点</h4>
+
+<p>对操作系统有要求，入门以及使用都有一定门槛, 尤其是镜像的制作，容器的管理与数据的持久化等。在宿主机需要运行守护进程，容器运行都要基于其守护进程，相比直接运行程序多了一层。</p>
+
+<h5 id="与未用docker对比">与未用docker对比</h5>
+
+<p>未用docker时，按部就班的安装相关应用依赖环境，多台时每次要安装一次环境。改变环境后每台都需要详细配置
+用了docker后，每台需要安装docker环境，然后着重在一台维护应用需要的环境镜像，其它机器在更新了镜像之后拉取镜像即可，方便维护和部署多台环境</p>
+
+<h3 id="kubernetes">kubernetes</h3>
+
+<h4 id="kubernetes是什么">kubernetes是什么？</h4>
+
+<blockquote>
+<p>Kubernetes is an open-source system for automating deployment, scaling, and management of containerized applications
+Kubernetes是一个用于容器化应用程序的自动化部署，扩展和管理的开源系统</p>
+</blockquote>
+
+<p>谷歌开源的容器集群管理系统，是 Google 多年大规模容器管理技术 Borg 的开源版本。
+主要元件有：
+* Master – 大总管，可做为主节点
+* Node – 主要工作的节点，上面运行了许多容器。可想作一台虚拟机。K8S可操控高达1,000个nodes以上
+* masters和nodes组成集群(Clusters)
+更具体来看
+<img src="https://blog.gcp.expert/material/2017/02/k8s_arch-1024x437.png" alt="x" /></p>
+
+<p>现在着重K8S最重要的三个部分，即
+* Pod
+* Service
+* Deployments (Replication Controller)</p>
+
+<h5 id="pod">Pod</h5>
+
+<p>容器是位于pod内部，一个pod包含一个以上的容器，这造成K8S与一般容器不同的操作概念。在Docker里，Docker container是最小单位，但在K8S可想作pod为最小单位。从以下pod的特性来看，就可以了解为什么它是K8S裡面三巨头之一了。</p>
+
+<ol>
+<li>Pod 拥有不确定的生命週期，这意味著您不晓得任一pod是否会永久保留</li>
+<li>Pod 内有一个让所有container共用的Volume，这会与Docker不同</li>
+<li>Pod 採取shared IP，内部所有的容器皆使用同一个Pod IP，这也与Docker不同</li>
+
+<li><p>Pod 内的众多容器都会和Pod同生共死，就像桃园三结义一样！
+&gt; 对于我们的应用，可以怎样规划Pod?</p>
+
+<h5 id="service">Service</h5>
+
+<p>K8S的 Service 有它的独特方法，我们看看它的特性</p></li>
+
+<li><p>每个Service包含著一个以上的pod</p></li>
+
+<li><p>每个Service有个独立且固定的IP地址 – Cluster IP</p></li>
+
+<li><p>客户端访问Service时，会经由上述提过的proxy来达到负载平衡、与各pod连结的结果</p></li>
+
+<li><p>利用标籤选择器(Label Selector)，聪明地选择那些已贴上标籤的pod</p>
+
+<h5 id="deployments">Deployments</h5>
+
+<p>旧版的K8S使用了副本控制器(Replication Controller)的名词，在新版已经改成 Deployments萝。Deployments顾名思义掌控了部署Kubernetes服务的一切。它主要掌管了Replica Set的个数，而Replica Set的组成就是一个以上的Pod。</p></li>
+
+<li><p>Deployments 的设定档，可以指定replica，并保证在该replica的数量运作</p></li>
+
+<li><p>Deployments 会检查pod的状态</p></li>
+
+<li><p>Deployments 下可执行滚动更新或者回滚</p></li>
+</ol>
+
+<h4 id="作用-1">作用</h4>
+
+<h5 id="自动包装">自动包装</h5>
+
+<p>根据资源需求和其他约束自动放置容器，同时不会牺牲可用性，混合关键和最大努力的工作负载，以提高资源利用率并节省更多资源。</p>
+
+<h5 id="自我修复">自我修复</h5>
+
+<p>重新启动失败的容器，在节点不可用时，替换和重新编排节点上的容器，终止不对用户定义的健康检查做出响应的容器，并且不会在客户端准备投放之前将其通告给客户端。</p>
+
+<h5 id="横向缩放">横向缩放</h5>
+
+<p>使用简单的命令或 UI，或者根据 CPU 的使用情况自动调整应用程序副本数。</p>
+
+<h5 id="服务发现和负载均衡">服务发现和负载均衡</h5>
+
+<p>不需要修改您的应用程序来使用不熟悉的服务发现机制，Kubernetes 为容器提供了自己的 IP 地址和一组容器的单个 DNS 名称，并可以在它们之间进行负载均衡。</p>
+
+<h5 id="自动部署和回滚">自动部署和回滚</h5>
+
+<p>Kubernetes 逐渐部署对应用程序或其配置的更改，同时监视应用程序运行状况，以确保它不会同时终止所有实例。 如果出现问题，Kubernetes会为您恢复更改，利用日益增长的部署解决方案的生态系统。</p>
+
+<h5 id="密钥和配置管理">密钥和配置管理</h5>
+
+<p>部署和更新密钥和应用程序配置，不会重新编译您的镜像，不会在堆栈配置中暴露密钥(secrets)。</p>
+
+<h5 id="存储编排">存储编排</h5>
+
+<p>自动安装您所选择的存储系统，无论是本地存储，如公有云提供商 GCP 或 AWS, 还是网络存储系统 NFS, iSCSI, Gluster, Ceph, Cinder, 或 Flocker。</p>
+
+<h5 id="批处理">批处理</h5>
+
+<p>除了服务之外，Kubernetes还可以管理您的批处理和 CI 工作负载，如果需要，替换出现故障的容器。</p>
+
+<h4 id="参考文献">参考文献</h4>
+
+<ol>
+<li><a href="https://baike.baidu.com/item/Docker">https://baike.baidu.com/item/Docker</a></li>
+<li><a href="https://my.oschina.net/choerodon/blog/1936197">https://my.oschina.net/choerodon/blog/1936197</a></li>
+<li><a href="https://juejin.im/post/5b260ec26fb9a00e8e4b031a">https://juejin.im/post/5b260ec26fb9a00e8e4b031a</a></li>
+<li><a href="https://blog.gcp.expert/kubernetes-gke-introduction/">https://blog.gcp.expert/kubernetes-gke-introduction/</a></li>
+<li><a href="https://kubernetes.io/cn/">https://kubernetes.io/cn/</a></li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+  
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2018-09-18
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/linux/bitvise/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Bitvise</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/docker_k8s/kubernetes%E5%AD%A6%E4%B9%A0/">
+            <span class="next-text nav-default">Kubernetes学习</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'https-cr6588-github-io';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:cr6588@vip.qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/cr6588" class="iconfont icon-github" title="github"></a>
+  
+    
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">cr6588</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

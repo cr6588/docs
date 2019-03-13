@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>使用prometheus与grafana进行监控 - cr6588</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="cr6588" /><meta name="description" content="使用prometheus与grafana进行监控 安装prometheus docker方式 参照官网installation进行docker安装" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://cr6588.github.io/post/docker_k8s/monitor/%E4%BD%BF%E7%94%A8prometheus%E4%B8%8Egrafana%E8%BF%9B%E8%A1%8C%E7%9B%91%E6%8E%A7/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="使用prometheus与grafana进行监控" />
+<meta property="og:description" content="使用prometheus与grafana进行监控 安装prometheus docker方式 参照官网installation进行docker安装" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cr6588.github.io/post/docker_k8s/monitor/%E4%BD%BF%E7%94%A8prometheus%E4%B8%8Egrafana%E8%BF%9B%E8%A1%8C%E7%9B%91%E6%8E%A7/" />
+<meta property="article:published_time" content="2018-12-07T14:47:40&#43;08:00"/>
+<meta property="article:modified_time" content="2018-12-07T14:47:40&#43;08:00"/>
+
+<meta itemprop="name" content="使用prometheus与grafana进行监控">
+<meta itemprop="description" content="使用prometheus与grafana进行监控 安装prometheus docker方式 参照官网installation进行docker安装">
+
+
+<meta itemprop="datePublished" content="2018-12-07T14:47:40&#43;08:00" />
+<meta itemprop="dateModified" content="2018-12-07T14:47:40&#43;08:00" />
+<meta itemprop="wordCount" content="2604">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用prometheus与grafana进行监控"/>
+<meta name="twitter:description" content="使用prometheus与grafana进行监控 安装prometheus docker方式 参照官网installation进行docker安装"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">cr6588</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">cr6588</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">使用prometheus与grafana进行监控</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-12-07 </span>
+        <div class="post-category">
+            <a href="/categories/kubernetes/"> Kubernetes </a>
+            </div>
+          <span class="more-meta"> 约 2604 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#使用prometheus与grafana进行监控">使用prometheus与grafana进行监控</a>
+<ul>
+<li><a href="#安装prometheus">安装prometheus</a>
+<ul>
+<li><a href="#docker方式">docker方式</a></li>
+</ul></li>
+<li><a href="#安装node-exporter">安装Node-exporter</a></li>
+<li><a href="#安装mysqld-exporter">安装mysqld_exporter</a></li>
+<li><a href="#安装grafana">安装grafana</a></li>
+<li><a href="#安装-alertmanager-https-prometheus-io-docs-alerting-overview">安装<a href="https://prometheus.io/docs/alerting/overview/">ALERTMANAGER</a></a>
+<ul>
+<li><a href="#概述">概述</a>
+<ul>
+<li><a href="#grouping-https-prometheus-io-docs-alerting-alertmanager-grouping"><a href="https://prometheus.io/docs/alerting/alertmanager/#grouping">Grouping</a></a></li>
+<li><a href="#inhibition">Inhibition</a></li>
+<li><a href="#silences">Silences</a></li>
+<li><a href="#configuration">CONFIGURATION</a></li>
+</ul></li>
+<li><a href="#安装">安装</a></li>
+</ul></li>
+<li><a href="#k8s安装prometheus与kube-state-metrics">k8s安装prometheus与kube-state-metrics</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h1 id="使用prometheus与grafana进行监控">使用prometheus与grafana进行监控</h1>
+
+<h2 id="安装prometheus">安装prometheus</h2>
+
+<h3 id="docker方式">docker方式</h3>
+
+<p>参照官网<a href="https://prometheus.io/docs/prometheus/latest/installation/">installation</a>进行docker安装.它推荐使用<a href="https://docs.docker.com/storage/volumes/#create-and-manage-volumes">Data Volume Container</a> 安装。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#自建volume
+docker volume create prometheus-data
+#查看volume信息
+docker volume inspect prometheus-data
+[
+    {
+        &#34;CreatedAt&#34;: &#34;2018-12-07T14:07:20+08:00&#34;,
+        &#34;Driver&#34;: &#34;local&#34;,
+        &#34;Labels&#34;: {},
+        &#34;Mountpoint&#34;: &#34;/docker/docker/volumes/prometheus-data/_data&#34;,
+        &#34;Name&#34;: &#34;prometheus-data&#34;,
+        &#34;Options&#34;: {},
+        &#34;Scope&#34;: &#34;local&#34;
+    }
+]
+#编辑配置.以监控本机与mysql为例。
+cd /docker/docker/volumes/prometheus-data/_data
+vi prometheus.yml
+
+global:
+scrape_interval:     15s
+evaluation_interval: 15s
+
+scrape_configs:
+- job_name: linux
+    static_configs:
+    - targets: [&#39;172.17.0.1:9100&#39;]
+        labels:
+        instance: db1
+
+- job_name: mysql
+    static_configs:
+    - targets: [&#39;172.17.0.1:9104&#39;]
+        labels:
+        instance: db1</pre></td></tr></table>
+</div>
+</div>
+<blockquote>
+<p>172.17.0.1是docker中宿主机的默认ip.</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#后台启动运行加入-d
+docker run -d -p 9090:9090 -v prometheus-data:/prometheus-data \
+   prom/prometheus --config.file=/prometheus-data/prometheus.yml
+#浏览器访问http://ip:9090/targets，看到linux与mysql2个job的state都是down</pre></td></tr></table>
+</div>
+</div>
+<blockquote>
+<p>数据默认是存储在安装目录data文件夹中
+&ndash;storage.tsdb.path：这决定了Prometheus写入数据库的位置。默认为data/。
+&ndash;storage.tsdb.retention：这决定了何时删除旧数据。默认为15d。</p>
+</blockquote>
+
+<h2 id="安装node-exporter">安装Node-exporter</h2>
+
+<p>官网有一个<a href="https://prometheus.io/docs/guides/node-exporter/">Node-exporter</a>的引导可以参考,github见<a href="https://github.com/prometheus/node_exporter。">https://github.com/prometheus/node_exporter。</a>
+下载在<a href="https://github.com/prometheus/node_exporter/releases中。">https://github.com/prometheus/node_exporter/releases中。</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">tar zxf node_exporter-0.17.0.linux-amd64.tar.gz
+#后台运行
+nohup ./node_exporter  &gt; log.log 2&gt;&amp;1 &amp;
+#防火墙打开9100端口
+firewall-cmd --zone=public --add-port=9100/tcp --permanent  &amp;&amp; firewall-cmd --reload
+#查看http://ip:9090/targets其状态是否为up</pre></td></tr></table>
+</div>
+</div>
+<h2 id="安装mysqld-exporter">安装mysqld_exporter</h2>
+
+<p>参见其<a href="https://github.com/prometheus/mysqld_exporter">github</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">wget https://github.com/prometheus/mysqld_exporter/releases/download/v0.11.0/mysqld_exporter-0.11.0.linux-amd64.tar.gz
+tar zxf mysqld_exporter-0.11.0.linux-amd64
+cat &lt;&lt; EOF &gt; .my.cnf
+[client]
+user=xxx
+password=xxx
+EOF
+#后台运行
+nohup ./mysqld_exporter --config.my-cnf=&#34;.my.cnf&#34;  &gt; log.log 2&gt;&amp;1 &amp;
+#防火墙打开9104端口
+firewall-cmd --zone=public --add-port=9104/tcp --permanent  &amp;&amp; firewall-cmd --reload
+#查看http://ip:9090/targets其状态是否为up</pre></td></tr></table>
+</div>
+</div>
+<h2 id="安装grafana">安装grafana</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">wget https://dl.grafana.com/oss/release/grafana-5.4.0-1.x86_64.rpm 
+yum localinstall grafana-5.4.0-1.x86_64.rpm
+
+#安装已有的仪表盘在/etc/grafana/grafana.ini的dashboards中加入，可以在安装好后直接去官网下载相关仪表盘
+[dashboards.json]
+enabled = true
+path = /var/lib/grafana/dashboards</pre></td></tr></table>
+</div>
+</div>
+<blockquote>
+<p>5.0版本已被provisioningp配置取代，在/etc/grafana/provisioning/dashboards中编辑</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># config file version
+apiVersion: 1
+
+providers:
+- name: &#39;default&#39;
+orgId: 1
+folder: &#39;&#39;
+type: file
+disableDeletion: false
+updateIntervalSeconds: 10 #how often Grafana will scan for changed dashboards
+options:
+    path: /var/lib/grafana/dashboards
+#启动服务
+systemctl start grafana-server
+#开放3000端口
+firewall-cmd --zone=public --add-port=3000/tcp --permanent  &amp;&amp; firewall-cmd --reload
+#访问ip:3000使用admin/admin登录并修改密码，然后添加datasource,选择prometheus
+#由于之后的dashboard需要安装饼图插件，所以先安装
+grafana-cli plugins install grafana-piechart-panel
+#点击左侧+号，然后import，填入8919，prometheus一栏选择Prometheus</pre></td></tr></table>
+</div>
+</div>
+<h2 id="安装-alertmanager-https-prometheus-io-docs-alerting-overview">安装<a href="https://prometheus.io/docs/alerting/overview/">ALERTMANAGER</a></h2>
+
+<h3 id="概述">概述</h3>
+
+<p>ALERTMANAGER是Prometheus警报管理器与Prometheus。首先Prometheus发送警报规则给ALERTMANAGER,然后ALERTMANAGER管理这些警报，它负责对它们进行重复数据删除，分组和路由，以及正确的接收器集成。最后通过电子邮件，PagerDuty等方式发送通知.</p>
+
+<h4 id="grouping-https-prometheus-io-docs-alerting-alertmanager-grouping"><a href="https://prometheus.io/docs/alerting/alertmanager/#grouping">Grouping</a></h4>
+
+<blockquote>
+<p>Grouping categorizes alerts of similar nature into a single notification.
+分组将类似性质的警报分类为单个通知.
+例如：发生网络分区时，群集中正在运行数十或数百个服务实例。一半的服务实例无法再访问数据库。Prometheus中的警报规则配置为在每个服务实例无法与数据库通信时发送警报。结果，数百个警报被发送到Alertmanager。</p>
+</blockquote>
+
+<p>作为用户，只能想要获得单个页面，同时仍能够确切地看到哪些服务实例受到影响。因此，可以将Alertmanager配置为按群集和alertname对警报进行分组，以便发送单个紧凑通知。</p>
+
+<h4 id="inhibition">Inhibition</h4>
+
+<blockquote>
+<p>Inhibition is a concept of suppressing notifications for certain alerts if certain other alerts are already firing.
+在某些警报触发时，抑制某些警报
+例如：正在触发警报，通知无法访问整个集群。Alertmanager可以配置为在该特定警报触发时将与该集群有关的所有其他警报静音。这可以防止通知数百或数千个与实际问题无关的触发警报。</p>
+</blockquote>
+
+<h4 id="silences">Silences</h4>
+
+<blockquote>
+<p>Silences are a straightforward way to simply mute alerts for a given time
+在给定时间内简单地静音警报的简单方法</p>
+
+<h4 id="configuration">CONFIGURATION</h4>
+
+<p>通过命令行与配置文件配置</p>
+
+<h3 id="安装">安装</h3>
+
+<p>在<a href="https://github.com/prometheus/alertmanager/releases">releases</a>中查看版本然后wget下载
+本例使用企业微信通知与自定义模版。将alertmanager.yml与alert.tmpl复制到解压后文件下然后运行./alertmanager即可，默认暴露9093端口，通过ip:9093访问</p>
+</blockquote>
+
+<h2 id="k8s安装prometheus与kube-state-metrics">k8s安装prometheus与kube-state-metrics</h2>
+
+<p>参照<a href="https://blog.frognew.com/2017/12/using-prometheus-to-monitor-kubernetes.html">https://blog.frognew.com/2017/12/using-prometheus-to-monitor-kubernetes.html</a></p>
+
+<p>复制prometheus文件夹之后kubectl create -f .</p>
+
+<p>之后在grafana中添加该数据源。添加时发现localhost:xx端口不能访问，127.0.0.1:端口能访问
+之后一些k8s dashboard中仅能查看部分数据，所以继续安装文中提到的kube-state-metrics。<a href="https://github.com/kubernetes/kube-state-metrics/tree/master/kubernetes">官方yaml文件</a>
+由于需要k8s.gcr.io/addon-resizer的镜像，因此需要科学上网
+将其文件保存然后kubectl create -f .
+通过dashboard或kubectl查看相关pod是否正常
+grafana使用<a href="https://grafana.com/dashboards/8588">1. Kubernetes Deployment Statefulset Daemonset metrics</a>查看
+8588中内存使用统计有问题，直接在prometheus中使用container_memory_working_set_bytes对某个deployment查看发现有三条数据，例如container_memory_working_set_bytes{pod_name=~&ldquo;^erp-web.<em>?&ldquo;}。但提示有一条数据是不含有container_name与image属性的，且不含数据的值大致等于另外2条数据值之和，所以需要排除这条数据。需要加上container_name!=&ldquo;&ldquo;或者image!=&rdquo;&ldquo;。
+cpu使用率类似。sum (rate (container_cpu_usage_seconds<em>total{image!=&ldquo;&rdquo;,name=~&ldquo;^k8s</em>.</em>&rdquo;,io_kubernetes_container_name!=&ldquo;POD&rdquo;,pod_name=~&ldquo;^$Deployment$Statefulset$Daemonset.*$&ldquo;,kubernetes_io_hostname=~&ldquo;^$Node$&rdquo;}[1m])) by (pod_name,kubernetes_io_hostname)取过去一分钟以秒为单位消耗cpu时间的平均值。cpu总的使用率对对该数据再进行一次sum即可。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2018-12-07
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/windows/windows%E7%AC%94%E8%AE%B0/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">windows笔记</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/js/html5%E9%80%9A%E8%BF%87load%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E9%95%BF%E5%AE%BD/">
+            <span class="next-text nav-default">html5通过load获取图片长宽</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'https-cr6588-github-io';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:cr6588@vip.qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/cr6588" class="iconfont icon-github" title="github"></a>
+  
+    
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">cr6588</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

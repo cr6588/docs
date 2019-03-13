@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>java on cr6588</title>
+    <link>https://cr6588.github.io/categories/java/</link>
+    <description>Recent content in java on cr6588</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 28 Jan 2019 10:34:56 +0800</lastBuildDate>
+    
+	<atom:link href="https://cr6588.github.io/categories/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Thumbnails</title>
+      <link>https://cr6588.github.io/post/java/thumbnails/</link>
+      <pubDate>Mon, 28 Jan 2019 10:34:56 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/java/thumbnails/</guid>
+      <description>后台用Thumbnails压缩时文件名的后缀会对图片大小产生影响，jpg格式改成png后缀后，原200多234007byte图片变成1.48</description>
+    </item>
+    
+    <item>
+      <title>缺少spring-web-xx.jar</title>
+      <link>https://cr6588.github.io/post/java/%E7%BC%BA%E5%B0%91spring-web-xx.jar/</link>
+      <pubDate>Mon, 28 Jan 2019 10:34:56 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/java/%E7%BC%BA%E5%B0%91spring-web-xx.jar/</guid>
+      <description>eclipse项目server无法启动，没有spring-web-XXXX.jar包 eclipse项目server无法启动，没有spring</description>
+    </item>
+    
+  </channel>
+</rss>

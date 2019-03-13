@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ELK on cr6588</title>
+    <link>https://cr6588.github.io/categories/elk/</link>
+    <description>Recent content in ELK on cr6588</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 17 Dec 2018 09:20:51 +0800</lastBuildDate>
+    
+	<atom:link href="https://cr6588.github.io/categories/elk/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>k8s搭建ELK环境</title>
+      <link>https://cr6588.github.io/post/elk/k8s%E6%90%AD%E5%BB%BAelk%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Mon, 17 Dec 2018 09:20:51 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/elk/k8s%E6%90%AD%E5%BB%BAelk%E7%8E%AF%E5%A2%83/</guid>
+      <description>elasticsearch部署（v6.5.3） elasticsearch.yml 1 2 3 4 5 6 7 #集群名，且不配置节点名称，避免多个k8s多个pod时，配置文件不同 cluster.name: es #ho</description>
+    </item>
+    
+    <item>
+      <title>ELK问题集</title>
+      <link>https://cr6588.github.io/post/elk/elk%E9%97%AE%E9%A2%98%E9%9B%86/</link>
+      <pubDate>Tue, 17 Jul 2018 11:00:28 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/elk/elk%E9%97%AE%E9%A2%98%E9%9B%86/</guid>
+      <description>get-started-elastic-stack https://www.elastic.co/guide/en/elastic-stack-overview/6.3/get-started-elastic-stack.html#install-elasticsearch centos下start ok, curl失败，status提示which: no java in xxx. [root@localhost data]# sudo service elasticsearch start Starting elasticsearch (via systemctl): [ OK ] [root@localhost data]# curl http://127.0.0.1:9200 curl: (7) Failed connect to 127.0.0.1:9200; Connection refused [root@localhost data]# sudo service elasticsearch</description>
+    </item>
+    
+  </channel>
+</rss>

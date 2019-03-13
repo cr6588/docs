@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-rules
+  namespace: kube-system
+data:
+  prometheus-rules.yml: |
+    groups:
+    - name: alert
+      rules:
+      - alert: 节点宕机
+        expr: up == 0
+        for: 1m
+        annotations:
+          summary: "节点 {{ $labels.job }} 宕机"
+          description: "ip={{ $labels.instance }},名称= {{ $labels.instance }} 宕机超过一分钟"
+      - alert: 集群节点状态错误
+        expr: kube_node_status_condition{condition="Ready",status!="true"}>0
+        for: 1m
+        annotations:
+          summary: "节点实例 {{ $labels.node }} 异常"
+          description: "status={{ $labels.status }}"
+      - alert: 集群节点内存或磁盘资源短缺
+        expr: kube_node_status_condition{condition=~"OutOfDisk|MemoryPressure|DiskPressure",status!="false"}>0
+        for: 1m
+        annotations:
+          summary: "集群 {{ $labels.node }}内存或磁盘资源短缺"
+          description: "status={{ $labels.status }}"
+      - alert: 集群中存在启动失败的Pod
+        expr: kube_pod_status_phase{phase=~"Failed|Unknown"}>0
+        for: 1m
+        annotations:
+          summary: "Pod={{ $labels.pod }}启动失败"
+          description: "namespace={{ $labels.namespace }},pod={{ $labels.pod }},phase={{ $labels.phase }},"
+      - alert: 最近10分钟内有Pod容器重启
+        expr: changes(kube_pod_container_status_restarts_total[10m])>0
+        annotations:
+          summary: "pod={{ $labels.pod }} 异常"
+          description: "namespace={{ $labels.namespace }},pod={{ $labels.pod }}"
+
+

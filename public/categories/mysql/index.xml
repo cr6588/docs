@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mysql on cr6588</title>
+    <link>https://cr6588.github.io/categories/mysql/</link>
+    <description>Recent content in mysql on cr6588</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 11 Feb 2019 15:34:04 +0800</lastBuildDate>
+    
+	<atom:link href="https://cr6588.github.io/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>docker运行mysql8</title>
+      <link>https://cr6588.github.io/post/mysql/docker%E8%BF%90%E8%A1%8Cmysql8/</link>
+      <pubDate>Mon, 11 Feb 2019 15:34:04 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/mysql/docker%E8%BF%90%E8%A1%8Cmysql8/</guid>
+      <description>1 2 3 4 docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=密码 -d mysql:8 #由于密码加密方式与以前不同，所以需要进入容器更改密码加密方式 docker exec -it mysql</description>
+    </item>
+    
+  </channel>
+</rss>

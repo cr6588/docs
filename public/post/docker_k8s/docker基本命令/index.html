@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Docker基本命令 - cr6588</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="cr6588" /><meta name="description" content="Docker基本命令 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 #docker帮助 docker --help #docker镜像列表 docker images #dock" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://cr6588.github.io/post/docker_k8s/docker%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Docker基本命令" />
+<meta property="og:description" content="Docker基本命令 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 #docker帮助 docker --help #docker镜像列表 docker images #dock" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cr6588.github.io/post/docker_k8s/docker%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" />
+<meta property="article:published_time" content="2018-05-24T10:34:19&#43;08:00"/>
+<meta property="article:modified_time" content="2018-05-24T10:34:19&#43;08:00"/>
+
+<meta itemprop="name" content="Docker基本命令">
+<meta itemprop="description" content="Docker基本命令 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 #docker帮助 docker --help #docker镜像列表 docker images #dock">
+
+
+<meta itemprop="datePublished" content="2018-05-24T10:34:19&#43;08:00" />
+<meta itemprop="dateModified" content="2018-05-24T10:34:19&#43;08:00" />
+<meta itemprop="wordCount" content="1118">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Docker基本命令"/>
+<meta name="twitter:description" content="Docker基本命令 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 #docker帮助 docker --help #docker镜像列表 docker images #dock"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">cr6588</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">cr6588</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Docker基本命令</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-05-24 </span>
+        <div class="post-category">
+            <a href="/categories/docker/"> docker </a>
+            </div>
+          <span class="more-meta"> 约 1118 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#docker基本命令">Docker基本命令</a></li>
+<li><a href="#关于dockerfile的add命令-https-blog-csdn-net-kiloveyousmile-article-details-80211351"><a href="https://blog.csdn.net/kiloveyousmile/article/details/80211351">关于Dockerfile的ADD命令</a></a>
+<ul>
+<li><a href="#添加文件">添加文件</a></li>
+</ul></li>
+<li><a href="#bash安装-https-www-oschina-net-translate-alpine-linux-install-bash-using-apk-command"><a href="https://www.oschina.net/translate/alpine-linux-install-bash-using-apk-command">bash安装</a></a></li>
+<li><a href="#cenos基础镜像">Cenos基础镜像</a></li>
+<li><a href="#redis后台启动">redis后台启动</a></li>
+<li><a href="#iptables-failed报错">iptables failed报错</a></li>
+<li><a href="#映射多个指定端口使用多个-p-自动分配映射端口使用-p">映射多个指定端口使用多个-p，自动分配映射端口使用-P</a></li>
+<li><a href="#磁盘占满">磁盘占满</a></li>
+<li><a href="#docker私服搭建">docker私服搭建</a>
+<ul>
+<li><a href="#生成个人证书">生成个人证书</a></li>
+<li><a href="#创建用户">创建用户</a></li>
+<li><a href="#查看日志">查看日志</a></li>
+<li><a href="#容器图形化查看工具portainer">容器图形化查看工具portainer</a></li>
+<li><a href="#说明">说明</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h4 id="docker基本命令">Docker基本命令</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#docker帮助
+docker --help
+#docker镜像列表
+docker images
+#docker运行容器列表
+docker ps
+        #停止容器
+docker stop &lt;docker ps中的container id&gt;
+        #创建加载磁盘的容器
+docker run -it -v /data/dockerbuild:/mnt apline /bin/sh
+docker run -p 127.0.0.1:6379:6379 -it -v /data/dockerbuild:/mnt --name erp-env2 erp-env:v0.1 /bin/bash
+docker run -p 20001:20001 -p 21001:21001 -p 22001:22001 -p 23001:23001 -p 24001:24001 -p 25001:25001 -p 26001:26001 -p 27001:27001 -it -v /data/dockerbuild:/mnt --name erp-base sjdf/erp-base:v0.1 --add-host=static.scdf.cn:118.123.12.120 --add-host=zookeeper.jtongi.cn:172.17.0.1 --add-host=user.mysql.jtongi.cn:172.17.0.1 --add-host=picture.scdf.cn:118.123.12.120 --add-host=es.jtongi.cn:118.123.12.107 /bin/bash 
+
+docker run -p 20001:20001 -p 21001:21001 -p 22001:22001 -p 23001:23001 -p 24001:24001 -p 25001:25001 -p 26001:26001 -p 27001:27001 -it -v /data/dockerbuild:/mnt --add-host=static.scdf.cn:118.123.12.120 --add-host=zookeeper.jtongi.cn:172.17.0.1 --add-host=user.mysql.jtongi.cn:172.17.0.1 --add-host=picture.scdf.cn:118.123.12.120 --add-host=es.jtongi.cn:118.123.12.107 --name jdk8-centos7 cr6588/jdk8-centos7 /bin/bash 
+
+docker run -p 127.0.0.1:8080:8080 -it -v /data/dockerbuild:/mnt --add-host=static.scdf.cn:118.123.12.120 --add-host=zookeeper.jtongi.cn:172.17.0.1 --add-host=user.mysql.jtongi.cn:172.17.0.1 --add-host=picture.scdf.cn:118.123.12.120 --add-host=es.jtongi.cn:118.123.12.107 --name 8080 8080 /bin/bash
+#docker使用的网络实际上和宿主机一样
+docker run -it -v /data/dockerbuild:/mnt --net=host --name nethost cr6588/jdk8-centos7 /bin/bash
+# 添加单个hosts
+docker run -it nginx --add-host=localhost:127.0.0.1
+# 添加多个hosts
+docker run -it nginx --add-host=localhost:127.0.0.1 --add-host=example.com:127.0.0.1 
+# 一个ip对应多个hosts
+docker run -it nginx --add-host=&#34;localhost example.com&#34;:127.0.0.1
+
+docker run -p 20001:20001  -it -v /data/dockerbuild:/mnt --add-host=zookeeper.jtongi.cn:172.17.0.1 --name erp-cache erp-cache:latest
+
+#构建容器，最后加.表示当前目录
+docker build -f redis-zookeeper -t redis-zookeeper-houtai .
+docker build -t jdk8/alpine:v0.1 .
+#重启docker时自动启动容器在run时加入--restart=always</pre></td></tr></table>
+</div>
+</div>
+<h4 id="关于dockerfile的add命令-https-blog-csdn-net-kiloveyousmile-article-details-80211351"><a href="https://blog.csdn.net/kiloveyousmile/article/details/80211351">关于Dockerfile的ADD命令</a></h4>
+
+<h5 id="添加文件">添加文件</h5>
+
+<p>例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">ADD my.cnf /etc/mysql
+ADD my.cnf /etc/mysql/</pre></td></tr></table>
+</div>
+</div>
+<p>以上两条命令均可以将my.cnf文件添加到/etc/mysql文件夹下面。</p>
+
+<p>添加文件夹</p>
+
+<p>Dockerfile添加文件夹，则必须镜像中存在和当前文件夹同名的文件夹才行。例如，我希望将当前目录下的views文件夹添加到docker镜像中的app文件夹下。也许你会采用这样的方式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">ADD views /app</pre></td></tr></table>
+</div>
+</div>
+<p>这样其实并不能实现，应该通过下面的方式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">ADD views /app/views</pre></td></tr></table>
+</div>
+</div>
+<p>也就是说：镜像中存在和当前需要拷贝或添加的文件夹同名的文件夹时，才能够拷贝或添加成功。</p>
+
+<h4 id="bash安装-https-www-oschina-net-translate-alpine-linux-install-bash-using-apk-command"><a href="https://www.oschina.net/translate/alpine-linux-install-bash-using-apk-command">bash安装</a></h4>
+
+<h4 id="cenos基础镜像">Cenos基础镜像</h4>
+
+<ol>
+<li><p>使用<a href="https://cr.console.aliyun.com/?spm=5176.2020520130.aliyun_topbar.7.PSGJpE#/accelerator">阿里云镜像加速</a><sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup></p></li>
+
+<li><p>docker hub直接搜索官方centos镜像</p></li>
+
+<li><p>启动并进入容器</p>
+
+<p>docker start -a <container_Id></p></li>
+
+<li><p>退出容器</p></li>
+</ol>
+
+<ul>
+<li>crtl+d直接退出容器停止运行</li>
+<li>crtl+p之后crtl+q退出容器不会停止运行</li>
+</ul>
+
+<h4 id="redis后台启动">redis后台启动</h4>
+
+<p>redis.conf中</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">daemonize yes</pre></td></tr></table>
+</div>
+</div>
+<h4 id="iptables-failed报错">iptables failed报错</h4>
+
+<p>在重启firewalld后映射端口可能报</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">(iptables failed: iptables --wait -t nat -A DOCKER -p tcp -d 0/0 --dport 32777 -j DNAT --to-destination 172.17.0.2:8082 ! -i docker0: iptables: No chain/target/match by that name.</pre></td></tr></table>
+</div>
+</div>
+<p>重启docker即可</p>
+
+<h4 id="映射多个指定端口使用多个-p-自动分配映射端口使用-p">映射多个指定端口使用多个-p，自动分配映射端口使用-P</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">docker run -d -p 80:80 -p 22:22
+docker run -p 6379:6379 -p 2181:2181 -it -v /data/dockerbuild:/mnt --name erp-env2 erp-env:v0.1</pre></td></tr></table>
+</div>
+</div>
+<h4 id="磁盘占满">磁盘占满</h4>
+
+<p>docker默认存放目录在/var/lib/docker，磁盘满了之后将其移动到新目录并加入软连接</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">mv /var/lib/docker /docker
+ln -s /docker/docker /var/lib/docker</pre></td></tr></table>
+</div>
+</div>
+<h4 id="docker私服搭建">docker私服搭建</h4>
+
+<h5 id="生成个人证书">生成个人证书</h5>
+
+<p>mkdir -p certs
+openssl req <br />
+  -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key <br />
+  -x509 -days 365 -out certs/domain.crt</p>
+
+<h5 id="创建用户">创建用户</h5>
+
+<p>mkdir auth
+ docker run <br />
+  &ndash;entrypoint htpasswd <br />
+  registry:2 -Bbn testuser testpassword &gt; auth/htpasswd</p>
+
+<blockquote>
+<p>密码以2个!!结尾会出错</p>
+</blockquote>
+
+<p>vi docker-compose.yml</p>
+
+<p>registry:
+  restart: always
+  image: registry:2
+  ports:
+    - 5000:5000
+  environment:
+    REGISTRY_HTTP_TLS_CERTIFICATE: /certs/domain.crt
+    REGISTRY_HTTP_TLS_KEY: /certs/domain.key
+    REGISTRY_AUTH: htpasswd
+    REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+    REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+  volumes:
+    - /path/data:/var/lib/registry
+    - /path/certs:/certs
+    - /path/auth:/auth</p>
+
+<p>/path/data:宿主机挂载的磁盘</p>
+
+<p>docker-compose up -d</p>
+
+<h5 id="查看日志">查看日志</h5>
+
+<p>journalctl -u docker.service</p>
+
+<h5 id="容器图形化查看工具portainer">容器图形化查看工具portainer</h5>
+
+<p>$ docker volume create portainer_data
+$ docker run -d -p 9000:9000 &ndash;restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+&gt; (COMMAND_FAILED: &lsquo;/usr/sbin/iptables -w2 -t filter -A DOCKER ! -i docker0 -o docker0 -p tcp -d 172.17.0.2 &ndash;dport 9000 -j ACCEPT&rsquo; failed: iptables: No chain/target/match by that name.
+&gt; 重启防火墙</p>
+
+<h5 id="说明">说明</h5>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">登录阿里云-&gt;容器镜像服务-&gt;镜像加速器
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+    </div>
+
+    <div class="post-copyright">
+  
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2018-05-24
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/linux/centos7%E7%AC%94%E8%AE%B0/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Centos7笔记</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/docker_k8s/virtualbox%E5%AE%89%E8%A3%85centos%E4%B8%8Edocker/">
+            <span class="next-text nav-default">virtualbox安装centos与docker</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'https-cr6588-github-io';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:cr6588@vip.qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/cr6588" class="iconfont icon-github" title="github"></a>
+  
+    
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">cr6588</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

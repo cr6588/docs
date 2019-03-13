@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>maven on cr6588</title>
+    <link>https://cr6588.github.io/categories/maven/</link>
+    <description>Recent content in maven on cr6588</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 17 May 2018 16:46:22 +0800</lastBuildDate>
+    
+	<atom:link href="https://cr6588.github.io/categories/maven/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>maven错误集</title>
+      <link>https://cr6588.github.io/post/maven/maven%E9%94%99%E8%AF%AF%E9%9B%86/</link>
+      <pubDate>Thu, 17 May 2018 16:46:22 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/maven/maven%E9%94%99%E8%AF%AF%E9%9B%86/</guid>
+      <description>1. 编译时突然死机，重启后编译报错 1 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-install-plugin:2.4:install (default-install) on project erp: Failed to install metadata com.sjdf:erp/maven-metadata.xml: Could not parse metadata D:\maven_repo\com\sjdf\erp\maven-metadata-local.xml: only whitespace content allowed before start tag and not \u0 (position: START_DOCUMENT seen \u0... @1:1) -&amp;gt; [Help 1] 删除D:\maven_repo</description>
+    </item>
+    
+  </channel>
+</rss>

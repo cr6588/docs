@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on cr6588</title>
+    <link>https://cr6588.github.io/categories/</link>
+    <description>Recent content in Categories on cr6588</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    
+	<atom:link href="https://cr6588.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ELK</title>
+      <link>https://cr6588.github.io/categories/elk/</link>
+      <pubDate>Mon, 17 Dec 2018 09:20:51 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/categories/elk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kubernetes</title>
+      <link>https://cr6588.github.io/categories/kubernetes/</link>
+      <pubDate>Fri, 07 Dec 2018 14:47:40 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/categories/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RocketMQ</title>
+      <link>https://cr6588.github.io/categories/rocketmq/</link>
+      <pubDate>Mon, 03 Sep 2018 15:27:54 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/categories/rocketmq/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Webpack</title>
+      <link>https://cr6588.github.io/categories/webpack/</link>
+      <pubDate>Wed, 08 Aug 2018 10:38:04 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/categories/webpack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>activiti</title>
+      <link>https://cr6588.github.io/categories/activiti/</link>
+      <pubDate>Mon, 18 Feb 2019 09:50:10 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/categories/activiti/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://cr6588.github.io/categories/docker/</link>
+      <pubDate>Tue, 18 Sep 2018 10:20:11 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/categories/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>eclipse</title>
+      <link>https://cr6588.github.io/categories/eclipse/</link>
+      <pubDate>Tue, 14 Aug 2018 11:48:04 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/categories/eclipse/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://cr6588.github.io/categories/git/</link>
+      <pubDate>Wed, 29 Aug 2018 19:55:29 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/categories/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://cr6588.github.io/categories/hugo/</link>
+      <pubDate>Tue, 10 Apr 2018 11:48:57 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/categories/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ide</title>
+      <link>https://cr6588.github.io/categories/ide/</link>
+      <pubDate>Wed, 13 Jun 2018 08:59:02 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/categories/ide/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>idea</title>
+      <link>https://cr6588.github.io/categories/idea/</link>
+      <pubDate>Mon, 23 Apr 2018 11:03:20 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/categories/idea/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>java</title>
+      <link>https://cr6588.github.io/categories/java/</link>
+      <pubDate>Mon, 28 Jan 2019 10:34:56 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/categories/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>js</title>
+      <link>https://cr6588.github.io/categories/js/</link>
+      <pubDate>Wed, 30 Jan 2019 16:35:31 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/categories/js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://cr6588.github.io/categories/linux/</link>
+      <pubDate>Wed, 17 Oct 2018 09:22:38 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/categories/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>markdown</title>
+      <link>https://cr6588.github.io/categories/markdown/</link>
+      <pubDate>Mon, 30 Jul 2018 14:02:09 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/categories/markdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>maven</title>
+      <link>https://cr6588.github.io/categories/maven/</link>
+      <pubDate>Thu, 17 May 2018 16:46:22 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/categories/maven/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mysql</title>
+      <link>https://cr6588.github.io/categories/mysql/</link>
+      <pubDate>Mon, 11 Feb 2019 15:34:04 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/categories/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>spring boot</title>
+      <link>https://cr6588.github.io/categories/spring-boot/</link>
+      <pubDate>Fri, 13 Apr 2018 13:51:23 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/categories/spring-boot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vue</title>
+      <link>https://cr6588.github.io/categories/vue/</link>
+      <pubDate>Fri, 17 Aug 2018 09:54:47 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/categories/vue/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>windows</title>
+      <link>https://cr6588.github.io/categories/windows/</link>
+      <pubDate>Fri, 14 Dec 2018 10:36:37 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/categories/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>正则</title>
+      <link>https://cr6588.github.io/categories/%E6%AD%A3%E5%88%99/</link>
+      <pubDate>Wed, 31 Oct 2018 17:40:05 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/categories/%E6%AD%A3%E5%88%99/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

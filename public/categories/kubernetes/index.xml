@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kubernetes on cr6588</title>
+    <link>https://cr6588.github.io/categories/kubernetes/</link>
+    <description>Recent content in Kubernetes on cr6588</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 07 Dec 2018 14:47:40 +0800</lastBuildDate>
+    
+	<atom:link href="https://cr6588.github.io/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用prometheus与grafana进行监控</title>
+      <link>https://cr6588.github.io/post/docker_k8s/monitor/%E4%BD%BF%E7%94%A8prometheus%E4%B8%8Egrafana%E8%BF%9B%E8%A1%8C%E7%9B%91%E6%8E%A7/</link>
+      <pubDate>Fri, 07 Dec 2018 14:47:40 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/docker_k8s/monitor/%E4%BD%BF%E7%94%A8prometheus%E4%B8%8Egrafana%E8%BF%9B%E8%A1%8C%E7%9B%91%E6%8E%A7/</guid>
+      <description>使用prometheus与grafana进行监控 安装prometheus docker方式 参照官网installation进行docker安装</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes学习</title>
+      <link>https://cr6588.github.io/post/docker_k8s/kubernetes%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Tue, 18 Sep 2018 10:20:11 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/docker_k8s/kubernetes%E5%AD%A6%E4%B9%A0/</guid>
+      <description>1.minikube(主机非虚拟安装，否则直接跳过) 1.1 安装kubernetctl 1.3 安装virtualbox 1.2 安装minikube 1 2 3 4 5 6</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes实验</title>
+      <link>https://cr6588.github.io/post/docker_k8s/kubernetes%E5%AE%9E%E9%AA%8C/</link>
+      <pubDate>Tue, 18 Sep 2018 10:20:11 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/docker_k8s/kubernetes%E5%AE%9E%E9%AA%8C/</guid>
+      <description>安装多版本docker kubelet为什么关闭swap kubernetes的想法是将实例紧密包装到尽可能接近100％。 所有的部署应该与CPU</description>
+    </item>
+    
+  </channel>
+</rss>

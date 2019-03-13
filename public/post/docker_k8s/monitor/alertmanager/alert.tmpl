@@ -1,0 +1,23 @@
+#没有-会有空白行
+{{ define "alert.txt" -}}
+{{ if gt (len .Alerts.Firing) 0 -}}
+Alerts Firing:
+{{ range .Alerts -}}
+告警类型：{{ .Labels.alertname }}
+PodIp: {{ .Labels.instance }}
+告警详情: {{ .Annotations.summary }} {{ .Annotations.description }}
+触发时间: {{ .StartsAt.Format "2006-01-02 15:04:05 +0800 CST" }}
+{{ end -}}
+{{ end -}}
+{{ if gt (len .Alerts.Resolved) 0 -}}
+Alerts Resolved:
+{{ range .Alerts -}}
+告警类型：{{ .Labels.alertname }}
+PodIp: {{ .Labels.instance }}
+告警详情: {{ .Annotations.summary }} {{ .Annotations.description }}
+触发时间: {{ .StartsAt.Format "2006-01-02 15:04:05 +0800 CST" }}
+恢复时间: {{ .EndsAt.Format "2006-01-02 15:04:05 +0800 CST" }}
+{{ end -}}
+{{ end -}}
+详情xxxxxxx看xxxx
+{{ end -}}

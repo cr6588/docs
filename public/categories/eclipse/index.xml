@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>eclipse on cr6588</title>
+    <link>https://cr6588.github.io/categories/eclipse/</link>
+    <description>Recent content in eclipse on cr6588</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 14 Aug 2018 11:48:04 +0800</lastBuildDate>
+    
+	<atom:link href="https://cr6588.github.io/categories/eclipse/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Eclipse问题集</title>
+      <link>https://cr6588.github.io/post/ide/eclipse%E9%97%AE%E9%A2%98%E9%9B%86/</link>
+      <pubDate>Tue, 14 Aug 2018 11:48:04 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/ide/eclipse%E9%97%AE%E9%A2%98%E9%9B%86/</guid>
+      <description>提示resource is out of sync with the filesystem 在学习webpack复制项目时经常出现resource is out of sync with the filesystem. Right-click &amp;gt; Refresh will always clear this.</description>
+    </item>
+    
+  </channel>
+</rss>

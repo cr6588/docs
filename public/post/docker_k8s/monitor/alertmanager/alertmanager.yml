@@ -1,0 +1,55 @@
+global:
+  resolve_timeout: 10s
+  #smtp_from: xx@xxxx.com
+  #smtp_smarthost: smtp.qiye.aliyun.com:25
+  #smtp_auth_username: xx@aliyun.com
+  #smtp_auth_password: 密码
+  #smtp_require_tls: false
+  wechat_api_corp_id: wwexxxxxxxxxxd
+
+templates:
+  - '*.tmpl'
+route:
+  group_by: ['alert']
+# How long to initially wait to send a notification for a group
+# of alerts. Allows to wait for an inhibiting alert to arrive or collect
+# more initial alerts for the same group. (Usually ~0s to few minutes.)default = 30s 
+  group_wait: 30s
+# How long to wait before sending a notification about new alerts that
+# are added to a group of alerts for which an initial notification has
+# already been sent. (Usually ~5m or more.)default = 5m
+  group_interval: 1m
+# How long to wait before sending a notification again if it has already
+# been sent successfully for an alert. (Usually ~3h or more).default = 4h
+  repeat_interval: 9m
+  receiver: 'default-receiver'
+receivers:  
+  - name: 'default-receiver'
+    #email_configs: 无效
+    #- to: support@jtongyun.com
+      #headers: {Subject: "[WARN] 报警邮件test"}
+      #html: '{{ template "alert.html" . }}'
+    #  from: xx@xxxx.com
+    #  smarthost: smtp.qiye.aliyun.com:25
+    #  auth_username: xx@xxxx.com
+    #  auth_password: 密码
+    #  require_tls: false
+    wechat_configs:
+    - send_resolved: true
+    #api_secret设置在global中会报corp_id无用
+      api_secret: 企业应用密钥
+      api_url: https://qyapi.weixin.qq.com/cgi-bin/
+      #to_user: xxxx@xxxx.com
+      to_user: '@all'
+      to_party: '@all'
+      #应用id
+      agent_id: 1000002
+      #企业id
+      corp_id: xxxxxxxxx
+      message: '{{ template "alert.txt" . }}'
+#inhibit_rules:
+#  - source_match:
+#      severity: 'critical'
+#    target_match:
+#      severity: 'warning'
+#    equal: ['alertname', 'dev', 'instance']

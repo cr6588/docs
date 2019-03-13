@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>ELK问题集 - cr6588</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="cr6588" /><meta name="description" content="get-started-elastic-stack https://www.elastic.co/guide/en/elastic-stack-overview/6.3/get-started-elastic-stack.html#install-elasticsearch centos下start ok, curl失败，status提示which: no java in xxx. [root@localhost data]# sudo service elasticsearch start Starting elasticsearch (via systemctl): [ OK ] [root@localhost data]# curl http://127.0.0.1:9200 curl: (7) Failed connect to 127.0.0.1:9200; Connection refused [root@localhost data]# sudo service elasticsearch" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://cr6588.github.io/post/elk/elk%E9%97%AE%E9%A2%98%E9%9B%86/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="ELK问题集" />
+<meta property="og:description" content="get-started-elastic-stack https://www.elastic.co/guide/en/elastic-stack-overview/6.3/get-started-elastic-stack.html#install-elasticsearch centos下start ok, curl失败，status提示which: no java in xxx. [root@localhost data]# sudo service elasticsearch start Starting elasticsearch (via systemctl): [ OK ] [root@localhost data]# curl http://127.0.0.1:9200 curl: (7) Failed connect to 127.0.0.1:9200; Connection refused [root@localhost data]# sudo service elasticsearch" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cr6588.github.io/post/elk/elk%E9%97%AE%E9%A2%98%E9%9B%86/" />
+<meta property="article:published_time" content="2018-07-17T11:00:28&#43;08:00"/>
+<meta property="article:modified_time" content="2018-07-17T11:00:28&#43;08:00"/>
+
+<meta itemprop="name" content="ELK问题集">
+<meta itemprop="description" content="get-started-elastic-stack https://www.elastic.co/guide/en/elastic-stack-overview/6.3/get-started-elastic-stack.html#install-elasticsearch centos下start ok, curl失败，status提示which: no java in xxx. [root@localhost data]# sudo service elasticsearch start Starting elasticsearch (via systemctl): [ OK ] [root@localhost data]# curl http://127.0.0.1:9200 curl: (7) Failed connect to 127.0.0.1:9200; Connection refused [root@localhost data]# sudo service elasticsearch">
+
+
+<meta itemprop="datePublished" content="2018-07-17T11:00:28&#43;08:00" />
+<meta itemprop="dateModified" content="2018-07-17T11:00:28&#43;08:00" />
+<meta itemprop="wordCount" content="1096">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ELK问题集"/>
+<meta name="twitter:description" content="get-started-elastic-stack https://www.elastic.co/guide/en/elastic-stack-overview/6.3/get-started-elastic-stack.html#install-elasticsearch centos下start ok, curl失败，status提示which: no java in xxx. [root@localhost data]# sudo service elasticsearch start Starting elasticsearch (via systemctl): [ OK ] [root@localhost data]# curl http://127.0.0.1:9200 curl: (7) Failed connect to 127.0.0.1:9200; Connection refused [root@localhost data]# sudo service elasticsearch"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">cr6588</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">cr6588</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">ELK问题集</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-07-17 </span>
+        <div class="post-category">
+            <a href="/categories/elk/"> ELK </a>
+            </div>
+          <span class="more-meta"> 约 1096 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#path-to-log-files">Path to log files:</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<p>get-started-elastic-stack</p>
+
+<p><a href="https://www.elastic.co/guide/en/elastic-stack-overview/6.3/get-started-elastic-stack.html#install-elasticsearch">https://www.elastic.co/guide/en/elastic-stack-overview/6.3/get-started-elastic-stack.html#install-elasticsearch</a></p>
+
+<ol>
+<li><p>centos下start ok, curl失败，status提示which: no java in xxx.</p>
+
+<p>[root@localhost data]# sudo service elasticsearch start
+Starting elasticsearch (via systemctl):                    [  OK  ]
+[root@localhost data]# curl <a href="http://127.0.0.1:9200">http://127.0.0.1:9200</a>
+curl: (7) Failed connect to 127.0.0.1:9200; Connection refused
+[root@localhost data]# sudo service elasticsearch status
+● elasticsearch.service - Elasticsearch
+   Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; disabled; vendor preset: disabled)
+   Active: failed (Result: exit-code) since Tue 2018-07-17 10:37:56 CST; 36s ago
+     Docs: <a href="http://www.elastic.co">http://www.elastic.co</a>
+  Process: 20370 ExecStart=/usr/share/elasticsearch/bin/elasticsearch -p ${PID_DIR}/elasticsearch.pid &ndash;quiet (code=exited, status=1/FAILURE)
+ Main PID: 20370 (code=exited, status=1/FAILURE)</p>
+
+<p>Jul 17 10:37:56 localhost.localdomain systemd[1]: Started Elasticsearch.
+Jul 17 10:37:56 localhost.localdomain systemd[1]: Starting Elasticsearch&hellip;
+Jul 17 10:37:56 localhost.localdomain elasticsearch[20370]: which: no java in (/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin)
+Jul 17 10:37:56 localhost.localdomain systemd[1]: elasticsearch.service: main process exited, code=exited, status=1/FAILURE
+Jul 17 10:37:56 localhost.localdomain systemd[1]: Unit elasticsearch.service entered failed state.
+Jul 17 10:37:56 localhost.localdomain systemd[1]: elasticsearch.service failed.</p></li>
+</ol>
+
+<p>将/etc/sysconfig/elasticsearch中JAVA_HOME设置成本机的JAVA_HOME</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># Elasticsearch Java path
+JAVA_HOME=/data/jdk1.8.0_161</pre></td></tr></table>
+</div>
+</div>
+<ol>
+<li><p>kibana外网不能访问
+修改kibana.yml</p>
+
+<p>server.host: &ldquo;0.0.0.0&rdquo;</p></li>
+
+<li><p>logstash提示could not find java; set JAVA_HOME or ensure java is in PATH</p>
+
+<p>[root@localhost data]# echo $JAVA_HOME
+/data/jdk1.8.0_161
+有java目录,是目录路径有特殊符号改成/data/jdk之后，先卸载再重新安装</p>
+
+<p>[root@localhost data]# rpm -e logstash-6.3.1.rpm
+error: package logstash-6.3.1.rpm is not installed
+[root@localhost data]# rpm -i logstash-6.3.1.rpm
+warning: logstash-6.3.1.rpm: Header V4 RSA/SHA512 Signature, key ID d88e42b4: NOKEY
+    package logstash-1:6.3.1-1.noarch is already installed
+[root@localhost data]# rpm -e logstash-1:6.3.1-1.noarch
+warning: /etc/logstash/logstash.yml saved as /etc/logstash/logstash.yml.rpmsave
+[root@localhost data]# rpm -i logstash-6.3.1.rpm
+warning: logstash-6.3.1.rpm: Header V4 RSA/SHA512 Signature, key ID d88e42b4: NOKEY
+Using provided startup.options file: /etc/logstash/startup.options
+Successfully created system startup script for Logstash</p></li>
+
+<li><p>Elasticsearch is still initializing the kibana index</p>
+
+<p><a href="https://stackoverflow.com/questions/31201051/elasticsearch-is-still-initializing-the-kibana-index">https://stackoverflow.com/questions/31201051/elasticsearch-is-still-initializing-the-kibana-index</a></p>
+
+<p>Warning: Removing .kibana index will make you lose all your kibana settings (indexes, graphs, dashboards)</p>
+
+<p>This behavior is sometimes caused by an existing .kibana index. Kindly delete the .kibana index in elasticsearch using following command:</p>
+
+<p>curl -XDELETE <a href="http://localhost:9200/.kibana">http://localhost:9200/.kibana</a>
+After deleting the index, restart Kibana.</p>
+
+<p>If the problem still persists, and you are willing to lose any existing data, you can try deleting all indexes using following command:</p>
+
+<p>curl -XDELETE <a href="http://localhost:9200/*">http://localhost:9200/*</a>
+Followed by restarting Kibana.</p>
+
+<p>Note: localhost:9200 is the elasticsearch server&rsquo;s host:port, which may be different in your case</p></li>
+
+<li><p>tar.gz安装Elasticsearch5.0时，root用户运行出错
+因为安全问题elasticsearch 不让用root用户直接运行，所以要创建新用户
+建议创建一个单独的用户用来运行ElasticSearch
+创建es用户组及es用户</p>
+
+<p>groupadd es
+#创建用户名为es密码为elasticsearch的用户，并添加到es组
+useradd es -g es -p elasticsearch
+#创建ELK目录
+mkdir ELK
+chown es:es ELK
+chown es:es elasticsearch-5.5.0.tar.gz
+su es
+tar -xzf elasticsearch-5.5.0.tar.gz
+vi config/elasticsearch.yml</p>
+
+<p>path.data: /data/ELK/elasticsearch-5.5.0/data
+#</p>
+
+<h1 id="path-to-log-files">Path to log files:</h1>
+
+<p>#
+ path.logs: /data/ELK/elasticsearch-5.5.0/logs</p></li>
+</ol>
+
+<p>[es@localhost elasticsearch-5.5.0]$ mkdir data
+[es@localhost elasticsearch-5.5.0]$ mkdir logs
+[es@localhost elasticsearch-5.5.0]$ ./bin/elasticsearch</p>
+
+<ol>
+<li>在kibana中输入filebeat*无法创建index
+有可能是filebeat已经将index存进es中且自身所在的data中也已记录相关，但index被删除导致再次创建时因为需要搜集的文件日志已经被记录所以无法创建，进而说明DELETE index时并没有删除filebeat中的相关记录。</li>
+<li>es单机集群配置</li>
+</ol>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/5.5/important-settings.html#bootstrap.memory_lock">https://www.elastic.co/guide/en/elasticsearch/reference/5.5/important-settings.html#bootstrap.memory_lock</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"> cluster.name: esCluster
+ node.name: node2
+ path.data: /data/ELK/esnode2/data
+ path.logs: /data/ELK/esnode2/logs
+ network.host: 127.0.0.1
+ http.port: 9201
+ discovery.zen.ping.unicast.hosts: [&#34;127.0.0.1&#34;, &#34;127.0.0.1:9201&#34;]
+ discovery.zen.minimum_master_nodes: 2
+ action.destructive_requires_name: true</pre></td></tr></table>
+</div>
+</div>
+<ol>
+<li><p>es报错</p>
+
+<p>[1]: max number of threads [1024] for user [es] is too low, increase to at least [2048]
+[2]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+[3]: system call filters failed to install; check the logs and fix your configuration or disable system call filters at your own risk</p></li>
+</ol>
+
+<p>[1]vi /etc/security/limits.conf
+添加es - nproc 2048 #es为运行ELK相关的用户
+另外一个65536使用es - nofile 65536
+[2]</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">https://github.com/docker-library/elasticsearch/issues/111
+set max_map_count value (Linux)
+sudo sysctl -w vm.max_map_count=262144</pre></td></tr></table>
+</div>
+</div>
+<p>[3] es配置文件加入</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">bootstrap.memory_lock: false </pre></td></tr></table>
+</div>
+</div>
+<ol>
+<li>非内网集群时
+<a href="https://www.jianshu.com/p/149a8da90bbc">https://www.jianshu.com/p/149a8da90bbc</a>
+由于transport.tcp.port默认是9300，之间是以此端口通信而非9200所以当防火墙只开放了9200时虽然curl <a href="http://xxx:9200能正确显示，但是集群会一直提示节点">http://xxx:9200能正确显示，但是集群会一直提示节点</a></li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+  
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2018-07-17
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/markdown/markdown%E6%B5%8B%E8%AF%95/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">markdown测试</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/ide/eclipse%E4%B8%8Eidea%E6%AF%94%E8%BE%83/">
+            <span class="next-text nav-default">Eclipse与idea比较</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'https-cr6588-github-io';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:cr6588@vip.qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/cr6588" class="iconfont icon-github" title="github"></a>
+  
+    
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">cr6588</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

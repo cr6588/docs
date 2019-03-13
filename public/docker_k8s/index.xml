@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker_k8s on cr6588</title>
+    <link>https://cr6588.github.io/docker_k8s/</link>
+    <description>Recent content in Docker_k8s on cr6588</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    
+	<atom:link href="https://cr6588.github.io/docker_k8s/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://cr6588.github.io/docker_k8s/g/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cr6588.github.io/docker_k8s/g/</guid>
+      <description>权声明：本文为木偶人shaon原创文章，转载请注明原文地址，非常感谢。 https://blog.csdn.net/wh211212/article/details/79165415
+实验背景、由于安装k8s使用官方源需要使用代理，故在CentOS7配置代理、进行科学上网
+安装Shadowsocks客户端
+安装epel源、安装pip包管理
+sudo yum -y install epel-release sudo yum -y install python-pip12
+安装Shadowsocks客户端
+sudo pip install shadowsocks1
+配置Shadowsocks连接
+新建配置文件、默认不存在
+sudo mkdir /etc/shadowsocks sudo vi /etc/shadowsocks/shadowsocks.json12
+添加配置信息：前提是需要有ss服务器的地址、端口等信息
+{ &amp;ldquo;server&amp;rdquo;:&amp;ldquo;x.x.x.x&amp;rdquo;, # Shadowsocks服务器地址 &amp;ldquo;server_port&amp;rdquo;:1035, # Shadowsocks服务器端口 &amp;ldquo;local_address&amp;rdquo;: &amp;ldquo;127.0.0.1&amp;rdquo;, # 本地IP &amp;ldquo;local_port&amp;rdquo;:1080, # 本地端口 &amp;ldquo;password&amp;rdquo;:&amp;ldquo;password&amp;rdquo;, # Shadowsocks连接密码 &amp;ldquo;timeout&amp;rdquo;:300, # 等待超时时间 &amp;ldquo;method&amp;rdquo;:&amp;ldquo;aes-256-cfb&amp;rdquo;, # 加密方式 &amp;ldquo;fast_open&amp;rdquo;: false, # true或false。开启fast_open以降低延迟，但要求Linux内核在3.7+ &amp;ldquo;workers&amp;rdquo;: 1 #工作线程数 }
+配置自启动
+新建启动脚本文件/etc/systemd/system/shadowsocks.service，内容如下：
+[Unit] Description=Shadowsocks [Service] TimeoutStartSec=0 ExecStart=/usr/bin/sslocal -c /etc/shadowsocks/shadowsocks.json [Install] WantedBy=multi-user.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cr6588.github.io/docker_k8s/k8s-learn/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cr6588.github.io/docker_k8s/k8s-learn/</guid>
+      <description>1.minikube(主机非虚拟安装，否则直接跳过) 1.1 安装kubernetctl 1.3 安装virtualbox 1.2 安装minikube 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24  [root@cr6588 data]# minikube start Starting local Kubernetes v1.10.0 cluster... Starting VM... E1113 10:59:55.111232 2586 start.go:168] Error starting host: Error creating host: Error executing step: Running precreate checks. : We support Virtualbox starting with version 5. Your VirtualBox install is &amp;#34;WARNING: The vboxdrv kernel module is not loaded.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cr6588.github.io/docker_k8s/k8s/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cr6588.github.io/docker_k8s/k8s/</guid>
+      <description>安装多版本docker
+kubelet为什么关闭swap
+kubernetes的想法是将实例紧密包装到尽可能接近100％。 所有的部署应该与CPU /内存限制固定在一起。 所以如果调度程序发送一个pod到一台机器，它不应该使用交换。 设计者不想交换，因为它会减慢速度。所以关闭swap主要是为了性能考虑。 当然为了一些节省资源的场景，比如运行容器数量较多，可添加kubelet参数 &amp;ndash;fail-swap-on=false来解决。
+关闭swap swapoff -a
+https://www.cnblogs.com/crysmile/p/9648406.html 1、关闭selinux、firewalld。 2、开启内核转发。 3、关闭swap交换分区 4、master免密钥登录所有node节点 5、所有节点配置ntp时间同步服务，保证节点时间一致。 6、加载ipvs相关模块
+We have a Service called kubernetes that is created by default when minikube starts the cluster. To create a new service and expose it to external traffic we’ll use the expose command with NodePort as parameter (minikube does not support the LoadBalancer option yet).
+kubectl expose deployment/kubernetes-bootcamp &amp;ndash;type=&amp;ldquo;NodePort&amp;rdquo; &amp;ndash;port 8080
+kubectl get services</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cr6588.github.io/docker_k8s/virtaualbox_install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cr6588.github.io/docker_k8s/virtaualbox_install/</guid>
+      <description>通过virtualbox安装CentOS-7-x86_64-Minimal-1804.iso后网络模式选择桥接重启 #禁用防火墙 systemctl stop firewalld #yum install net-tools ifconfig #远程连接后参照 Centos官方安装文档</description>
+    </item>
+    
+  </channel>
+</rss>

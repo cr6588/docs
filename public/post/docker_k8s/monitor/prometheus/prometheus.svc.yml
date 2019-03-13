@@ -1,0 +1,16 @@
+#Prometheus的Servic，需要将Prometheus以NodePort, LoadBalancer或使用Ingress暴露到集群外部，这样外部的Prometheus才能访问它
+---
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    app: prometheus
+  name: prometheus
+  namespace: kube-system
+spec:
+  type: NodePort
+  ports:
+  - port: 9090
+    targetPort: 9090
+  selector:
+    app: prometheus

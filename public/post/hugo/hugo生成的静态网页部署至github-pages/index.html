@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>hugo生成的静态网页部署至Github Pages - cr6588</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="cr6588" /><meta name="description" content="1.参见Hugo官方文档进行安装 2.完成Quick Start 3.构建部署至Github Pages 若hugo产生的站点在D:/git/docs目录，进入doc" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://cr6588.github.io/post/hugo/hugo%E7%94%9F%E6%88%90%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E9%83%A8%E7%BD%B2%E8%87%B3github-pages/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="hugo生成的静态网页部署至Github Pages" />
+<meta property="og:description" content="1.参见Hugo官方文档进行安装 2.完成Quick Start 3.构建部署至Github Pages 若hugo产生的站点在D:/git/docs目录，进入doc" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cr6588.github.io/post/hugo/hugo%E7%94%9F%E6%88%90%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E9%83%A8%E7%BD%B2%E8%87%B3github-pages/" />
+<meta property="article:published_time" content="2018-04-10T11:48:57&#43;08:00"/>
+<meta property="article:modified_time" content="2018-04-10T11:48:57&#43;08:00"/>
+
+<meta itemprop="name" content="hugo生成的静态网页部署至Github Pages">
+<meta itemprop="description" content="1.参见Hugo官方文档进行安装 2.完成Quick Start 3.构建部署至Github Pages 若hugo产生的站点在D:/git/docs目录，进入doc">
+
+
+<meta itemprop="datePublished" content="2018-04-10T11:48:57&#43;08:00" />
+<meta itemprop="dateModified" content="2018-04-10T11:48:57&#43;08:00" />
+<meta itemprop="wordCount" content="823">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="hugo生成的静态网页部署至Github Pages"/>
+<meta name="twitter:description" content="1.参见Hugo官方文档进行安装 2.完成Quick Start 3.构建部署至Github Pages 若hugo产生的站点在D:/git/docs目录，进入doc"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">cr6588</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">cr6588</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">hugo生成的静态网页部署至Github Pages</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-04-10 </span>
+        <div class="post-category">
+            <a href="/categories/hugo/"> hugo </a>
+            </div>
+          <span class="more-meta"> 约 823 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#1-参见-hugo-http-gohugo-io-官方文档进行安装">1.参见<a href="http://gohugo.io/">Hugo</a>官方文档进行安装</a></li>
+<li><a href="#2-完成quick-start">2.完成Quick Start</a></li>
+<li><a href="#3-构建部署至github-pages">3.构建部署至Github Pages</a></li>
+<li><a href="#4-将源码发布至github">4.将源码发布至github</a></li>
+<li><a href="#tips">Tips</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h3 id="1-参见-hugo-http-gohugo-io-官方文档进行安装">1.参见<a href="http://gohugo.io/">Hugo</a>官方文档进行安装</h3>
+
+<h3 id="2-完成quick-start">2.完成Quick Start</h3>
+
+<h3 id="3-构建部署至github-pages">3.构建部署至Github Pages</h3>
+
+<p>若hugo产生的站点在D:/git/docs目录，进入docs目录</p>
+
+<p>编辑config.toml,cr6588替换成你github的用户名</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">baseURL = &#34;https://cr6588.github.io/&#34;
+languageCode = &#34;en-us&#34;
+title = &#34;My New Hugo Site&#34;
+theme = &#34;ananke&#34;</pre></td></tr></table>
+</div>
+</div>
+<p>构建（-D, include content marked as draft）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">hugo -D</pre></td></tr></table>
+</div>
+</div>
+<p>顺利的话会产生public目录里面的文件就是最终需要发布到Github Pages的内容</p>
+
+<p>在github创建cr6588.github.io(将cr6588替换成你的用户名)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">cd public
+git init
+git remote add origin https://github.com/cr6588/cr6588.github.io.git
+git add -A
+git commit -m &#34;first commit&#34;
+git push -u origin master</pre></td></tr></table>
+</div>
+</div>
+<p>访问<a href="https://cr6588.github.io/">https://cr6588.github.io/</a> 即可看到效果</p>
+
+<h3 id="4-将源码发布至github">4.将源码发布至github</h3>
+
+<p>cr6588.github.io已经发布，但docs这个站点我也想发布至git保存，于是类似在github新建一个docs，然后在docs目录</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">git remote add origin https://github.com/cr6588/docs.git
+git add -A
+git commit -m &#34;first commit&#34;
+git push -u origin master</pre></td></tr></table>
+</div>
+</div>
+<p>然后在你的ide或者直接cmd从github上面clone到另外一个目录，导入完成之后会发现缺少public,themes目录
+<img src="/images/import_docs.png" alt="x" />
+在此目录使用hugo server -D会提示缺少主题目录文件。这里引入一个git子模块概念(git submodule),普通导入是没有将git submodule引入的。此时输入git submodule init提示</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">fatal: No url found for submodule path &#39;public&#39; in .gitmodules</pre></td></tr></table>
+</div>
+</div>
+<p>在.gitmodules文件没有发现public说明，是因为之前在docs/public目录时并没有将其作为子模块加入到docs中，所以此时在.gitmodules手动添加</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">[submodule &#34;public&#34;]
+    path = public
+    url = https://github.com/cr6588/cr6588.github.io.git</pre></td></tr></table>
+</div>
+</div>
+<p>再次使用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">git submodule init
+git submodule update</pre></td></tr></table>
+</div>
+</div>
+<p>等待将相关子模块依赖下载完成。吐槽一下国内github速度太慢了&hellip;&hellip;</p>
+
+<p>然后hugo server -D测试一下,没有问题将修改后的.gitmodules提交.再次导入时仍然需要将子模块依赖导入</p>
+
+<h3 id="tips">Tips</h3>
+
+<p>若访问空白使用hugo -D查看构建是否有错误原因，我再次重建使用时发现主题有点问题，换了个主题</p>
+
+    </div>
+
+    <div class="post-copyright">
+  
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2018-04-10
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/hugo/hugo%E9%97%AE%E9%A2%98%E9%9B%86/">
+            <span class="next-text nav-default">hugo问题集</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'https-cr6588-github-io';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:cr6588@vip.qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/cr6588" class="iconfont icon-github" title="github"></a>
+  
+    
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">cr6588</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Webpack on cr6588</title>
+    <link>https://cr6588.github.io/categories/webpack/</link>
+    <description>Recent content in Webpack on cr6588</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 08 Aug 2018 10:38:04 +0800</lastBuildDate>
+    
+	<atom:link href="https://cr6588.github.io/categories/webpack/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Webpack</title>
+      <link>https://cr6588.github.io/post/js/webpack/</link>
+      <pubDate>Wed, 08 Aug 2018 10:38:04 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/js/webpack/</guid>
+      <description>概念1 At its core, webpack is a static module bundler for modern JavaScript applications. When webpack processes your application, it internally builds a dependency graph which maps every module your project needs and generates one or more bundles. 作用 在getting-started说得很清楚 传统的html</description>
+    </item>
+    
+  </channel>
+</rss>

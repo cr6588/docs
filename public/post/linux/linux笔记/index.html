@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>linux笔记 - cr6588</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="cr6588" /><meta name="description" content="//centos6 //显示linux发行版本信息 cat /etc/issue //查看内存 free -m //防火墙 vi /etc/sysconfig/iptables service iptables status service iptables restart //加权限 chmod u&#43;rwx filename //后台运行 nohup java -jar erp-log.jar &amp;gt; base-service.log 2&amp;gt;&amp;amp;1 &amp;amp; //vi复制行 1）" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://cr6588.github.io/post/linux/linux%E7%AC%94%E8%AE%B0/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="linux笔记" />
+<meta property="og:description" content="//centos6 //显示linux发行版本信息 cat /etc/issue //查看内存 free -m //防火墙 vi /etc/sysconfig/iptables service iptables status service iptables restart //加权限 chmod u&#43;rwx filename //后台运行 nohup java -jar erp-log.jar &gt; base-service.log 2&gt;&amp;1 &amp; //vi复制行 1）" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cr6588.github.io/post/linux/linux%E7%AC%94%E8%AE%B0/" />
+<meta property="article:published_time" content="2018-04-17T20:56:48&#43;08:00"/>
+<meta property="article:modified_time" content="2018-04-17T20:56:48&#43;08:00"/>
+
+<meta itemprop="name" content="linux笔记">
+<meta itemprop="description" content="//centos6 //显示linux发行版本信息 cat /etc/issue //查看内存 free -m //防火墙 vi /etc/sysconfig/iptables service iptables status service iptables restart //加权限 chmod u&#43;rwx filename //后台运行 nohup java -jar erp-log.jar &gt; base-service.log 2&gt;&amp;1 &amp; //vi复制行 1）">
+
+
+<meta itemprop="datePublished" content="2018-04-17T20:56:48&#43;08:00" />
+<meta itemprop="dateModified" content="2018-04-17T20:56:48&#43;08:00" />
+<meta itemprop="wordCount" content="1509">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="linux笔记"/>
+<meta name="twitter:description" content="//centos6 //显示linux发行版本信息 cat /etc/issue //查看内存 free -m //防火墙 vi /etc/sysconfig/iptables service iptables status service iptables restart //加权限 chmod u&#43;rwx filename //后台运行 nohup java -jar erp-log.jar &gt; base-service.log 2&gt;&amp;1 &amp; //vi复制行 1）"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">cr6588</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">cr6588</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">linux笔记</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-04-17 </span>
+        <div class="post-category">
+            <a href="/categories/linux/"> linux </a>
+            </div>
+          <span class="more-meta"> 约 1509 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      <p>//centos6
+//显示linux发行版本信息
+cat /etc/issue
+//查看内存</p>
+
+<p>free -m
+//防火墙
+vi /etc/sysconfig/iptables
+service iptables status
+service iptables restart
+//加权限
+chmod u+rwx filename
+//后台运行
+nohup java -jar erp-log.jar &gt; base-service.log 2&gt;&amp;1 &amp;
+//vi复制行
+1）把光标移动到要复制的行上
+2）按yy
+3）把光标移动到要复制的位置
+4）按p</p>
+
+<p>#返回上一次目录
+cd -
+#!/bin/bash
+nohup java -jar erp-cache.jar &gt; erp-cache.log 2&gt;&amp;1 &amp;</p>
+
+<p>//linux安装字体
+Linux字体文件放在/usr/share/font/，只要将字体文件拷贝到这里就可以了。
+这里示例安装Windows的所有字体。
+    1，新建文件夹，装Windows字体，方便管理。打开终端输入命令:mkdir win。
+    2，复制Windows下 的所有字体。cd命令切换到C盘挂载的目录，进入c:\windows\Fonts。使用cp命令复制字体：cp *.ttf *.TTF /home/username/win/。这样就把Windows的字体复制到了主目录下的win目录里面。
+    3，安装字体。终端输入:mv /home/username/win/ /usr/share/fonts/。移动到Linux字体库中。
+    4，刷新系统即刻生效，输入命令：sudo fc-cache -fv。
+//将jar包安装到本地repository中</p>
+
+<p>mvn install:install-file -Dfile=my-jar.jar -DgroupId=org.richard -DartifactId=my-jar -Dversion=1.0 -Dpackaging=jar
+mvn install:install-file -Dfile=ocean.client-1.0.jar -DgroupId=com.alibaba -DartifactId=ocean.client -Dversion=1.0 -Dpackaging=jar</p>
+
+<p>1、<em>.tar 用 tar –xvf 解压
+2、</em>.gz 用 gzip -d或者gunzip 解压
+3、<em>.tar.gz和</em>.tgz 用 tar -xzf 解压
+4、<em>.bz2 用 bzip2 -d或者用bunzip2 解压
+5、</em>.tar.bz2用tar –xjf 解压
+6、<em>.Z 用 uncompress 解压
+7、</em>.tar.Z 用tar –xZf 解压
+8、<em>.rar 用 unrar e解压
+9、</em>.zip 用 unzip 解压</p>
+
+<p>mv 源文件 目标文件
+//强制递归复制文件
+cp -rf erp-web-tomcat-7.0.82_9001_9002_9003 erp-admin-tomcat-7.0.82_9004_9005_9006
+#不提示覆盖
+\cp -rf t tt</p>
+
+<p>phantomjs用于保存标签图片
+1.下载phantomjs
+    linux:wget <a href="https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2(linux下载后文件名过长用mv">https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2(linux下载后文件名过长用mv</a> 更改前名称 phantomjs-2.1.1-linux-x86_64.tar.bz2)
+    windows:<a href="https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-windows.zip">https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-windows.zip</a>
+2.解压
+    linux:tar -jxvf phantomjs-2.1.1-linux-x86_64.tar.bz2
+3.加入环境变量
+    linux:
+        vi /etc/profile
+        加入export PATH=/home/phantomjs-2.1.1-linux-x86_64/bin:$PATH
+        使环境变量生效,在当前窗口以及以后新建立的ssh生效，以前打开的窗口不会生效
+        source /etc/profile
+        查看版本是否生效，若出现phantomjs: error while loading shared libraries: libfontconfig.so.1: cannot open shared object file: No such file or directory，安装（yun install xxx）相应依赖
+        phantomjs &ndash;version
+4.linux加入字体
+    1.复制font.zip到linux的/usr/share/fonts/目录下
+    2.unzip font.zip
+    3.刷新系统即刻生效，输入命令：fc-cache -fv</p>
+
+<p>host文件位置：/etc/hosts
+vi /etc/hosts即可编辑
+修改方式类似windows.</p>
+
+<p>Linux centos重启命令：</p>
+
+<p>　　1、reboot
+　　2、shutdown -r now 立刻重启(root用户使用)
+　　3、shutdown -r 10 过10分钟自动重启(root用户使用)
+　　4、shutdown -r 20:35 在时间为20:35时候重启(root用户使用)
+　　如果是通过shutdown命令设置重启的话，可以用shutdown -c命令取消重启
+　Linux centos关机命令：
+　　1、halt 立刻关机
+　　2、poweroff 立刻关机
+　　3、shutdown -h now 立刻关机(root用户使用)
+　　4、shutdown -h 10 10分钟后自动关机
+linux下查看当前目录属于哪个分区？
+    -h 单位g
+    df -h /opt/test
+linux安装redis 4.0
+下载解压
+make
+cd src
+./redis-server
+停止
+./redis-cli -h 127.0.0.1 -p 6379 shutdown
+时间同步
+授时服务器采用阿里云 <a href="https://help.aliyun.com/knowledge_detail/40583.html">https://help.aliyun.com/knowledge_detail/40583.html</a></p>
+
+<p>ntpdate -u ntp1.aliyun.com
+定时同步服务器时间
+*/10 * * * * ntpdate asia.pool.ntp.org</p>
+
+<p>文件的属主和属组属性设置</p>
+
+<p>chown user:market f01　　//把文件f01给uesr，添加到market组
+ll -d f1  查看目录f1的属性</p>
+
+<p>javac <em>.java会生成对应的</em>.class文件
+java *.class就可以执行了，.class可以省略
+找不到主类，加入classpath=jdk/lib &amp;&amp; export PATH=$classpath:PATH
+移除临时环境变量unset erp_version</p>
+
+<p>查看目录文件大小
+du -sh *</p>
+
+    </div>
+
+    <div class="post-copyright">
+  
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2018-04-17
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/git/git%E5%BF%BD%E7%95%A5%E5%B7%B2%E7%BB%8F%E8%A2%AB%E6%8F%90%E4%BA%A4%E7%9A%84%E6%96%87%E4%BB%B6/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">git忽略已经被提交的文件</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/spring-cloud/spring-boot/spring-boot%E9%94%99%E8%AF%AF%E9%9B%86/">
+            <span class="next-text nav-default">spring-boot错误集</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'https-cr6588-github-io';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:cr6588@vip.qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/cr6588" class="iconfont icon-github" title="github"></a>
+  
+    
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">cr6588</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

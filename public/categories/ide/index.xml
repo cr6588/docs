@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ide on cr6588</title>
+    <link>https://cr6588.github.io/categories/ide/</link>
+    <description>Recent content in ide on cr6588</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 13 Jun 2018 08:59:02 +0800</lastBuildDate>
+    
+	<atom:link href="https://cr6588.github.io/categories/ide/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Eclipse与idea比较</title>
+      <link>https://cr6588.github.io/post/ide/eclipse%E4%B8%8Eidea%E6%AF%94%E8%BE%83/</link>
+      <pubDate>Wed, 13 Jun 2018 08:59:02 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/ide/eclipse%E4%B8%8Eidea%E6%AF%94%E8%BE%83/</guid>
+      <description>1.e设置模板代码后，在class名称上一行输入/*回车会自动带入模板代码，idea不行 2.e默认有序列化id不存在警告，idea需要设置 https://blog.csdn.net/tiantiandjava/article/details/8781776</description>
+    </item>
+    
+  </channel>
+</rss>

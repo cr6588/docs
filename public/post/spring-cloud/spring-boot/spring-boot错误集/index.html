@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>spring-boot错误集 - cr6588</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="cr6588" /><meta name="description" content="项目迁移至spring-boot 添加spring-boot 1 2 3 4 5 6 7 8 9 10 &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.0.1.RELEASE&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-test&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.0.1.RELEASE&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; 编译时报错 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://cr6588.github.io/post/spring-cloud/spring-boot/spring-boot%E9%94%99%E8%AF%AF%E9%9B%86/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="spring-boot错误集" />
+<meta property="og:description" content="项目迁移至spring-boot 添加spring-boot 1 2 3 4 5 6 7 8 9 10 &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt; &lt;version&gt;2.0.1.RELEASE&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt; &lt;version&gt;2.0.1.RELEASE&lt;/version&gt; &lt;/dependency&gt; 编译时报错 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cr6588.github.io/post/spring-cloud/spring-boot/spring-boot%E9%94%99%E8%AF%AF%E9%9B%86/" />
+<meta property="article:published_time" content="2018-04-13T13:51:23&#43;08:00"/>
+<meta property="article:modified_time" content="2018-04-13T13:51:23&#43;08:00"/>
+
+<meta itemprop="name" content="spring-boot错误集">
+<meta itemprop="description" content="项目迁移至spring-boot 添加spring-boot 1 2 3 4 5 6 7 8 9 10 &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt; &lt;version&gt;2.0.1.RELEASE&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt; &lt;version&gt;2.0.1.RELEASE&lt;/version&gt; &lt;/dependency&gt; 编译时报错 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16">
+
+
+<meta itemprop="datePublished" content="2018-04-13T13:51:23&#43;08:00" />
+<meta itemprop="dateModified" content="2018-04-13T13:51:23&#43;08:00" />
+<meta itemprop="wordCount" content="3999">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="spring-boot错误集"/>
+<meta name="twitter:description" content="项目迁移至spring-boot 添加spring-boot 1 2 3 4 5 6 7 8 9 10 &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt; &lt;version&gt;2.0.1.RELEASE&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt; &lt;version&gt;2.0.1.RELEASE&lt;/version&gt; &lt;/dependency&gt; 编译时报错 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">cr6588</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">cr6588</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">spring-boot错误集</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-04-13 </span>
+        <div class="post-category">
+            <a href="/categories/spring-boot/"> spring boot </a>
+            </div>
+          <span class="more-meta"> 约 3999 字 </span>
+          <span class="more-meta"> 预计阅读 8 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#添加spring-boot">添加spring-boot</a></li>
+<li><a href="#加入dubbo">加入dubbo</a></li>
+<li><a href="#关于yml文件">关于yml文件</a></li>
+<li><a href="#升级到2-0-1报错">升级到2.0.1报错</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<p>项目迁移至spring-boot</p>
+
+<h3 id="添加spring-boot">添加spring-boot</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;version&gt;2.0.1.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+    &lt;version&gt;2.0.1.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;</pre></td></tr></table>
+</div>
+</div>
+<p>编译时报错</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">[proguard] java.io.IOException: Can&#39;t read [D:\maven_repo\org\apache\logging\log4j\log4j-api\2.10.0\log4j-api-2.10.0.jar] (Can&#39;t process class [META-INF/versions/9/org/apache/logging/log4j/util/ProcessIdUtil.class] (Unsupported class version number [53.0] (maximum 52.0, Java 1.8)))
+ [proguard]     at proguard.InputReader.readInput(InputReader.java:188)
+ [proguard]     at proguard.InputReader.readInput(InputReader.java:158)
+ [proguard]     at proguard.InputReader.readInput(InputReader.java:136)
+ [proguard]     at proguard.InputReader.execute(InputReader.java:88)
+ [proguard]     at proguard.ProGuard.readInput(ProGuard.java:218)
+ [proguard]     at proguard.ProGuard.execute(ProGuard.java:82)
+ [proguard]     at proguard.ProGuard.main(ProGuard.java:538)
+ [proguard] Caused by: java.io.IOException: Can&#39;t process class [META-INF/versions/9/org/apache/logging/log4j/util/ProcessIdUtil.class] (Unsupported class version number [53.0] (maximum 52.0, Java 1.8))
+ [proguard]     at proguard.io.ClassReader.read(ClassReader.java:112)
+ [proguard]     at proguard.io.FilteredDataEntryReader.read(FilteredDataEntryReader.java:87)
+ [proguard]     at proguard.io.FilteredDataEntryReader.read(FilteredDataEntryReader.java:87)
+ [proguard]     at proguard.io.JarReader.read(JarReader.java:65)
+ [proguard]     at proguard.io.DirectoryPump.readFiles(DirectoryPump.java:65)
+ [proguard]     at proguard.io.DirectoryPump.pumpDataEntries(DirectoryPump.java:53)
+ [proguard]     at proguard.InputReader.readInput(InputReader.java:184)
+ [proguard]     ... 6 more
+ ...</pre></td></tr></table>
+</div>
+</div>
+<p>降低spring-boot版本至1.5.10.RELEASE编译成功</p>
+
+<p>前往<a href="https://docs.spring.io/spring-boot/docs/2.0.1.RELEASE/reference/htmlsingle/#boot-documentation">https://docs.spring.io/spring-boot/docs/2.0.1.RELEASE/reference/htmlsingle/#boot-documentation</a> 官方文档参考</p>
+
+<p>发现<a href="https://docs.spring.io/spring-boot/docs/2.0.1.RELEASE/reference/htmlsingle/#using-boot-maven-without-a-parent">在没有Parent POM的情况下使用Spring Boot</a></p>
+
+<p>由于项目原先使用log4j,而spring-boot默认是logback所以需要排除log4j
+排除冲突JAR包 <a href="https://blog.csdn.net/wangb_java/article/details/60330000">https://blog.csdn.net/wangb_java/article/details/60330000</a>
+直接在pom.xml搜索冲突的jar包，右键选择Exculde</p>
+
+<h3 id="加入dubbo">加入dubbo</h3>
+
+<p>仍然使用传统xml文件配置</p>
+
+<p>出现xxService is not visible from class loader&hellip;
+详见<a href="https://github.com/dangdangdotcom/dubbox/issues/218">https://github.com/dangdangdotcom/dubbox/issues/218</a>
+由于spring-boot-devtools导致
+若出现xxxServiceImpl cannot be cast to xxxServiceImpl spring-boot-devtools原因仍然类似</p>
+
+<p>当把provider中的bean与service移入到另外一个子模块时，mvn clean install后出现</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.cr6588.dao.UserDao.getUserList
+    at org.apache.ibatis.binding.MapperMethod$SqlCommand.&lt;init&gt;(MapperMethod.java:225)
+    at org.apache.ibatis.binding.MapperMethod.&lt;init&gt;(MapperMethod.java:48)</pre></td></tr></table>
+</div>
+</div>
+<p>去除spring-boot-devtools又显示正常，不得不暂时移除spring-boot-devtools。后期需要对spring-boot-devtools做出调查</p>
+
+<p>出现</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">Factory method &#39;sqlSessionFactory&#39; threw exception; nested exception is java.lang.NoSuchMethodError: org.mybatis.spring.SqlSessionFactoryBean.setVfs(Ljava/lang/Class;)V</pre></td></tr></table>
+</div>
+</div>
+<p>或者</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">Caused by: org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter &#39;id&#39; not found. Available parameters are [arg1, arg0, param1, param2]
+at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:77)
+at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:446)
+at com.sun.proxy.$Proxy70.selectList(Unknown Source)
+at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:230)
+at org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:137)</pre></td></tr></table>
+</div>
+</div>
+<p>查看mybatis版本问题，找了好久才意识到引入的依赖包中使用了以前的版本，排除调以前的版本后在demo项目中顺利启动。后来想想仔细查看错误信息都NoSuchMethodError这么明显了应该想到的是版本问题的，还是太虎了。。。</p>
+
+<p>在实际项目中先升级mybatis版本后，引入分页插件以后发现提示</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">Caused by: org.apache.ibatis.plugin.PluginException: Could not find method on interface org.apache.ibatis.executor.statement.StatementHandler named prepare. Cause: java.lang.NoSuchMethodException: org.apache.ibatis.executor.statement.StatementHandler.prepare(java.sql.Connection)
+    at org.apache.ibatis.plugin.Plugin.getSignatureMap(Plugin.java:87)
+    at org.apache.ibatis.plugin.Plugin.wrap(Plugin.java:44)</pre></td></tr></table>
+</div>
+</div>
+<p>参考<a href="https://www.cnblogs.com/EasonJim/p/7056700.html，加入">https://www.cnblogs.com/EasonJim/p/7056700.html，加入</a>, Integer.class解决,但是由于插件获取分页对象时与以前参数名不同，所以后续仍要重新更改</p>
+
+<p>转成spring-boot后断点发现分页插件没有被使用，原来是在yml文件写的plugins.参考官方文档<a href="http://www.mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/index.html">http://www.mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/index.html</a> 中Configuration处，发现根本没有plugins配置，后来将plugins配置写入config-location指向的xml文件中，注意plugins顺序，写错了会提示出错并说明了plugins顺序。最终application.yml文件中mybatis如</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">mybatis:
+    config-location: classpath:sqlMapConfig.xml
+    mapper-locations: classpath*:com/sjdf/erp/user/dao/mapper/*.xml</pre></td></tr></table>
+</div>
+</div>
+<h3 id="关于yml文件">关于yml文件</h3>
+
+<p>官方推荐使用yml文件，若使用application.yml且配置了spring.profiles在junit中一定要指定spring.profiles.active。类似</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">@SpringBootTest(properties = &#34;spring.profiles.active=dev&#34;) </pre></td></tr></table>
+</div>
+</div>
+<p>否则测试时会报依赖错误，类似</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type &#39;com.cr6588.dao.UserDao&#39; available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1493) ~[spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1104) ~[spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]</pre></td></tr></table>
+</div>
+</div>
+<p>但是若使用application.properties文件则不需要指定。多种环境配置时最好指定。命令行使用&ndash;spring.profiles.active=prod会覆盖main方法中的代码。类似</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">public static void main(String[] args) throws Exception {
+    SpringApplication app = new SpringApplication(App.class);
+    Map&lt;String, Object&gt; defaultProperties = new HashMap&lt;String, Object&gt;();
+    defaultProperties.put(&#34;spring.profiles.active&#34;, &#34;dev&#34;);
+    app.setDefaultProperties(defaultProperties);
+    app.run(args);
+}
+
+java -jar spring-boot-mybatis-xml-beanconfig-yml-0.0.1.jar --spring.profiles.active=prod</pre></td></tr></table>
+</div>
+</div>
+<p>1.5.10.RELEASE
+不要排除</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;
+        &lt;exclusions&gt;
+            &lt;exclusion&gt;
+                &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+                &lt;artifactId&gt;log4j-over-slf4j&lt;/artifactId&gt;
+            &lt;/exclusion&gt;
+        &lt;/exclusions&gt;
+    &lt;/dependency&gt;</pre></td></tr></table>
+</div>
+</div>
+<h3 id="升级到2-0-1报错">升级到2.0.1报错</h3>
+
+<p>将原项目spring-boot升级到2.0.1之后，许多相关版本也更新至最新版</p>
+
+<p>druid-spring-boot-starter升至1.1.9,
+报错
+    Caused by: java.lang.ClassNotFoundException: com.alibaba.druid.filter.logging.Log4j2Filter
+将druid升级至1.1.9
+报错
+java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.expr.SQLAggregateExpr.getOption()Lcom/alibaba/druid/sql/ast/expr/SQLAggregateExpr$Option;
+    at com.dangdang.ddframe.rdb.sharding.parser.visitor.basic.mysql.MySQLSelectVisitor.visit(MySQLSelectVisitor.java:110)
+    at com.alibaba.druid.sql.visitor.SQLASTOutputVisitor.printExpr(SQLASTOutputVisitor.java:886)
+由于Sharding-JDBC1.4.1依赖的druid被替换造成不兼容，升级Sharding-JDBC版本至2.0.1时发现和项目已使用的分库分表代码不兼容的地方较多，遂升级成1.5.4.1。发现该版本不支持or条件，然后项目中大量使用了or故放弃。
+因为Sharding-JDBC1.4.1依赖的druid版本为1.0.9，而druid-spring-boot-starter最低依赖版本为1.1.0故舍弃使用改为自定义dataSource配置.后来又使用druid-spring-boot-starter的最低版本暂无问题。</p>
+
+<p>启动的时候发布广播事件时一直提示log4j找不到，但项目已经改为使用logback了，感觉很奇怪</p>
+
+<p>web项目含有jsp时，添加tomcat-embed-jasper
+然后参照<a href="https://blog.csdn.net/zhoucheng05_13/article/details/77915294">https://blog.csdn.net/zhoucheng05_13/article/details/77915294</a> 更改
+之后启动时出现</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">at org.springframework.boot.autoconfigure.jdbc.DataSourceProperties.determineDriverClassName(DataSourceProperties.java:247)
+    at org.springframework.boot.autoconfigure.jdbc.DataSourceProperties.initializeDataSourceBuilder(DataSourceProperties.java:184)
+    at org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration.createDataSource(DataSourceConfiguration.java:42)
+    at org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Tomcat.dataSource(DataSourceConfiguration.java:56)
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</pre></td></tr></table>
+</div>
+</div>
+<p>参照<a href="https://blog.csdn.net/hengyunabc/article/details/78762097一文追踪原因,在查找DataSourceConfiguration$Tomcat引用时使用ctrl+alt+h一直未找到。后来右键该类选择References-&gt;workspace或直接ctrl+shift+g即可.最终排除掉">https://blog.csdn.net/hengyunabc/article/details/78762097一文追踪原因,在查找DataSourceConfiguration$Tomcat引用时使用ctrl+alt+h一直未找到。后来右键该类选择References-&gt;workspace或直接ctrl+shift+g即可.最终排除掉</a></p>
+
+<p>再次启动出现</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">Cannot initialize context because there is already a root application context present - check whether you have multiple ContextLoader* definitions in your web.xml!
+at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:296)
+at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:107)
+at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:5118)
+at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5634)
+at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:145)
+at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1571)
+at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1561)
+at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+at java.lang.Thread.run(Thread.java:745)</pre></td></tr></table>
+</div>
+</div>
+<p>在maven-war-plugin中增加<failOnMissingWebXml>false</failOnMissingWebXml></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">&lt;plugin&gt;
+    &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+    &lt;artifactId&gt;maven-war-plugin&lt;/artifactId&gt;
+    &lt;version&gt;2.4&lt;/version&gt;
+    &lt;configuration&gt;
+        &lt;archive&gt;
+            &lt;addMavenDescriptor&gt;false&lt;/addMavenDescriptor&gt;
+        &lt;/archive&gt;
+        &lt;includeEmptyDirectories&gt;false&lt;/includeEmptyDirectories&gt;
+        &lt;webappDirectory&gt;${basedir}/src/main/webapp&lt;/webappDirectory&gt;
+        &lt;warSourceDirectory&gt;${basedir}/src/main/webapp&lt;/warSourceDirectory&gt;
+        &lt;!--如果想在没有web.xml文件的情况下构建WAR，请设置为false。--&gt;      
+        &lt;failOnMissingWebXml&gt;false&lt;/failOnMissingWebXml&gt;
+        &lt;!-- &lt;webXml&gt;${basedir}/src/main/webapp/WEB-INF/web.xml&lt;/webXml&gt; --&gt;
+    &lt;/configuration&gt;
+&lt;/plugin&gt;</pre></td></tr></table>
+</div>
+</div>
+<p>再次启动出现</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">java.lang.IllegalStateException: No WebApplicationContext found: no ContextLoaderListener or DispatcherServlet registered?
+at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:252)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)
+at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:94)
+at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)
+at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:620)
+at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:502)
+at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1132)
+at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:684)
+at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1533)
+at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1489)
+at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+at java.lang.Thread.run(Thread.java:745)</pre></td></tr></table>
+</div>
+</div>
+<p>这个问题困扰了很久，直接通过main方法启动没有问题，但在外部tomcat中启动就一直显示错误，期间在一个demo项目中搭建了一个web项目，无法重现。在默认配置中spring-boot会初始化默认的WebApplicationContext，且在错误日志中也出现了</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">2018-05-02 09:51:10 - INFO - Initializing Spring embedded WebApplicationContext
+2018-05-02 09:51:10 - INFO - Root WebApplicationContext: initialization completed in 3599 ms
+2018-05-02 09:51:11 - DEBUG - Added existing Servlet initializer bean &#39;dispatcherServletRegistration&#39;; order=2147483647, resource=class path resource [org/springframework/boot/autoconfigure/web/DispatcherServletAutoConfiguration$DispatcherServletRegistrationConfiguration.class]</pre></td></tr></table>
+</div>
+</div>
+<p>说明有WebApplicationContext，但为什么会提示No WebApplicationContext found: no ContextLoaderListener or DispatcherServlet registered?。最后在项目中只注入一个testController，取消其它额外的注入发现在外部tomcat中没问题。最后逐步增加终于发现spring-session配置类的问题</p>
+
+<p>添加400相关错误页面，在之前的web项目中，错误页面结构如下
+<img src="/images/400.png" alt="x" />
+在网上许多教程说定义EmbeddedServletContainerCustomizer类似</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">@Bean
+public EmbeddedServletContainerCustomizer containerCustomizer() {
+    return container -&gt; {
+            ErrorPage errorPage400 = new ErrorPage(HttpStatus.BAD_REQUEST,&#34;/400.jsp&#34;);
+            ErrorPage errorPage404 = new ErrorPage(HttpStatus.NOT_FOUND,&#34;/404.jsp&#34;);
+            ErrorPage errorPage500 = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR,&#34;/500.jsp&#34;);
+            container.addErrorPages(errorPage404, errorPage500, errorPage400);
+        };
+}</pre></td></tr></table>
+</div>
+</div>
+<p>试了下是有用但仅限于用内置容器，当部署在外部tomcat中就无用，后来从其命名前缀Embedded（嵌入式）也可体现出来，亦或是方法没用对？
+在官方文档
+<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-developing-web-applications.html#boot-features-error-handling">https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-developing-web-applications.html#boot-features-error-handling</a> 推荐继承BasicErrorController，继承之后如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">@Controller
+public class CustomErrorController extends BasicErrorController {
+
+    public CustomErrorController(ServerProperties serverProperties) {
+        super(new DefaultErrorAttributes(), serverProperties.getError());
+    }
+
+    @Override
+    public ModelAndView errorHtml(HttpServletRequest request, HttpServletResponse response) {
+        HttpStatus status = getStatus(request);
+        String errorViewName = &#34;500&#34;;
+        if (status != null) {
+            Integer statusCode = Integer.valueOf(status.toString());
+            if (statusCode == HttpStatus.NOT_FOUND.value()) {
+                errorViewName = &#34;404&#34;;
+            }
+        }
+        return new ModelAndView(&#34;error/&#34; + errorViewName);
+    }
+
+}</pre></td></tr></table>
+</div>
+</div>
+<p>错误页面url默认为/error,view的路径=spring.mvc.view.prefix配置的路径+error/400(500) + spring.mvc.view.suffix。
+在外部tomcat中能够正确导向到错误页面，但是在使用嵌入式的容器运行时发现被登录拦截器拦截了。而登录拦截器在外部tomcat中没有登录是会导向到登录页面的，有点不理解
+拦截器部分代码如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">@Override
+public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    String url = request.getRequestURI();
+    if (noLoginRequired(url)) {
+        return true;
+    }
+    HttpSession session = request.getSession();
+    Object userVo = session.getAttribute(ConstLogin.SESSION_USER);
+    if (userVo != null &amp;&amp; userVo instanceof SessionUserVo) {
+        return true;
+    }
+    ....</pre></td></tr></table>
+</div>
+</div>
+<p>调试发现在内置tomcat容器中访问/xxxx时userVo能从session中获取到，但在之后报错导向到/error时userVo为空，而在外部tomcat中2次都能获取到userVo。查看session发现在内置tomcat中session类似（/xxxx与/error一组），2次session引用不一致</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">org.springframework.session.web.http.SessionRepositoryFilter$SessionRepositoryRequestWrapper$HttpSessionWrapper@2ddb8765
+org.apache.catalina.session.StandardSessionFacade@557797ad
+
+org.springframework.session.web.http.SessionRepositoryFilter$SessionRepositoryRequestWrapper$HttpSessionWrapper@1e203ca8
+org.apache.catalina.session.StandardSessionFacade@557797ad
+
+org.springframework.session.web.http.SessionRepositoryFilter$SessionRepositoryRequestWrapper$HttpSessionWrapper@94f25ba
+org.apache.catalina.session.StandardSessionFacade@557797ad</pre></td></tr></table>
+</div>
+</div>
+<p>外置tomcat中，2次session引用一致</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">org.springframework.session.web.http.SessionRepositoryFilter$SessionRepositoryRequestWrapper$HttpSessionWrapper@769a7a87
+org.springframework.session.web.http.SessionRepositoryFilter$SessionRepositoryRequestWrapper$HttpSessionWrapper@769a7a87
+
+org.springframework.session.web.http.SessionRepositoryFilter$SessionRepositoryRequestWrapper@6ede7418
+org.springframework.session.web.http.SessionRepositoryFilter$SessionRepositoryRequestWrapper@6ede7418
+
+org.springframework.session.web.http.SessionRepositoryFilter$SessionRepositoryRequestWrapper$HttpSessionWrapper@7c8e1ce2
+org.springframework.session.web.http.SessionRepositoryFilter$SessionRepositoryRequestWrapper$HttpSessionWrapper@7c8e1ce2
+
+org.springframework.session.web.http.SessionRepositoryFilter$SessionRepositoryRequestWrapper$HttpSessionWrapper@4cfdb71f
+org.springframework.session.web.http.SessionRepositoryFilter$SessionRepositoryRequestWrapper$HttpSessionWrapper@4cfdb71f
+
+org.springframework.session.web.http.SessionRepositoryFilter$SessionRepositoryRequestWrapper$HttpSessionWrapper@6fbdb46d
+org.springframework.session.web.http.SessionRepositoryFilter$SessionRepositoryRequestWrapper$HttpSessionWrapper@6fbdb46d</pre></td></tr></table>
+</div>
+</div>
+<p>登录拦截器放开/error暂时避免这种错误.</p>
+
+<p>将项目部署至eclipse的servers中的tomcat时，一直提示缺少web.xml，但项目并不需要web.xml.在.settings/org.eclipse.wst.common.component文件（对应项目右键-&gt;Properties-&gt;Deployment Assembly）中看到一行web.xml配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">&lt;wb-resource deploy-path=&#34;/WEB-INF/web.xml&#34; source-path=&#34;/src/main/webapp/WEB-INF/web.xml&#34;/&gt;</pre></td></tr></table>
+</div>
+</div>
+<p>将其注释后不再出现该提示。但取消注释后也不再出现该提示，另外一个web项目也有这行但从未出现这个提示。尚不清楚原因</p>
+
+<p>javax/el/ELManager出错
+    Caused by: java.lang.NoClassDefFoundError: javax/el/ELManager</p>
+
+<p>加入
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+tomcat8不需要</p>
+
+<p>tomcat version:7.0.47出现
+严重: Unable to process Jar entry [module-info.class] from Jar [jar:file:/D:/maven_repo/org/apache/logging/log4j/log4j-api/2.10.0/log4j-api-2.10.0.jar!/] for annotations
+org.apache.tomcat.util.bcel.classfile.ClassFormatException: Invalid byte tag in constant pool: 19
+..
+升级tomcat ，tomcat 8.0.45未出现</p>
+
+    </div>
+
+    <div class="post-copyright">
+  
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2018-04-13
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/linux/linux%E7%AC%94%E8%AE%B0/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">linux笔记</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/spring-cloud/spring-boot/spring-boot-with-docker-quick-start/">
+            <span class="next-text nav-default">spring boot with Docker Quick Start</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'https-cr6588-github-io';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:cr6588@vip.qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/cr6588" class="iconfont icon-github" title="github"></a>
+  
+    
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">cr6588</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

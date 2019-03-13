@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>spring boot on cr6588</title>
+    <link>https://cr6588.github.io/categories/spring-boot/</link>
+    <description>Recent content in spring boot on cr6588</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 13 Apr 2018 13:51:23 +0800</lastBuildDate>
+    
+	<atom:link href="https://cr6588.github.io/categories/spring-boot/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>spring-boot错误集</title>
+      <link>https://cr6588.github.io/post/spring-cloud/spring-boot/spring-boot%E9%94%99%E8%AF%AF%E9%9B%86/</link>
+      <pubDate>Fri, 13 Apr 2018 13:51:23 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/spring-cloud/spring-boot/spring-boot%E9%94%99%E8%AF%AF%E9%9B%86/</guid>
+      <description>项目迁移至spring-boot 添加spring-boot 1 2 3 4 5 6 7 8 9 10 &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.0.1.RELEASE&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-test&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.0.1.RELEASE&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; 编译时报错 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16</description>
+    </item>
+    
+    <item>
+      <title>spring boot with Docker Quick Start</title>
+      <link>https://cr6588.github.io/post/spring-cloud/spring-boot/spring-boot-with-docker-quick-start/</link>
+      <pubDate>Wed, 11 Apr 2018 16:57:25 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/spring-cloud/spring-boot/spring-boot-with-docker-quick-start/</guid>
+      <description>准备环境 参考Spring Boot with Docker docker安装：https://docs.docker.com/install/linux/docker-c</description>
+    </item>
+    
+  </channel>
+</rss>

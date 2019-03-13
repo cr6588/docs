@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>正则笔记 - cr6588</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="cr6588" /><meta name="description" content="1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 String str =&amp;#34;{&amp;amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SY450_.jpg&amp;amp;quot;:[450,384],&amp;amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX679_.jpg&amp;amp;quot;:[797,679],&amp;amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX522_.jpg&amp;amp;quot;:[612,522],&amp;amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX466_.jpg&amp;amp;quot;:[547,466],&amp;amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX425_.jpg&amp;amp;quot;:[499,425],&amp;amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SY355_.jpg&amp;amp;quot;:[355,303],&amp;amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX569_.jpg&amp;amp;quot;:[668,569]}&amp;#34;; Matcher matcher = Pattern.compile(&amp;#34;http.*?&amp;amp;quot&amp;#34;).matcher(str); &amp;#34;http.*&amp;amp;quot&amp;#34;：从http开始到最后一个&amp;amp;quot &amp;#34;http.*?&amp;amp;quot&amp;#34;" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://cr6588.github.io/post/regex/%E6%AD%A3%E5%88%99%E7%AC%94%E8%AE%B0/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="正则笔记" />
+<meta property="og:description" content="1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 String str =&#34;{&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SY450_.jpg&amp;quot;:[450,384],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX679_.jpg&amp;quot;:[797,679],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX522_.jpg&amp;quot;:[612,522],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX466_.jpg&amp;quot;:[547,466],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX425_.jpg&amp;quot;:[499,425],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SY355_.jpg&amp;quot;:[355,303],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX569_.jpg&amp;quot;:[668,569]}&#34;; Matcher matcher = Pattern.compile(&#34;http.*?&amp;quot&#34;).matcher(str); &#34;http.*&amp;quot&#34;：从http开始到最后一个&amp;quot &#34;http.*?&amp;quot&#34;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cr6588.github.io/post/regex/%E6%AD%A3%E5%88%99%E7%AC%94%E8%AE%B0/" />
+<meta property="article:published_time" content="2018-10-31T17:40:05&#43;08:00"/>
+<meta property="article:modified_time" content="2018-10-31T17:40:05&#43;08:00"/>
+
+<meta itemprop="name" content="正则笔记">
+<meta itemprop="description" content="1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 String str =&#34;{&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SY450_.jpg&amp;quot;:[450,384],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX679_.jpg&amp;quot;:[797,679],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX522_.jpg&amp;quot;:[612,522],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX466_.jpg&amp;quot;:[547,466],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX425_.jpg&amp;quot;:[499,425],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SY355_.jpg&amp;quot;:[355,303],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX569_.jpg&amp;quot;:[668,569]}&#34;; Matcher matcher = Pattern.compile(&#34;http.*?&amp;quot&#34;).matcher(str); &#34;http.*&amp;quot&#34;：从http开始到最后一个&amp;quot &#34;http.*?&amp;quot&#34;">
+
+
+<meta itemprop="datePublished" content="2018-10-31T17:40:05&#43;08:00" />
+<meta itemprop="dateModified" content="2018-10-31T17:40:05&#43;08:00" />
+<meta itemprop="wordCount" content="609">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="正则笔记"/>
+<meta name="twitter:description" content="1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 String str =&#34;{&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SY450_.jpg&amp;quot;:[450,384],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX679_.jpg&amp;quot;:[797,679],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX522_.jpg&amp;quot;:[612,522],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX466_.jpg&amp;quot;:[547,466],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX425_.jpg&amp;quot;:[499,425],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SY355_.jpg&amp;quot;:[355,303],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX569_.jpg&amp;quot;:[668,569]}&#34;; Matcher matcher = Pattern.compile(&#34;http.*?&amp;quot&#34;).matcher(str); &#34;http.*&amp;quot&#34;：从http开始到最后一个&amp;quot &#34;http.*?&amp;quot&#34;"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">cr6588</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">cr6588</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">正则笔记</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-10-31 </span>
+        <div class="post-category">
+            <a href="/categories/%E6%AD%A3%E5%88%99/"> 正则 </a>
+            </div>
+          <span class="more-meta"> 约 609 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">    String str =&#34;{&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SY450_.jpg&amp;quot;:[450,384],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX679_.jpg&amp;quot;:[797,679],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX522_.jpg&amp;quot;:[612,522],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX466_.jpg&amp;quot;:[547,466],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX425_.jpg&amp;quot;:[499,425],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SY355_.jpg&amp;quot;:[355,303],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX569_.jpg&amp;quot;:[668,569]}&#34;;
+    Matcher matcher = Pattern.compile(&#34;http.*?&amp;quot&#34;).matcher(str);
+    &#34;http.*&amp;quot&#34;：从http开始到最后一个&amp;quot
+    &#34;http.*?&amp;quot&#34; 从http开始到到多个&amp;quot，有多个匹配结果
+    while (matcher.find()) {
+        //matcher.group()得到每段匹配结果
+        //replaceAll(&#34;(http.*?)&amp;quot&#34;, &#34;$1&#34;);去除掉&amp;quot, $1即代表http.*?内容，多个括号依次类推
+        System.out.println(matcher.group().replaceAll(&#34;(http.*?)&amp;quot&#34;, &#34;$1&#34;));
+    }
+    str = &#34;colorImages&#39;: { &#39;initial&#39;: [{\&#34;hiRes\&#34;:\&#34;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SL1500_.jpg\&#34;,\&#34;thumb\&#34;:\&#34;https://images-na.ssl-images-amazon.com/images/I/41yZXe004KL._SS40_.jpg\&#34;,\&#34;large\&#34;:\&#34;https://images-na.ssl-images-amazon.com/images/I/41yZXe004KL.jpg\&#34;,\&#34;main\&#34;:{\&#34;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SY355_.jpg\&#34;:[355,303],\&#34;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SY450_.jpg\&#34;:[450,384],\&#34;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX425_.jpg\&#34;:[499,425],\&#34;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX466_.jpg\&#34;:[547,466],\&#34;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX522_.jpg\&#34;:[612,522],\&#34;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX569_.jpg\&#34;:[668,569],\&#34;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX679_.jpg\&#34;:[797,679]},\&#34;variant\&#34;:\&#34;MAIN\&#34;,\&#34;lowRes\&#34;:null},{\&#34;hiRes\&#34;:\&#34;https://images-na.ssl-images-amazon.com/images/I/818%2BOzCMXlL._SL1500_.jpg\&#34;,\&#34;thumb\&#34;:\&#34;https://images-na.ssl-images-amazon.com/images/I/41rmeTGYiFL._SS40_.jpg\&#34;,\&#34;large\&#34;:\&#34;https://images-na.ssl-images-amazon.com/images/I/41rmeTGYiFL.jpg\&#34;,\&#34;main\&#34;:{\&#34;https://images-na.ssl-images-amazon.com/images/I/818%2BOzCMXlL._SY355_.jpg\&#34;:[355,355],\&#34;https://images-na.ssl-images-amazon.com/images/I/818%2BOzCMXlL._SY450_.jpg\&#34;:[450,450],\&#34;https://images-na.ssl-images-amazon.com/images/I/818%2BOzCMXlL._SX425_.jpg\&#34;:[425,425],\&#34;https://images-na.ssl-images-amazon.com/images/I/818%2BOzCMXlL._SX466_.jpg\&#34;:[466,466],\&#34;https://images-na.ssl-images-amazon.com/images/I/818%2BOzCMXlL._SX522_.jpg\&#34;:[522,522],\&#34;https://images-na.ssl-images-amazon.com/images/I/818%2BOzCMXlL._SX569_.jpg\&#34;:[569,569],\&#34;https://images-na.ssl-images-amazon.com/images/I/818%2BOzCMXlL._SX679_.jpg\&#34;:[679,679]},\&#34;variant\&#34;:\&#34;PT01\&#34;,\&#34;lowRes\&#34;:null},{\&#34;hiRes\&#34;:null,\&#34;thumb\&#34;:\&#34;https://images-na.ssl-images-amazon.com/images/I/51iAF5-bjRL._SS40_.jpg\&#34;,\&#34;large\&#34;:\&#34;https://images-na.ssl-images-amazon.com/images/I/51iAF5-bjRL.jpg\&#34;,\&#34;main\&#34;:{\&#34;https://images-na.ssl-images-amazon.com/images/I/51iAF5-bjRL._SY355_.jpg\&#34;:[355,355],\&#34;https://images-na.ssl-images-amazon.com/images/I/51iAF5-bjRL._SY450_.jpg\&#34;:[450,450],\&#34;https://images-na.ssl-images-amazon.com/images/I/51iAF5-bjRL._SX425_.jpg\&#34;:[425,425],\&#34;https://images-na.ssl-images-amazon.com/images/I/51iAF5-bjRL._SX466_.jpg\&#34;:[466,466],\&#34;https://images-na.ssl-images-amazon.com/images/I/51iAF5-bjRL.jpg\&#34;:[500,500]},\&#34;variant\&#34;:\&#34;PT02\&#34;,\&#34;lowRes\&#34;:null},{\&#34;hiRes\&#34;:\&#34;https://images-na.ssl-images-amazon.com/images/I/51bpznVJyeL._SL1000_.jpg\&#34;,\&#34;thumb\&#34;:\&#34;https://images-na.ssl-images-amazon.com/images/I/410PRGCVGCL._SS40_.jpg\&#34;,\&#34;large\&#34;:\&#34;https://images-na.ssl-images-amazon.com/images/I/410PRGCVGCL.jpg\&#34;,\&#34;main\&#34;:{\&#34;https://images-na.ssl-images-amazon.com/images/I/51bpznVJyeL._SX355_.jpg\&#34;:[286,355],\&#34;https://images-na.ssl-images-amazon.com/images/I/51bpznVJyeL._SX450_.jpg\&#34;:[362,450],\&#34;https://images-na.ssl-images-amazon.com/images/I/51bpznVJyeL._SX425_.jpg\&#34;:[342,425],\&#34;https://images-na.ssl-images-amazon.com/images/I/51bpznVJyeL._SX466_.jpg\&#34;:[375,466],\&#34;https://images-na.ssl-images-amazon.com/images/I/51bpznVJyeL._SX522_.jpg\&#34;:[420,522],\&#34;https://images-na.ssl-images-amazon.com/images/I/51bpznVJyeL._SX569_.jpg\&#34;:[458,569],\&#34;https://images-na.ssl-images-amazon.com/images/I/51bpznVJyeL._SX679_.jpg\&#34;:[547,679]},\&#34;variant\&#34;:\&#34;PT03\&#34;,\&#34;lowRes\&#34;:null},{\&#34;hiRes\&#34;:\&#34;https://images-na.ssl-images-amazon.com/images/I/91mqriezkiL._SL1500_.jpg\&#34;,\&#34;thumb\&#34;:\&#34;https://images-na.ssl-images-amazon.com/images/I/412tV3xY2lL._SS40_.jpg\&#34;,\&#34;large\&#34;:\&#34;https://images-na.ssl-images-amazon.com/images/I/412tV3xY2lL.jpg\&#34;,\&#34;main\&#34;:{\&#34;https://images-na.ssl-images-amazon.com/images/I/91mqriezkiL._SX355_.jpg\&#34;:[240,355],\&#34;https://images-na.ssl-images-amazon.com/images/I/91mqriezkiL._SX450_.jpg\&#34;:[305,450],\&#34;https://images-na.ssl-images-amazon.com/images/I/91mqriezkiL._SX425_.jpg\&#34;:[288,425],\&#34;https://images-na.ssl-images-amazon.com/images/I/91mqriezkiL._SX466_.jpg\&#34;:[316,466],\&#34;https://images-na.ssl-images-amazon.com/images/I/91mqriezkiL._SX522_.jpg\&#34;:[354,522],\&#34;https://images-na.ssl-images-amazon.com/images/I/91mqriezkiL._SX569_.jpg\&#34;:[385,569],\&#34;https://images-na.ssl-images-amazon.com/images/I/91mqriezkiL._SX679_.jpg\&#34;:[460,679]},\&#34;variant\&#34;:\&#34;PT04\&#34;,\&#34;lowRes\&#34;:null},{\&#34;hiRes\&#34;:\&#34;https://images-na.ssl-images-amazon.com/images/I/81L0t2yfJ0L._SL1500_.jpg\&#34;,\&#34;thumb\&#34;:\&#34;https://images-na.ssl-images-amazon.com/images/I/41T7fO9yaUL._SS40_.jpg\&#34;,\&#34;large\&#34;:\&#34;https://images-na.ssl-images-amazon.com/images/I/41T7fO9yaUL.jpg\&#34;,\&#34;main\&#34;:{\&#34;https://images-na.ssl-images-amazon.com/images/I/81L0t2yfJ0L._SY355_.jpg\&#34;:[355,355],\&#34;https://images-na.ssl-images-amazon.com/images/I/81L0t2yfJ0L._SY450_.jpg\&#34;:[450,450],\&#34;https://images-na.ssl-images-amazon.com/images/I/81L0t2yfJ0L._SX425_.jpg\&#34;:[425,425],\&#34;https://images-na.ssl-images-amazon.com/images/I/81L0t2yfJ0L._SX466_.jpg\&#34;:[466,466],\&#34;https://images-na.ssl-images-amazon.com/images/I/81L0t2yfJ0L._SX522_.jpg\&#34;:[522,522],\&#34;https://images-na.ssl-images-amazon.com/images/I/81L0t2yfJ0L._SX569_.jpg\&#34;:[569,569],\&#34;https://images-na.ssl-images-amazon.com/images/I/81L0t2yfJ0L._SX679_.jpg\&#34;:[679,679]},\&#34;variant\&#34;:\&#34;PT05\&#34;,\&#34;lowRes\&#34;:null}]},&#34;;
+    //从含有{的开始到最后一个}的内容
+    matcher = Pattern.compile(&#34;\\{.*\\}&#34;).matcher(str);
+    while (matcher.find()) {
+      System.out.println(matcher.group());
+  }</pre></td></tr></table>
+</div>
+</div>
+<p>正则需要转义字符：&rsquo;$&lsquo;, &lsquo;(&rsquo;, &lsquo;)&rsquo;, &lsquo;*&lsquo;, &lsquo;+&rsquo;, &lsquo;.&rsquo;, &lsquo;[&lsquo;, &lsquo;]&rsquo;, &lsquo;?&rsquo;, &lsquo;\&rsquo;, &lsquo;^&rsquo;, &lsquo;{&rsquo;, &lsquo;}&rsquo;, &lsquo;|&rsquo;</p>
+
+<p>异常现象： java.util.regex.PatternSyntaxException: Dangling meta. character &lsquo;*&rsquo; near index 0
+解决方法： 对特殊字符加\转义即可。</p>
+
+<p>注意：虽然使用[]在部分条件下也可以，但是在对于(、[、{范围边界开始符不匹配的情况下会报如下:
+异常现象：java.util.regex.PatternSyntaxException: Illegal repetition near index 50</p>
+
+<p>Java过滤正则表达式特殊字代码如下(注意:\需要第一个替换，否则replace方法替换时会有逻辑bug)
+/**
+ * 转义正则特殊字符 （$()*+.[]?\^{},|）
+ *
+ * @param keyword
+ * @return
+ <em>/
+public static String escapeExprSpecialWord(String keyword) {
+    if (StringUtils.isNotBlank(keyword)) {
+        String[] fbsArr = { &ldquo;\&rdquo;, &ldquo;$&rdquo;, &ldquo;(&rdquo;, &ldquo;)&rdquo;, &ldquo;</em>&rdquo;, &ldquo;+&rdquo;, &ldquo;.&rdquo;, &ldquo;[&ldquo;, &ldquo;]&rdquo;, &ldquo;?&rdquo;, &ldquo;^&rdquo;, &ldquo;{&rdquo;, &ldquo;}&rdquo;, &ldquo;|&rdquo; };
+        for (String key : fbsArr) {
+            if (keyword.contains(key)) {
+                keyword = keyword.replace(key, &ldquo;\&rdquo; + key);
+            }
+        }
+    }
+    return keyword;</p>
+
+<hr />
+
+<p>作者：青鸟天空
+来源：CSDN
+原文：<a href="https://blog.csdn.net/bbirdsky/article/details/45368709">https://blog.csdn.net/bbirdsky/article/details/45368709</a>
+版权声明：本文为博主原创文章，转载请附上博文链接！</p>
+
+    </div>
+
+    <div class="post-copyright">
+  
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2018-10-31
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/js/html5%E9%80%9A%E8%BF%87load%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E9%95%BF%E5%AE%BD/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">html5通过load获取图片长宽</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/linux/bitvise/">
+            <span class="next-text nav-default">Bitvise</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'https-cr6588-github-io';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:cr6588@vip.qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/cr6588" class="iconfont icon-github" title="github"></a>
+  
+    
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">cr6588</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

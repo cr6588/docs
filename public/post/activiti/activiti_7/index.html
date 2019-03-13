@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>activiti 7 简介 - cr6588</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="cr6588" /><meta name="description" content="activiti 7 1.Activiti Cloud介绍 Activiti Cloud是第一个Cloud Native BPM框架，旨在为云环境中的BPM实施提供可扩展且透明的解决方案。 The BPM discipline was created to provide a better understanding of" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://cr6588.github.io/post/activiti/activiti_7/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="activiti 7 简介" />
+<meta property="og:description" content="activiti 7 1.Activiti Cloud介绍 Activiti Cloud是第一个Cloud Native BPM框架，旨在为云环境中的BPM实施提供可扩展且透明的解决方案。 The BPM discipline was created to provide a better understanding of" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cr6588.github.io/post/activiti/activiti_7/" />
+<meta property="article:published_time" content="2019-02-18T09:50:10&#43;08:00"/>
+<meta property="article:modified_time" content="2019-03-13T11:36:03&#43;08:00"/>
+
+<meta itemprop="name" content="activiti 7 简介">
+<meta itemprop="description" content="activiti 7 1.Activiti Cloud介绍 Activiti Cloud是第一个Cloud Native BPM框架，旨在为云环境中的BPM实施提供可扩展且透明的解决方案。 The BPM discipline was created to provide a better understanding of">
+
+
+<meta itemprop="datePublished" content="2019-02-18T09:50:10&#43;08:00" />
+<meta itemprop="dateModified" content="2019-03-13T11:36:03&#43;08:00" />
+<meta itemprop="wordCount" content="812">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="activiti 7 简介"/>
+<meta name="twitter:description" content="activiti 7 1.Activiti Cloud介绍 Activiti Cloud是第一个Cloud Native BPM框架，旨在为云环境中的BPM实施提供可扩展且透明的解决方案。 The BPM discipline was created to provide a better understanding of"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">cr6588</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">cr6588</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">activiti 7 简介</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-02-18 </span>
+        <div class="post-category">
+            <a href="/categories/activiti/"> activiti </a>
+            </div>
+          <span class="more-meta"> 约 812 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#activiti-7">activiti 7</a>
+<ul>
+<li><a href="#1-activiti-cloud介绍-https-activiti-gitbook-io-activiti-7-developers-guide-overview">1.<a href="https://activiti.gitbook.io/activiti-7-developers-guide/overview">Activiti Cloud介绍</a></a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h1 id="activiti-7">activiti 7</h1>
+
+<h2 id="1-activiti-cloud介绍-https-activiti-gitbook-io-activiti-7-developers-guide-overview">1.<a href="https://activiti.gitbook.io/activiti-7-developers-guide/overview">Activiti Cloud介绍</a></h2>
+
+<p>Activiti Cloud是第一个Cloud Native BPM框架，旨在为云环境中的BPM实施提供可扩展且透明的解决方案。</p>
+
+<p>The BPM discipline was created to provide a better understanding of how organisations do their work and how this work can be improved in an iterative fashion</p>
+
+<blockquote>
+<p>BPM:Business Process Management。商业流程管理。旨在帮助组织更容易理解他们所做的工作以及如何以迭代方式改进这项工作</p>
+</blockquote>
+
+<p>通常BPM套件部署在一个中央服务器，采用BPM套件常会遇到的痛点：</p>
+
+<ul>
+<li>BPM Suites are built on top of a technology stack that the IT Department(Software) inside the organization doesn’t otherwise need to know</li>
+<li>BPM Suites often don’t integrate nicely with other ecosystems</li>
+<li>Users need to learn a whole new toolset to do the work</li>
+<li>The department in charge of the infrastructure where the BPM Suite will run doesn’t know about its requirements. Same applies for DBAs that need to understand how the BPM Suite works to tune their Databases.</li>
+<li>User Interfaces provided by BPM Suites are often not flexible enough. Many BPM implementations end up needing multiple re-implementations of their User Interfaces</li>
+
+<li><p>BPM Suite adoptions are usually pushed from the business and not backed up by the internal software development teams inside the organization and this friction cause delays and problems during implementation.</p></li>
+
+<li><p>BPM套件构建在技术堆栈之上，组织内的IT部门（软件）无需另外知道</p></li>
+
+<li><p>BPM套件通常不能很好地与其他生态系统集成</p></li>
+
+<li><p>用户需要学习一个全新的工具集来完成工作</p></li>
+
+<li><p>负责BPM Suite运行的基础架构的部门不了解其要求。 同样适用于需要了解BPM Suite如何调整其数据库的DBA。</p></li>
+
+<li><p>BPM套件提供的用户界面通常不够灵活。 许多BPM实现最终需要多次重新实现其用户界面</p></li>
+
+<li><p>BPM Suite采用通常是从业务推出而不是由组织内部的内部软件开发团队备份，这种摩擦会导致实施过程中的延迟和问题。</p></li>
+</ul>
+
+<p>大多数这些痛点都是因为BPM Suites强加了一整套技术，迫使组织适应它们。</p>
+
+<p>Activiti Cloud试图将Activiti Process Engine剥离到最低限度并尽可能保持单一焦点。</p>
+
+<p>The Process Runtime shouldn’t worry about:
+* Where the process definitions are stored
+* Dealing with process versions and changes
+* Identity Management
+* Single Sign-On
+* Job executions
+* Timer mechanisms
+* Providing System to System integration mechanisms
+* Sending Emails
+* Storing History / Audit information and providing a way to query this information
+* Performance of the clients consuming data generated by the engine
+* Push notifications about the changes in state of the system</p>
+
+<ul>
+<li>存储过程定义的位置</li>
+<li>处理流程版本和更改</li>
+<li>身份管理</li>
+<li>单点登录</li>
+<li>工作执行</li>
+<li>定时器机制</li>
+<li>为系统集成机制提供系统</li>
+<li>发送电子邮件</li>
+<li>存储历史/审计信息并提供查询此信息的方法</li>
+<li>消费者使用引擎生成的数据的性能</li>
+<li>推送有关系统状态变化的通知</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-03-13
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/hugo/hugo%E9%97%AE%E9%A2%98%E9%9B%86/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">hugo问题集</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/mysql/docker%E8%BF%90%E8%A1%8Cmysql8/">
+            <span class="next-text nav-default">docker运行mysql8</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'https-cr6588-github-io';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:cr6588@vip.qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/cr6588" class="iconfont icon-github" title="github"></a>
+  
+    
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">cr6588</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>windows on cr6588</title>
+    <link>https://cr6588.github.io/categories/windows/</link>
+    <description>Recent content in windows on cr6588</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 14 Dec 2018 10:36:37 +0800</lastBuildDate>
+    
+	<atom:link href="https://cr6588.github.io/categories/windows/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>windows笔记</title>
+      <link>https://cr6588.github.io/post/windows/windows%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 14 Dec 2018 10:36:37 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/windows/windows%E7%AC%94%E8%AE%B0/</guid>
+      <description>查找1080端口pid C:\Users\cr&amp;gt;netstat -aon|findstr &amp;ldquo;1080&amp;rdquo; TCP 127.0.0.1:1080 127.0.0.1:27015 ESTABLISHED 4304 TCP 127.0.0.1:27015 127.0.0.1:1080 ESTABLISHED 1876 查找pid对应进程 C:\Users\cr&amp;gt;tasklist|findstr &amp;ldquo;4304&amp;rdquo; iTunesHelper.exe 4304 Console 1 14,016 K</description>
+    </item>
+    
+  </channel>
+</rss>

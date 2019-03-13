@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>idea on cr6588</title>
+    <link>https://cr6588.github.io/categories/idea/</link>
+    <description>Recent content in idea on cr6588</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 23 Apr 2018 11:03:20 +0800</lastBuildDate>
+    
+	<atom:link href="https://cr6588.github.io/categories/idea/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>idea快捷键</title>
+      <link>https://cr6588.github.io/post/ide/idea%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
+      <pubDate>Mon, 23 Apr 2018 11:03:20 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/ide/idea%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
+      <description>http://www.cnblogs.com/tonycody/p/3257601.html 【常规】 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65</description>
+    </item>
+    
+    <item>
+      <title>idea配置</title>
+      <link>https://cr6588.github.io/post/ide/idea%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Mon, 23 Apr 2018 09:44:55 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/ide/idea%E9%85%8D%E7%BD%AE/</guid>
+      <description>配置maven,jdk 显示空格 File -&amp;gt; Settings -&amp;gt; Editor -&amp;gt; General -&amp;gt; Appearance -&amp;gt; Show whitespaces 1. 空格的点显示太小，如何居中或者更清晰？（字号调大仍然太小） 使用微软雅黑字体 File -&amp;gt; Settings -&amp;gt; Appearance</description>
+    </item>
+    
+  </channel>
+</rss>

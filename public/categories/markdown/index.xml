@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>markdown on cr6588</title>
+    <link>https://cr6588.github.io/categories/markdown/</link>
+    <description>Recent content in markdown on cr6588</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 30 Jul 2018 14:02:09 +0800</lastBuildDate>
+    
+	<atom:link href="https://cr6588.github.io/categories/markdown/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>markdown测试</title>
+      <link>https://cr6588.github.io/post/markdown/markdown%E6%B5%8B%E8%AF%95/</link>
+      <pubDate>Mon, 30 Jul 2018 14:02:09 +0800</pubDate>
+      
+      <guid>https://cr6588.github.io/post/markdown/markdown%E6%B5%8B%E8%AF%95/</guid>
+      <description>Footnote 1 link1. asd f a asd f a asd f a asd f a asd f a asd f a Footnote 2 link[^second]. asd f a asd f a asd f a asd f a asd f a asd f a Inline footnote2 definition. asd f a asd f a asd f a asd f a asd f a asd f a Duplicated footnote reference[^second]. asd f a asd</description>
+    </item>
+    
+  </channel>
+</rss>

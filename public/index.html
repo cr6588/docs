@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>cr6588</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="cr6588" /><meta name="description" content="Hugo theme even example site." /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://cr6588.github.io/" />
+  <link href="https://cr6588.github.io/index.xml" rel="alternate" type="application/rss+xml" title="cr6588" />
+  <link href="https://cr6588.github.io/index.xml" rel="feed" type="application/rss+xml" title="cr6588" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="cr6588" />
+<meta property="og:description" content="Hugo theme even example site." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cr6588.github.io/" />
+
+<meta property="og:updated_time" content="2018-04-10T11:48:57&#43;08:00"/>
+
+<meta itemprop="name" content="cr6588">
+<meta itemprop="description" content="Hugo theme even example site.">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="cr6588"/>
+<meta name="twitter:description" content="Hugo theme even example site."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">cr6588</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">cr6588</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/hugo/hugo%E7%94%9F%E6%88%90%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E9%83%A8%E7%BD%B2%E8%87%B3github-pages/">hugo生成的静态网页部署至Github Pages</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-04-10 </span>
+      <div class="post-category">
+          <a href="/categories/hugo/"> hugo </a>
+          </div>
+        <span class="more-meta"> 约 823 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      1.参见Hugo官方文档进行安装 2.完成Quick Start 3.构建部署至Github Pages 若hugo产生的站点在D:/git/docs目录，进入doc
+    </div>
+    <div class="read-more">
+      <a href="/post/hugo/hugo%E7%94%9F%E6%88%90%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E9%83%A8%E7%BD%B2%E8%87%B3github-pages/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/hugo/hugo%E9%97%AE%E9%A2%98%E9%9B%86/">hugo问题集</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-04-10 </span>
+      <div class="post-category">
+          <a href="/categories/hugo/"> hugo </a>
+          </div>
+        <span class="more-meta"> 约 851 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      1.关于主题 最先使用了一个叫code-editor的主题，按照官方文档中Menu的介绍试了下，始终没成功。于是去主题中换成docdock发现
+    </div>
+    <div class="read-more">
+      <a href="/post/hugo/hugo%E9%97%AE%E9%A2%98%E9%9B%86/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/activiti/activiti_7/">activiti 7 简介</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-02-18 </span>
+      <div class="post-category">
+          <a href="/categories/activiti/"> activiti </a>
+          </div>
+        <span class="more-meta"> 约 812 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      activiti 7 1.Activiti Cloud介绍 Activiti Cloud是第一个Cloud Native BPM框架，旨在为云环境中的BPM实施提供可扩展且透明的解决方案。 The BPM discipline was created to provide a better understanding of
+    </div>
+    <div class="read-more">
+      <a href="/post/activiti/activiti_7/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/mysql/docker%E8%BF%90%E8%A1%8Cmysql8/">docker运行mysql8</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-02-11 </span>
+      <div class="post-category">
+          <a href="/categories/mysql/"> mysql </a>
+          </div>
+        <span class="more-meta"> 约 91 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      1 2 3 4 docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=密码 -d mysql:8 #由于密码加密方式与以前不同，所以需要进入容器更改密码加密方式 docker exec -it mysql
+    </div>
+    <div class="read-more">
+      <a href="/post/mysql/docker%E8%BF%90%E8%A1%8Cmysql8/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/dubbo/dubbo-xml%E6%8A%A5%E9%94%99/">dubbo xml报错</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-02-11 </span>
+      
+        <span class="more-meta"> 约 193 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      1.解压dubbojar包，拿到dubbo.xsd文件 2.在eclipse中Windows-&gt;Preferences-&gt;XML-
+    </div>
+    <div class="read-more">
+      <a href="/post/dubbo/dubbo-xml%E6%8A%A5%E9%94%99/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/js/js%E6%AD%A3%E5%88%99/">js正则</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-01-30 </span>
+      <div class="post-category">
+          <a href="/categories/js/"> js </a>
+          </div>
+        <span class="more-meta"> 约 92 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      在js中可以直接使用/正则表达式/.test(字符串)验证，例如 /^[1][3,4,5,7,8]+\d{9}$/.test(&ldquo;18812345678&rdquo;) 当把正则表达式赋予变量时需要考虑\转义的问题，例如 var s = &ldquo;^[1][3,4,5,7,8]+\d{9}$&ldquo;; RegExp(s).test(&ldquo;18812345678&rdquo;); 但当表达式在一
+    </div>
+    <div class="read-more">
+      <a href="/post/js/js%E6%AD%A3%E5%88%99/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/java/thumbnails/">Thumbnails</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-01-28 </span>
+      <div class="post-category">
+          <a href="/categories/java/"> java </a>
+          </div>
+        <span class="more-meta"> 约 85 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      后台用Thumbnails压缩时文件名的后缀会对图片大小产生影响，jpg格式改成png后缀后，原200多234007byte图片变成1.48
+    </div>
+    <div class="read-more">
+      <a href="/post/java/thumbnails/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/java/%E7%BC%BA%E5%B0%91spring-web-xx.jar/">缺少spring-web-xx.jar</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-01-28 </span>
+      <div class="post-category">
+          <a href="/categories/java/"> java </a>
+          </div>
+        <span class="more-meta"> 约 238 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      eclipse项目server无法启动，没有spring-web-XXXX.jar包 eclipse项目server无法启动，没有spring
+    </div>
+    <div class="read-more">
+      <a href="/post/java/%E7%BC%BA%E5%B0%91spring-web-xx.jar/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/elk/k8s%E6%90%AD%E5%BB%BAelk%E7%8E%AF%E5%A2%83/">k8s搭建ELK环境</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-12-17 </span>
+      <div class="post-category">
+          <a href="/categories/elk/"> ELK </a>
+          </div>
+        <span class="more-meta"> 约 2620 字 </span>
+        <span class="more-meta"> 预计阅读 6 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      elasticsearch部署（v6.5.3） elasticsearch.yml 1 2 3 4 5 6 7 #集群名，且不配置节点名称，避免多个k8s多个pod时，配置文件不同 cluster.name: es #ho
+    </div>
+    <div class="read-more">
+      <a href="/post/elk/k8s%E6%90%AD%E5%BB%BAelk%E7%8E%AF%E5%A2%83/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/windows/windows%E7%AC%94%E8%AE%B0/">windows笔记</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-12-14 </span>
+      <div class="post-category">
+          <a href="/categories/windows/"> windows </a>
+          </div>
+        <span class="more-meta"> 约 41 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      查找1080端口pid C:\Users\cr&gt;netstat -aon|findstr &ldquo;1080&rdquo; TCP 127.0.0.1:1080 127.0.0.1:27015 ESTABLISHED 4304 TCP 127.0.0.1:27015 127.0.0.1:1080 ESTABLISHED 1876 查找pid对应进程 C:\Users\cr&gt;tasklist|findstr &ldquo;4304&rdquo; iTunesHelper.exe 4304 Console 1 14,016 K
+    </div>
+    <div class="read-more">
+      <a href="/post/windows/windows%E7%AC%94%E8%AE%B0/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/docker_k8s/monitor/%E4%BD%BF%E7%94%A8prometheus%E4%B8%8Egrafana%E8%BF%9B%E8%A1%8C%E7%9B%91%E6%8E%A7/">使用prometheus与grafana进行监控</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-12-07 </span>
+      <div class="post-category">
+          <a href="/categories/kubernetes/"> Kubernetes </a>
+          </div>
+        <span class="more-meta"> 约 2604 字 </span>
+        <span class="more-meta"> 预计阅读 6 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      使用prometheus与grafana进行监控 安装prometheus docker方式 参照官网installation进行docker安装
+    </div>
+    <div class="read-more">
+      <a href="/post/docker_k8s/monitor/%E4%BD%BF%E7%94%A8prometheus%E4%B8%8Egrafana%E8%BF%9B%E8%A1%8C%E7%9B%91%E6%8E%A7/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/js/html5%E9%80%9A%E8%BF%87load%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E9%95%BF%E5%AE%BD/">html5通过load获取图片长宽</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-10-31 </span>
+      <div class="post-category">
+          <a href="/categories/js/"> js </a>
+          </div>
+        <span class="more-meta"> 约 194 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      html5有naturalWidth，naturalHeight属性获取图片的长宽，但是必须在图片加载完成之后才能获取。可以使用load事件
+    </div>
+    <div class="read-more">
+      <a href="/post/js/html5%E9%80%9A%E8%BF%87load%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E9%95%BF%E5%AE%BD/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/regex/%E6%AD%A3%E5%88%99%E7%AC%94%E8%AE%B0/">正则笔记</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-10-31 </span>
+      <div class="post-category">
+          <a href="/categories/%E6%AD%A3%E5%88%99/"> 正则 </a>
+          </div>
+        <span class="more-meta"> 约 609 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 String str =&#34;{&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SY450_.jpg&amp;quot;:[450,384],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX679_.jpg&amp;quot;:[797,679],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX522_.jpg&amp;quot;:[612,522],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX466_.jpg&amp;quot;:[547,466],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX425_.jpg&amp;quot;:[499,425],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SY355_.jpg&amp;quot;:[355,303],&amp;quot;https://images-na.ssl-images-amazon.com/images/I/81dbJ1GJ6cL._SX569_.jpg&amp;quot;:[668,569]}&#34;; Matcher matcher = Pattern.compile(&#34;http.*?&amp;quot&#34;).matcher(str); &#34;http.*&amp;quot&#34;：从http开始到最后一个&amp;quot &#34;http.*?&amp;quot&#34;
+    </div>
+    <div class="read-more">
+      <a href="/post/regex/%E6%AD%A3%E5%88%99%E7%AC%94%E8%AE%B0/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/linux/bitvise/">Bitvise</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-10-17 </span>
+      <div class="post-category">
+          <a href="/categories/linux/"> linux </a>
+          </div>
+        <span class="more-meta"> 约 117 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      1 2 3 4 5 6 7 8 9 10 #bat通过脚本上传文件，cenos7.tlp保存的profile,cenos7.pub保存的host key，sftp.
+    </div>
+    <div class="read-more">
+      <a href="/post/linux/bitvise/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/docker_k8s/docker%E4%B8%8Ek8s%E7%AE%80%E4%BB%8B/">Docker与k8s简介</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-09-18 </span>
+      <div class="post-category">
+          <a href="/categories/docker/"> docker </a>
+          </div>
+        <span class="more-meta"> 约 2468 字 </span>
+        <span class="more-meta"> 预计阅读 5 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Docker Docker是什么？ 是一个应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的Linux机器上。它
+    </div>
+    <div class="read-more">
+      <a href="/post/docker_k8s/docker%E4%B8%8Ek8s%E7%AE%80%E4%BB%8B/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/docker_k8s/kubernetes%E5%AD%A6%E4%B9%A0/">Kubernetes学习</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-09-18 </span>
+      <div class="post-category">
+          <a href="/categories/kubernetes/"> Kubernetes </a>
+          </div>
+        <span class="more-meta"> 约 5622 字 </span>
+        <span class="more-meta"> 预计阅读 12 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      1.minikube(主机非虚拟安装，否则直接跳过) 1.1 安装kubernetctl 1.3 安装virtualbox 1.2 安装minikube 1 2 3 4 5 6
+    </div>
+    <div class="read-more">
+      <a href="/post/docker_k8s/kubernetes%E5%AD%A6%E4%B9%A0/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/docker_k8s/kubernetes%E5%AE%9E%E9%AA%8C/">Kubernetes实验</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-09-18 </span>
+      <div class="post-category">
+          <a href="/categories/kubernetes/"> Kubernetes </a>
+          </div>
+        <span class="more-meta"> 约 598 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      安装多版本docker kubelet为什么关闭swap kubernetes的想法是将实例紧密包装到尽可能接近100％。 所有的部署应该与CPU
+    </div>
+    <div class="read-more">
+      <a href="/post/docker_k8s/kubernetes%E5%AE%9E%E9%AA%8C/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/mq/rocketmq/">RocketMQ</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-09-03 </span>
+      <div class="post-category">
+          <a href="/categories/rocketmq/"> RocketMQ </a>
+          </div>
+        <span class="more-meta"> 约 147 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      http://rocketmq.apache.org/docs/quick-start/ nohup sh bin/mqnamesrv &amp; 提示JAVA_HOME不存在。但实际已配置，echo $JAVA_HOME之后又正常 nohup sh bin/mqbroker -n localhost:9876 &amp; 提示error=&lsquo;Can
+    </div>
+    <div class="read-more">
+      <a href="/post/mq/rocketmq/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/git/git-note/">git note</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-08-29 </span>
+      <div class="post-category">
+          <a href="/categories/git/"> git </a>
+          </div>
+        <span class="more-meta"> 约 415 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      获取新远程分支 从eclipse git远程时只选了一个远程分支之后，想要切换到新的远程分支在eclipse Git视图的Remote Tracki
+    </div>
+    <div class="read-more">
+      <a href="/post/git/git-note/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/js/vue/">Vue</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-08-17 </span>
+      <div class="post-category">
+          <a href="/categories/vue/"> vue </a>
+          </div>
+        <span class="more-meta"> 约 3638 字 </span>
+        <span class="more-meta"> 预计阅读 8 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      前言 最初想使用vue+element UI搭建一个Demo项目以寻求能否解决已有项目的页面结构混乱、难以维护的痛点。在跟着vue、npm、we
+    </div>
+    <div class="read-more">
+      <a href="/post/js/vue/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    </section>
+  
+  <nav class="pagination">
+    
+    <a class="next" href="/page/2/">
+        <span class="next-text">下一页</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+  </nav>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:cr6588@vip.qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/cr6588" class="iconfont icon-github" title="github"></a>
+  
+    
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">cr6588</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
