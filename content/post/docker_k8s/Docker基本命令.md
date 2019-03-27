@@ -99,7 +99,7 @@ docker默认存放目录在/var/lib/docker，磁盘满了之后将其移动到�
 
     mv /var/lib/docker /docker
     ln -s /docker/docker /var/lib/docker
-#### docker私服搭建
+#### docker registry:2私服搭建（已弃用）
 ##### 生成个人证书
 mkdir -p certs
 openssl req \
@@ -135,15 +135,113 @@ registry:
 
 /path/data:宿主机挂载的磁盘
 
+docker-compose安装用yum provides docker-compose搜索。若有结果用yum install安装，没有结果见https://docs.docker.com/compose/install/
+
 docker-compose up -d
+
+私服镜像图形化查看工具
+https://github.com/Joxit/docker-registry-ui
+
+    #进入私服容器修改配置文件允许跨域
+    docker exec -it 91a1a0d5eae8 /bin/sh
+    vi /etc/docker/registry/config.yml
+    Access-Control-Allow-Origin: ['http://192.168.199.206:8001']
+    Access-Control-Allow-Methods: ['HEAD', 'GET', 'OPTIONS', 'DELETE']
+    Access-Control-Allow-Headers: ['Authorization']
+    Access-Control-Max-Age: [1728000]
+    Access-Control-Allow-Credentials: [true]
+    Access-Control-Expose-Headers: ['Docker-Content-Digest']
+    
+
+    #URL中https是由于私服加入了证书
+    docker run -d -p 8001:80 -e URL=https://192.168.199.206:5000 -e DELETE_IMAGES=true joxit/docker-registry-ui:static
+由于docker-registry-ui对删除功能支持不完善，弃用
+#### docker nexus3私服搭建
+根据[nexus3 dockerhub](https://hub.docker.com/r/sonatype/nexus3/)说明
+
+    #创建nexus-data目录持久化存储
+    mkdir /docker/nexus-data && chown -R 200 /docker/nexus-data
+    #由于docker端口会无视防火墙，直接使用主机的网络端口，不进行映射。默认会使用8081端口
+    docker run -d --net=host --name nexus -v /docker/nexus-data:/nexus-data sonatype/nexus3
+访问ip:8081进行登录，默认用户名密码为admin/admin123
+进入设置页面创建一个docker(hosted)类型的Repositories，且其http端口设置为8082，其余默认设置即可
+由于docker login是采用https所以需要将其访问改成https，这里有2种方式，1种是采用nginx进行代理，另外一种是将证书与nexus3关联。因为有很多软件逐渐都变成需要https,而nginx这种方式跟软件无关，所以这里采用第一种方式
+
+    #创建一个自定义证书
+    mkdir -p certs
+    openssl req \
+      -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \
+      -x509 -days 3650 -out certs/domain.crt
+[安装nginx](https://nginx.org/en/linux_packages.html)
+
+    #编辑配置文件,将5000端口代理到8082端口
+    vi /etc/nginx/nginx.conf
+    #http末尾增加
+    http {
+        #....
+
+        client_max_body_size 2g;
+        upstream backend.example.com {
+            server 你的ip:5000;
+        }
+        server {
+            listen      5000 ssl;
+            server_name 你的ip;
+    
+            #证书路径
+            ssl_certificate        /docker/certs/domain.crt;
+            ssl_certificate_key    /docker/certs/domain.key;
+            #ssl_client_certificate /etc/ssl/certs/ca.crt;
+            ssl_session_cache shared:SSL:1m;
+            ssl_session_timeout 5m;
+            ssl_ciphers HIGH:!aNULL:!MD5;
+            ssl_prefer_server_ciphers on;
+    
+            location / {
+                proxy_pass http://你的ip:8082;
+            #...
+        }
+    }
+    #启动nginx
+    systemctl start nginx
+    #将ip:5000加入到daemon.json
+    vi /etc/docker/daemon.json 
+    {
+      "insecure-registries" : ["ip:5000"]
+    }
+    #重启docker
+    systemctl restart docker
+    #重启nexus3容器
+    docker start nexus
+    #稍等一会之后登陆
+    docker login ip:5000
+    #输入admin/admin123测试
+    #接着上传一个镜像到nexus3
+    docker pull nginx
+    docker tag nginx ip:5000/nginx
+    docker push ip:5000/nginx
+    #在ui上查看是否有该镜像
+
+##### 删除镜像
+
+ 之前ui删除都是软删除，并未在磁盘中把空间占用释放
+ 参照官方说明[How to delete docker images from Nexus Repository Manager](https://support.sonatype.com/hc/en-us/articles/360009696054-How-to-delete-docker-images-from-Nexus-Repository-Manager)，先在Ui上删除刚刚创建的ip:5000/nginx镜像，接着查看磁盘空间
+    
+    du -sh /docker/nexus-data
+
+之后创建一个Docker - Delete unused manifests and images类型的task将各个孤立未被其它镜像关联的层进行软删除，之后创建一个'Admin - Compact blob store'类型的task以真正释放磁盘空间。创建好了之后对2个task依次执行，再查看磁盘空间可以看到空间已经减少。
+
 
 ##### 查看日志
 journalctl -u docker.service
-##### 容器图形化查看工具portainer
+##### 本机容器图形化查看工具portainer
 $ docker volume create portainer_data
 $ docker run -d -p 9000:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
 > (COMMAND_FAILED: '/usr/sbin/iptables -w2 -t filter -A DOCKER ! -i docker0 -o docker0 -p tcp -d 172.17.0.2 --dport 9000 -j ACCEPT' failed: iptables: No chain/target/match by that name.
 > 重启防火墙
+
+##### 显示docker ps完整信息
+docker ps --no-trunc
 
 ##### 说明
 [^1]: 登录阿里云->容器镜像服务->镜像加速器
