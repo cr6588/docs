@@ -50,7 +50,7 @@ firewall-cmd --zone=public --query-port=80/tcp
 删除
 firewall-cmd --zone=public --remove-port=80/tcp --permanent
 指定ip
-firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.142.166" port protocol="tcp" port="5432" accept"
+firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="125.65.112.58" port protocol="tcp" port="8081" accept" && firewall-cmd --reload
 
 
 firewall-cmd --query-masquerade # 检查是否允许伪装IP

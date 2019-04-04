@@ -158,10 +158,12 @@ categories: ["Kubernetes"]
     #使用flannel（不支持NetworkPolicy,部署的应用会无视firewalld完全暴露在公网中）
     sysctl net.bridge.bridge-nf-call-iptables=1
     kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/bc79dd1505b0c8681ece4de4c0d86c5cd2643275/Documentation/kube-flannel.yml
-    #使用calico
+    #使用calico,当含有master,node节点时不能正常启动，参照提示的错误实例解决
     kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
 kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
-    #使用weave net
+    #使用weave net（支持NetworkPolicy,但重启防火墙时会失效，需要systemctl daemon-reload
+    systemctl restart kubelet
+    systemctl restart docker生效）
     kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
     #查看状态
     kubectl get pods --all-namespaces
@@ -195,6 +197,7 @@ kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/
 ...
 ````
 
+>     calico容器无法ping通域名，多方查找未果。参照[calico网络模型中的路由原理](https://segmentfault.com/a/1190000016565044)禁用ipip，找到CALICO_IPV4POOL_IPIP将其value设置成Off或者never解决。之后再其官网找到关于此字段说明[environment-variables](https://docs.projectcalico.org/v3.5/reference/node/configuration#environment-variables)
 
     #主节点向指定ip开放相关端口
     firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="www.xxxx.cn" port protocol="tcp" port="6443" accept"
