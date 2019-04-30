@@ -1,7 +1,7 @@
 ---
 title: "Kubernetes升级"
 date: 2019-04-04T14:06:56+08:00
-draft: true
+draft: false
 ---
 
 #### Kubernetes v1.12 to v1.13

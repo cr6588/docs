@@ -110,7 +110,7 @@ cd src
 
 ntpdate -u ntp1.aliyun.com
 定时同步服务器时间
-*/10 * * * * ntpdate asia.pool.ntp.org
+*/10 * * * * ntpdate ntp1.aliyun.com
 
 文件的属主和属组属性设置
 
