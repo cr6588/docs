@@ -124,3 +124,6 @@ java *.class就可以执行了，.class可以省略
 
 查看目录文件大小
 du -sh *
+
+批量当前以及子目录清空日志文件内容
+for i in `find . -name "*.log"`; do cat /dev/null >$i; done

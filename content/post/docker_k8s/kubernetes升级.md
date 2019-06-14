@@ -13,7 +13,7 @@ yum install -y kubeadm-1.13.x-0 --disableexcludes=kubernetes
 kubeadm upgrade plan
 
 由于升级需要k8s.gcr.io镜像，但无法连接外网，所以使用微软的镜像站替代，详见[GCR Proxy Cache 帮助](http://mirror.azure.cn/help/gcr-proxy-cache.html)。
-这里有2中方式可以替代
+这里有2种方式可以替代
 1.利用kubeadm config images list得到需要的镜像，然后像docker pull gcr.azk8s.cn/google_containers/kube-apiserver:v1.13.0这样挨个把镜像下载下来
 最后docker tag gcr.azk8s.cn/google_containers/kube-apiserver:v1.13.0 k8s.gcr.io/kube-apiserver:v1.13.0更改名称即可
 2.更改镜像的默认依赖库
@@ -52,3 +52,37 @@ kubectl get nodes
 ，而另一台已经升级好的weavenet节点发现是
 ![x](/images/ectd2.png)
 但是更改ip时发现会报错，暂时未升级
+
+参照 [Upgrading a 1.12 cluster thru 1.13 to 1.14 fails](https://github.com/kubernetes/kubeadm/issues/1471)解决
+文中所述问题类似都是只允许127.0.0.1访问，没有节点IP,
+
+    #将配置保存为文件
+    kubeadm config view > /etc/kubeadm.conf
+    #增加ip，原文有image时下面会报错，所以去除。10.192.0.2是节点ip,通过kubectl get node -o wide 获取
+
+````
+etcd:
+  local:
+    dataDir: /var/lib/etcd
+    serverCertSANs:
+    - "10.192.0.2"
+    extraArgs:
+      listen-client-urls: https://127.0.0.1:2379,https://10.192.0.2:2379 
+````
+
+    #删除ectd certs 
+    rm /etc/kubernetes/pki/etcd/server.*
+    #生成新的ectd certs,原文中的ectd配置时有一个image: "",若不去除这里会有警告
+    kubeadm init phase certs etcd-server --config /etc/kubeadm.conf
+    #使用新的ectd 配置
+    kubeadm init phase etcd local --config /etc/kubeadm.conf
+    #检测节点ip是否已经绑定。需要稍等一会才有结果显示
+    ss -ln | grep 2379
+    tcp    LISTEN     0      128    127.0.0.1:2379                  *:*                  
+    tcp    LISTEN     0      128    10.192.0.2:2379                  *:*   
+    #上传kubeadm.conf
+    kubeadm config upload from-file --config /etc/kubeadm.conf
+    [uploadconfig] storing the configuration used in ConfigMap "kubeadm-config" in the "kube-system" Namespace
+    
+    
+    
