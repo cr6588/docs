@@ -243,5 +243,45 @@ $ docker run -d -p 9000:9000 --restart=always -v /var/run/docker.sock:/var/run/d
 ##### 显示docker ps完整信息
 docker ps --no-trunc
 
+##### 显示docker磁盘使用docker volume相关
+````shell
+[root@cr ~]# docker volume -h
+Flag shorthand -h has been deprecated, please use --help
+
+Usage:	docker volume COMMAND
+
+Manage volumes
+
+Commands:
+  create      Create a volume
+  inspect     Display detailed information on one or more volumes
+  ls          List volumes
+  prune       Remove all unused local volumes
+  rm          Remove one or more volumes
+
+Run 'docker volume COMMAND --help' for more information on a command.
+[root@cr ~]# docker volume ls
+DRIVER              VOLUME NAME
+local               jenkins_home
+[root@cr ~]# docker volume inspect jenkins_home
+[
+    {
+        "CreatedAt": "2019-07-11T17:20:33+08:00",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/jenkins_home/_data",
+        "Name": "jenkins_home",
+        "Options": null,
+        "Scope": "local"
+    }
+]
+````
+#### 以指定用户进入容器执行shell
+docker exec --user root -it c0d5cf8d7b0a bash
+#### 启动docker自动启动容器
+docker run --restart=always
+如果已经启动了则可以使用如下命令：
+docker update --restart=always <CONTAINER ID>
+
 ##### 说明
 [^1]: 登录阿里云->容器镜像服务->镜像加速器

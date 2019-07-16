@@ -10,3 +10,17 @@ systemctl stop firewalld
 #yum install net-tools
 ifconfig
 #远程连接后参照 [Centos官方安装文档](https://docs.docker.com/install/linux/docker-ce/centos/#install-docker-ce-1)
+
+#### docker安装好之后无法启动，journalctl -xe查看有如下提示
+````shell
+7月 11 15:32:50 cr dockerd[8076]: Error starting daemon: Error initializing network controller: list bridge addresses failed: no available network
+````
+手动添加
+````shell
+ip link add name docker0 type bridge 
+ip addr add dev docker0 172.17.0.1/16 
+````
+之后再添加服务
+````shell
+systemctl start docker && systemctl enable docker
+````

@@ -7,8 +7,8 @@ categories: ["linux"]
 //centos6
 //显示linux发行版本信息
 cat /etc/issue
+cat /etc/os-release
 //查看内存
-
 free -m
 //防火墙
 vi /etc/sysconfig/iptables
