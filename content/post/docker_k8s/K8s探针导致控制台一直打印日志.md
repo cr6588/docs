@@ -1,7 +1,6 @@
 ---
 title: "K8s探针导致控制台一直打印日志"
 date: 2019-05-08T15:34:00+08:00
-draft: true
 ---
 [Pod 的生命周期](https://kubernetes.io/zh/docs/concepts/workloads/pods/pod-lifecycle/)中介绍了容器探针，
 根据[Configure Liveness and Readiness Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)配置探针时，发现在容器的控制台一直在打印日志
