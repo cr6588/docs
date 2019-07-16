@@ -1,7 +1,7 @@
 ---
 title: "Jenkins与kubernetes部署"
 date: 2019-07-10T15:23:52+08:00
-draft: true
+draft: false
 ---
 
 # 让jenkins一键更新已有项目在kubernetes中的版本
