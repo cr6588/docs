@@ -127,3 +127,27 @@ du -sh *
 
 批量当前以及子目录清空日志文件内容
 for i in `find . -name "*.log"`; do cat /dev/null >$i; done
+
+将curl的请求结果输出值aaaa.txt文件中。``执行命令,不是单引号''，-i打印请求头，-H添加请求头。多个时在-h xxx, -d数据请求 @jenkins-token.txt当前目录下的jenkins-token.txt文件，不用文件是不添加@。-X请求方式
+echo `curl -i -H "Content-Type:application/json" -d @jenkins-token.txt -X POST https://iam.myhuaweicloud.com/v3/auth/tokens` > aaaa.txt
+
+清除从window传到linux的^M符号,g全局，^M实际是crtl+v,crtl+m,输入时也需要crtl+v,crtl+m，不能直接复制^M
+sed -i 's/^M//g' ELB.sh
+
+对于grep贪婪匹配，需使用perl语法
+即grep -P "weight\": .*?,"
+
+(Linux查看物理CPU个数、核数、逻辑CPU个数)[https://www.cnblogs.com/emanlee/p/3587571.html]
+````shell
+# 总核数 = 物理CPU个数 X 每颗物理CPU的核数 
+# 总逻辑CPU数 = 物理CPU个数 X 每颗物理CPU的核数 X 超线程数
+
+# 查看物理CPU个数
+cat /proc/cpuinfo| grep "physical id"| sort| uniq| wc -l
+
+# 查看每个物理CPU中core的个数(即核数)
+cat /proc/cpuinfo| grep "cpu cores"| uniq
+
+# 查看逻辑CPU的个数
+cat /proc/cpuinfo| grep "processor"| wc -l
+````

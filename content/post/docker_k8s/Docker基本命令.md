@@ -163,7 +163,7 @@ https://github.com/Joxit/docker-registry-ui
     mkdir /docker/nexus-data && chown -R 200 /docker/nexus-data
     #由于docker端口会无视防火墙，直接使用主机的网络端口，不进行映射。默认会使用8081端口
     docker run -d --net=host --name nexus -v /docker/nexus-data:/nexus-data sonatype/nexus3
-访问ip:8081进行登录，默认用户名密码为admin/admin123
+访问ip:8081进行登录，默认用户名密码为admin/admin123，（新版本已经更改/nexus-data/admin.password，登录时会有提示）
 进入设置页面创建一个docker(hosted)类型的Repositories，且其http端口设置为8082，其余默认设置即可
 由于docker login是采用https所以需要将其访问改成https，这里有2种方式，1种是采用nginx进行代理，另外一种是将证书与nexus3关联。因为有很多软件逐渐都变成需要https,而nginx这种方式跟软件无关，所以这里采用第一种方式
 
@@ -171,7 +171,7 @@ https://github.com/Joxit/docker-registry-ui
     mkdir -p certs
     openssl req \
       -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \
-      -x509 -days 3650 -out certs/domain.crt
+      -x509 -days 9999 -out certs/domain.crt
 [安装nginx](https://nginx.org/en/linux_packages.html)
 
     #编辑配置文件,将5000端口代理到8082端口
@@ -230,6 +230,9 @@ https://github.com/Joxit/docker-registry-ui
     du -sh /docker/nexus-data
 
 之后创建一个Docker - Delete unused manifests and images类型的task将各个孤立未被其它镜像关联的层进行软删除，之后创建一个'Admin - Compact blob store'类型的task以真正释放磁盘空间。创建好了之后对2个task依次执行，再查看磁盘空间可以看到空间已经减少。
+
+自动清理
+在cleanup policies中创建一个策略，选择了docker,以及根据上传超过多少天，上次下载多少天来删除。可以预览是否有符合条件的结果。创建之后还需要去Repositories中相应的库中把Cleanup Policy指定为刚才创建的策略，然后系统会有一个Admin - Cleanup repositories using their associated policies的task来执行这个策略。手动执行下在执行前2个task,若刚才预览有结果，磁盘空间会减少。
 
 
 ##### 查看日志

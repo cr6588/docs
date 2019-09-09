@@ -10,7 +10,7 @@ docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=密码 -d mysql:8
 docker exec -it mysql /bin/bash
 mysql -u root -p
 输入密码
-ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '密码';
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'tTdAdf212';
 不能启动时查看数据挂载磁盘信息，通过portainer查看宿主机磁盘位置，然后新开容器将磁盘数据复制到新容器的数据盘位置
 
 #加载本地磁盘与自定义配置信息，使用主机网络

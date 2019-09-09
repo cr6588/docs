@@ -121,6 +121,8 @@ docker login -u cn-north-1@xxx -p xxx swr.cn-north-1.myhuaweicloud.com
 
 加入maven之后编译打包已经可以执行了，那么接下来就是需要将jar包或者war包构建成镜像。因此这里开始加入自己的脚本
 
+> 若修改了全局工具配置的maven配置，需要删除已有maven操作
+
 ![](/images/jenkins/10.png)
 
 ````shell
@@ -270,6 +272,7 @@ podName=$(kubectl get pods|grep $erpModule |awk '{print $1}')
 waitMillion=10
 for((i = 0; i < 3; i++))
 do
+    #进入容器执行nc 127.0.0.1 端口号，睡眠0.1秒后输出状态，再在外部输入第一行并将结果删除\r
     dubboStatus=$(kubectl exec $podName -- bash -c "(echo status;sleep 0.1)| nc 127.0.0.1 $erpPort"|awk 'NR==1'|tr -d '\r' )
     echo $dubboStatus
     if [[ "$dubboStatus" == "OK" ]]; then
