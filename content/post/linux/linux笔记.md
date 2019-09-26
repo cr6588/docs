@@ -151,3 +151,6 @@ cat /proc/cpuinfo| grep "cpu cores"| uniq
 # 查看逻辑CPU的个数
 cat /proc/cpuinfo| grep "processor"| wc -l
 ````
+
+#ip 查询
+curl cip.cc
