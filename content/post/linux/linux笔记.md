@@ -110,6 +110,7 @@ cd src
 
 ntpdate -u ntp1.aliyun.com
 定时同步服务器时间
+crontab -e
 */10 * * * * ntpdate ntp1.aliyun.com
 
 文件的属主和属组属性设置
@@ -154,3 +155,7 @@ cat /proc/cpuinfo| grep "processor"| wc -l
 
 #ip 查询
 curl cip.cc
+
+#tcp 连接查询
+yum install net-tools
+netstat -na
