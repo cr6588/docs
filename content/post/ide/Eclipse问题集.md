@@ -22,3 +22,13 @@ Windows -> Preferences -> Java ->Editors ->Folding -> Enable Folding (uncheck)
 For HTML, JSP, XML etc in eclispe : Windows -> Preferences -> General -> Editors -> Structured Text Editors -> Enable Folding (uncheck) (即取消折叠，关闭后在页面没有dom节点前的加减号)
 
 ![x](/images/ide/disable_Folding.png)
+
+##### 打开js文件下载工具长时间无反应
+
+打开了了一个vue相关的js文件，然后eclipse自动去下载了一个关联工具导致eclipse因为网络一直无法下载，强制关掉进程重开仍是这样，且不停增大内存。最后就让它下，最终提示因网络错误无法下载xxxx,之后重启一切正常
+将该项目先转移它路径，防止下次打开仍去下载
+
+##### 项目右键commit时，自动将文件add to index
+在更新到photo时，commit项目时，将大量不必提交的文件add index,在处理冲突时，多提交了文件。因此想禁用此功能。
+于是在git设置里查找一番，最终在preferences->Team->git->committing->Automatically stage selected resources on commit前面的勾去掉
+![x](/images/ide/eclipse_git_committing.png)

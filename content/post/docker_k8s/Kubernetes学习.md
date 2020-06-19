@@ -67,7 +67,7 @@ categories: ["Kubernetes"]
 #### 3.kubeadm安装（1.12.2）
 
     #修改主机名称
-    hostnamectl set-hostname name
+    hostnamectl set-hostname   localhost.localdomain name
     #关闭swap
     swapoff -a
     vi /etc/fstab
@@ -117,7 +117,10 @@ categories: ["Kubernetes"]
     #yum install kubelet kubeadm kubectl
     systemctl enable kubelet && systemctl start kubelet
     # Run kubeadm config images pull prior to kubeadm init to verify connectivity to gcr.io registries.验证是否能拉取相关镜像，若不能则找到相关镜像库镜像拉取
-    
+
+> 1.17可以增加image-repository参数，修改默认镜像来源，不再从私有库，直接从[微软镜像库](http://mirror.azure.cn/help/gcr-proxy-cache.html)拉取
+> kubeadm init --image-repository=gcr.azk8s.cn/google_containers 
+
     kubeadm config images pull
     #从私有库拉取相关镜像
     docker login www.xxxx.cn:5000
@@ -161,7 +164,8 @@ categories: ["Kubernetes"]
     #使用calico,当含有master,node节点时不能正常启动，参照提示的错误实例解决
     kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
 kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
-    #使用weave net（支持NetworkPolicy,但重启防火墙时会失效，需要systemctl daemon-reload
+    #使用weave net（支持NetworkPolicy,但重启防火墙时会失效，需要
+    systemctl daemon-reload
     systemctl restart kubelet
     systemctl restart docker生效）
     kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
@@ -270,9 +274,9 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
     kind: ServiceAccount
     metadata:
       name: admin-user
-      namespace: kube-system
+      namespace: kubernetes-dashboard
     ---
-    apiVersion: rbac.authorization.k8s.io/v1beta1
+    apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRoleBinding
     metadata:
       name: admin-user
@@ -283,7 +287,7 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
     subjects:
     - kind: ServiceAccount
       name: admin-user
-      namespace: kube-system
+      namespace: kubernetes-dashboard
     EOF
 
     kubectl apply -f dashboard-adminuser.yaml
@@ -417,7 +421,7 @@ spec:
 		}
 	  }
 	}
-    #当要使用自己的redis.conf时将自己的conf文件复制到从节点/data/redis-data下，args改为/data/xxx.conf即可
+    #当要使用自己的redis.conf时将自己的conf文件复制到从节点/data/redis-data下，args增加/data/xxx.conf即可
 
 > 挂载磁盘时注意路径，不要将磁盘挂载到镜像本身就有的路径，例如/data中本身含有应用相关文件，然后又挂载到/data时，会覆盖镜像已有的data
 

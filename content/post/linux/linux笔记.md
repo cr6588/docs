@@ -111,7 +111,7 @@ cd src
 ntpdate -u ntp1.aliyun.com
 定时同步服务器时间
 crontab -e
-*/10 * * * * ntpdate ntp1.aliyun.com
+*/10 * * * * /usr/sbin/ntpdate ntp1.aliyun.com
 
 文件的属主和属组属性设置
 
