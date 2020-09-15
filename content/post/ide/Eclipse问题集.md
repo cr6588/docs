@@ -32,3 +32,6 @@ For HTML, JSP, XML etc in eclispe : Windows -> Preferences -> General -> Editors
 在更新到photo时，commit项目时，将大量不必提交的文件add index,在处理冲突时，多提交了文件。因此想禁用此功能。
 于是在git设置里查找一番，最终在preferences->Team->git->committing->Automatically stage selected resources on commit前面的勾去掉
 ![x](/images/ide/eclipse_git_committing.png)
+
+##### maven web项目tomcat7:run启动由于webapp有空META-INF导致项目异常
+

@@ -64,3 +64,18 @@ iptables -t nat -L
 
 #修改hostname
 hostnamectl set-hostname name
+
+#### 修改网卡名称
+[参考](https://unix.stackexchange.com/questions/205010/centos-7-rename-network-interface-without-rebooting)
+ip link set ens33 down
+ip link set ens33 name eth0
+ip link set eth0 up
+
+mv /etc/sysconfig/network-scripts/ifcfg-ens33 /etc/sysconfig/network-scripts/ifcfg-eth0
+
+vi ifcfg-eth0
+修改ifcfg-ens33 -> ifcfg-eth0
+
+systemctl restart network
+
+> 断电重启后失效

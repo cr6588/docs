@@ -16,4 +16,12 @@ ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'tTdAdf212';
 #加载本地磁盘与自定义配置信息，使用主机网络
 docker run -v /docker/mysql/custom:/etc/mysql/conf.d -v /docker/mysql/data:/var/lib/mysql --net=host --name mysql  -e MYSQL_ROOT_PASSWORD=密码 -d mysql:5.7.25
 
+#访问很慢
+增加skip-name-resolve
+````
+[mysqld]
+skip-name-resolve
+````
+https://dev.mysql.com/doc/refman/5.6/en/host-cache.html
+
 ````
