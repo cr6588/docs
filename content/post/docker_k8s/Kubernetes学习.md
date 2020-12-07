@@ -293,6 +293,7 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
     kubectl apply -f dashboard-adminuser.yaml
     #查找，复制admin-user的token，登录即可
     kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
+    kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
     
     #查看日志
     kubectl describe pod kubernetes-dashboard-77fd78f978-4vzk2无法查看描述必须加上--namespace=kube-system

@@ -132,6 +132,22 @@ https://www.elastic.co/guide/en/elasticsearch/reference/5.5/important-settings.h
 [3] es配置文件加入
 
     bootstrap.memory_lock: false 
+
+
 9. 非内网集群时
     https://www.jianshu.com/p/149a8da90bbc
 由于transport.tcp.port默认是9300，之间是以此端口通信而非9200所以当防火墙只开放了9200时虽然curl http://xxx:9200能正确显示，但是集群会一直提示节点
+
+10. ps -ef|grep kibana, kill 之后无法杀死
+
+    bin/kibana是脚本，启动的是另一个程序。用ps -ef|grep node找到进程杀掉，kibana找不到
+
+11. es运行久了之后内存溢出
+
+这个问题一般隔了一段时间都会出现一次，在网上找了半天，都出现了这个问题都是堆内存溢出，但都没什么好的解决方式。
+目前是解决方式是
+
+    1.将es占用端口例如30200改成其它端口启动，防止生产环境还在提交写入请求
+    2.将kibana的es端口改成1中的端口重启
+    3.在kibana中删除部分indexs然后将端口改回重启
+

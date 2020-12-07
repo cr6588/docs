@@ -28,8 +28,8 @@ imageRepository: k8s.gcr.io
 imageRepository: k8s.gcr.io ->imageRepository: gcr.azk8s.cn/google_containers
 最后kubeadm config upload from-file --config kubeadm.yaml即可
 
-
 > gcr.azk8s.cn/google_containers只支持微软的ecs,改为阿里云registry.cn-hangzhou.aliyuncs.com/google_containers
+> kubeadm config upload from-file在1.17中被删除，改用kubeadm init phase upload-config kubeadm --config kubeadm.yaml
 
 kubeadm upgrade apply v1.13.0
 yum install -y kubelet-1.13.x-0 --disableexcludes=kubernetes
