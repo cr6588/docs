@@ -35,3 +35,20 @@ For HTML, JSP, XML etc in eclispe : Windows -> Preferences -> General -> Editors
 
 ##### maven web项目tomcat7:run启动由于webapp有空META-INF导致项目异常
 
+##### eclipse_2021_06使用lombok一直提示Errors occurred during the build
+
+编译项目一直提示
+
+    Unable to make protected final java.lang.Class java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int) throws java.lang.ClassFormatError accessible: module java.base does not "opens java.lang" to unnamed module @645dc557
+
+原因是jdk的兼容性问题导致
+参照https://github.com/projectlombok/lombok/issues/2882
+
+在eclipse.ini末尾增加
+--illegal-access=warn
+--add-opens java.base/java.lang=ALL-UNNAMED
+
+##### eclipse 打开文件时有一条竖线
+
+    参考自https://stackoverflow.com/questions/27410765/remove-vertical-line-in-eclipse-editor
+    General -> Editors -> Text Editors -> Show Print Margin

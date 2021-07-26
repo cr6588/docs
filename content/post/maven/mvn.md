@@ -15,3 +15,6 @@ mvn -T 1C clean install -Dmaven.compile.fork=true
 mvn install:install-file -Dfile=jar包的位置 -DgroupId=上面的groupId -DartifactId=上面的artifactId -Dversion=上面的version -Dpackaging=jar
 
 mvn install:install-file -Dfile=jar包源码的位置 -DgroupId=上面的groupId -DartifactId=上面的artifactId -Dversion=上面的version -Dpackaging=jar -Dclassifier=sources
+
+
+mvn install:install-file -Dfile=taobao-sdk-20210616.jar -DgroupId=com.taobao -DartifactId=aliexpress-sdk -Dversion=20210616 -Dpackaging=jar

@@ -71,6 +71,11 @@ ip link set ens33 down
 ip link set ens33 name eth0
 ip link set eth0 up
 
+ip link set em1 down
+ip link set em1 name eth0
+ip link set eth0 up
+ip link set eth0 up
+
 mv /etc/sysconfig/network-scripts/ifcfg-ens33 /etc/sysconfig/network-scripts/ifcfg-eth0
 
 vi ifcfg-eth0

@@ -51,16 +51,23 @@ categories: ["Kubernetes"]
     yum install docker-ce
 
     #NO.2 指定版本安装
-    yum list docker-ce --showduplicates|sort -r  
+    yum list docker-ce --showduplicates|sort -r
     yum install docker-ce-18.06.1.ce-3.el7
     #启动并加入服务
     systemctl start docker && systemctl enable docker
-    #设置私有registry
-    vi /etc/docker/daemon.json
+    #设置私有registry，cgroupdriver,日志
+    cat > /etc/docker/daemon.json <<EOF
     {
-        "registry-mirrors": ["https://xxx.com"],
-        "insecure-registries" : ["ip:5000", "xxxxxx.xx.cn:5000"]
+      "registry-mirrors": ["https://xxx.com"],
+      "insecure-registries" : ["ip:5000", "xxxxxx.xx.cn:5000"]
+      "exec-opts": ["native.cgroupdriver=systemd"],
+      "log-driver": "json-file",
+      "log-opts": {
+        "max-size": "100m"
+      },
+      "storage-driver": "overlay2"
     }
+    EOF
     #重启生效
     systemctl restart docker
 
@@ -118,29 +125,10 @@ categories: ["Kubernetes"]
     systemctl enable kubelet && systemctl start kubelet
     # Run kubeadm config images pull prior to kubeadm init to verify connectivity to gcr.io registries.验证是否能拉取相关镜像，若不能则找到相关镜像库镜像拉取
 
-> 1.17可以增加image-repository参数，修改默认镜像来源，不再从私有库，直接从[微软镜像库](http://mirror.azure.cn/help/gcr-proxy-cache.html)拉取
-> kubeadm init --image-repository=gcr.azk8s.cn/google_containers 
+> 1.17可以增加image-repository参数，修改默认镜像来源，不再从私有库，直接从[阿里镜像库](registry.cn-hangzhou.aliyuncs.com/google_containers)拉取
+> kubeadm init --image-repository=registry.cn-hangzhou.aliyuncs.com/google_containers
 
-    kubeadm config images pull
-    #从私有库拉取相关镜像
-    docker login www.xxxx.cn:5000
-    #输入相用户密码
-    docker pull www.xxxx.cn:5000/k8s.gcr.io/kube-controller-manager:v1.12.2
-    docker pull www.xxxx.cn:5000/k8s.gcr.io/kube-apiserver:v1.12.2
-    docker pull www.xxxx.cn:5000/k8s.gcr.io/kube-scheduler:v1.12.2
-    docker pull www.xxxx.cn:5000/k8s.gcr.io/etcd:3.2.24
-    docker pull www.xxxx.cn:5000/k8s.gcr.io/coredns:1.2.2
-    docker pull www.xxxx.cn:5000/k8s.gcr.io/pause:3.1
-    docker pull www.xxxx.cn:5000/k8s.gcr.io/kube-proxy:v1.12.2
-
-    docker tag www.xxxx.cn:5000/k8s.gcr.io/kube-controller-manager:v1.12.2 k8s.gcr.io/kube-controller-manager:v1.12.2
-    docker tag www.xxxx.cn:5000/k8s.gcr.io/kube-apiserver:v1.12.2 k8s.gcr.io/kube-apiserver:v1.12.2 
-    docker tag www.xxxx.cn:5000/k8s.gcr.io/kube-scheduler:v1.12.2 k8s.gcr.io/kube-scheduler:v1.12.2
-    docker tag www.xxxx.cn:5000/k8s.gcr.io/etcd:3.2.24 k8s.gcr.io/etcd:3.2.24
-    docker tag www.xxxx.cn:5000/k8s.gcr.io/coredns:1.2.2 k8s.gcr.io/coredns:1.2.2
-    docker tag www.xxxx.cn:5000/k8s.gcr.io/pause:3.1 k8s.gcr.io/pause:3.1
-    docker tag www.xxxx.cn:5000/k8s.gcr.io/kube-proxy:v1.12.2 k8s.gcr.io/kube-proxy:v1.12.2
-    #确认相关镜像在主从上都存在，否则有可能后面虽然加入节点成功，但一直是notready状态
+    kubeadm init xxx --image-repository=registry.cn-hangzhou.aliyuncs.com/google_containers
     #master节点执行，network使用flannel前置条件.若需要制定版本则加入--kubernetes-version=v1.12.2
     kubeadm init --pod-network-cidr=10.244.0.0/16
     #master节点执行，network使用calico前置条件.若需要制定版本则加入
@@ -239,7 +227,7 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
     #创建自已的证书
     openssl req \
     -newkey rsa:4096 -nodes -sha256 -keyout certs/dashboard.key \
-    -x509 -days 365 -out certs/dashboard.crt
+    -x509 -days 3650 -out certs/dashboard.crt
 
     kubectl create secret generic kubernetes-dashboard-certs --from-file=$HOME/certs -n kube-system
 
@@ -269,7 +257,6 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
     ![x](/images/k8s_login.png)
     #创建用户
     cat <<EOF > dashboard-adminuser.yaml
-
     apiVersion: v1
     kind: ServiceAccount
     metadata:
