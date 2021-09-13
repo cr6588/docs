@@ -51,6 +51,28 @@ mvn install:install-file -Dfile=ocean.client-1.0.jar -DgroupId=com.alibaba -Dart
 8、*.rar 用 unrar e解压
 9、*.zip 用 unzip 解压
 
+tar -cvf etcbak.tar etc/          打包一个tar
+
+tar -xvf etcbak.tar                 解开一个tar
+
+ tar -xvf  etcbak.tar  -C ./dir  解开一个tar到当前的 dir 目录中
+_______________________________________________________
+tar -zcvf etcbak.tar.gz etc/ 打包压缩一个 tar
+ 
+tar -zxvf etcbak.tar.gz  解压一个tar
+_______________________________________________________
+ 
+--B
+zip -r mybatis.zip    ./mybatis 将目录./mybatis压缩成一个mybatis.zip 文件
+unzip  mybatis.zip  -d ./newdir 将mybatis.zip 文件解压缩到目录  ./newdir
+ 
+_______________________________________________________
+ 
+--C gzip 只能压缩文件 
+gzip  file.txt   --压缩文件 
+gunzip file.txt.gz  --解压缩文件 
+
+
 mv 源文件 目标文件
 //强制递归复制文件
 cp -rf erp-web-tomcat-7.0.82_9001_9002_9003 erp-admin-tomcat-7.0.82_9004_9005_9006

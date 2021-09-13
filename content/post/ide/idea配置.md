@@ -36,3 +36,22 @@ psvm(public static void main缩写) main方法
 sout System.out.println
 ##### 修改静态资源不用重启
 https://blog.csdn.net/Connie1451/article/details/80346981
+
+##### 取消自动提示以及提示忽律大小写
+
+![x](/images/ide/stopTip.png)
+
+##### 导入包不用*
+
+![x](/images/ide/stopImportAll.png)
+
+##### 自动导入包
+
+![x](/images/ide/autoImport.png)
+效果不太理想，还是手动导入
+
+##### 设置导入包顺序
+
+由于eclipse导入包顺序与idea的顺序不太一致。所以需要调整成一致。避免不必要的code review
+![x](/images/ide/importPackage.png)
+
