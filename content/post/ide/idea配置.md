@@ -56,3 +56,6 @@ https://blog.csdn.net/Connie1451/article/details/80346981
 ![x](/images/ide/importPackage.png)
 ![x](/images/ide/importPackage_ec.png)
 
+##### 提交时不编译受影响的模块
+
+Preferences->Version Controllol->Commit->Compile affected unload module取消勾选
