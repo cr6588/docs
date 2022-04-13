@@ -10,3 +10,5 @@ C:\Users\cr>netstat -aon|findstr "1080"
 查找pid对应进程
 C:\Users\cr>tasklist|findstr "4304"
 iTunesHelper.exe              4304 Console                    1     14,016 K
+杀掉进程
+taskkill /f /pid 4304
