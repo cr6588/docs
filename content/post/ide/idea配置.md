@@ -59,3 +59,10 @@ https://blog.csdn.net/Connie1451/article/details/80346981
 ##### 提交时不编译受影响的模块
 
 Preferences->Version Controllol->Commit->Compile affected unload module取消勾选
+
+##### 运行junit忽略错误
+![x](/images/ide/junitIgnoreError1.png)
+![x](/images/ide/junitIgnoreError2.png)
+![x](/images/ide/junitIgnoreError3.png)
+![x](/images/ide/junitIgnoreError4.png)
+
