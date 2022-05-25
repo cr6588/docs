@@ -84,3 +84,26 @@ vi ifcfg-eth0
 systemctl restart network
 
 > 断电重启后失效
+
+# 挂载硬盘
+> 仅适用于使用 fdisk 命令对一个不大于 2 TB 的数据盘执行分区操作
+https://zhuanlan.zhihu.com/p/145773155
+````shell
+#先查看未指派的分区名称
+fdisk -l
+#创建硬盘分区
+fdisk /dev/xxxxx
+交互式操作，首先输入n #回车添加新分区，其他直接回车
+
+#分区完成。输入fdisk -l查看信息
+#格式化分区sdb1磁盘的设备名
+mkfs.ext4 /dev/sdb1
+#建立挂载目录
+mkdir /data
+#挂载分区
+mount /dev/sdb1 /data
+#设置开机自动挂载
+echo /dev/sdb1 /data ext4 defaults 0 0 >> /etc/fstab
+#重启系统,确认是否挂载成功
+reboot
+````

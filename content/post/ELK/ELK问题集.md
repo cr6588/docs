@@ -115,7 +115,7 @@ https://www.elastic.co/guide/en/elasticsearch/reference/5.5/important-settings.h
      discovery.zen.ping.unicast.hosts: ["127.0.0.1", "127.0.0.1:9201"]
      discovery.zen.minimum_master_nodes: 2
      action.destructive_requires_name: true
-8. es报错
+8. ~~es报错（已过时）~~
 
     [1]: max number of threads [1024] for user [es] is too low, increase to at least [2048]
     [2]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
@@ -151,3 +151,24 @@ https://www.elastic.co/guide/en/elasticsearch/reference/5.5/important-settings.h
     2.将kibana的es端口改成1中的端口重启
     3.在kibana中删除部分indexs然后将端口改回重启
 
+12. 启动提示could not find java in bundled JDK at /root/data/elasticsearch-7.16.2/jdk/bin/java
+启动提示could not find javaxxxxxx，然后去/root/data/elasticsearch-7.16.2/jdk/bin/java -version时，又提示
+error while loading shared libraries: libjli.so。将elasticsearch-7.16.2目录从root目录移动至es用户目录，再进行启动
+
+13.es报错
+````
+bootstrap check failure [1] of [3]: max file descriptors [4096] for elasticsearch process is too low, increase to at least [65535]
+bootstrap check failure [2] of [3]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+bootstrap check failure [3] of [3]: the default discovery settings are unsuitable for production use; at least one of [discovery.seed_hosts, discovery.seed_providers, cluster.initial_master_nodes] must be configured
+````
+[1]vi /etc/security/limits.conf
+添加es - nproc 2048 #es为运行ELK相关的用户
+另外一个65536使用es - nofile 65536
+[2]
+vi /etc/sysctl.conf
+末尾增加：
+vm.max_map_count=262144
+之后执行：
+sysctl -p
+[3]
+增加3个中的一个配置
