@@ -1,7 +1,7 @@
 ---
 title: "Vue复习"
 date: 2019-11-29T15:44:01+08:00
-draft: true
+draft: false
 ---
 # 时隔九月再次上手Vue
 
@@ -53,4 +53,3 @@ watch更加通用监听某个属性变化后对其它属性的关联处理
 === 会比较类型, ==不会
 同时注意NaN,等特殊情况，详见https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Equality_comparisons_and_sameness
 
-9. 

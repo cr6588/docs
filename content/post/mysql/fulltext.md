@@ -1,7 +1,7 @@
 ---
 title: "Fulltext"
 date: 2022-04-10T18:14:07+08:00
-draft: true
+draft: false
 ---
 
 # 全文索引

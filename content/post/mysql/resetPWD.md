@@ -1,7 +1,7 @@
 ---
-title: "ResetPWD"
+title: "mysql重置密码"
 date: 2021-02-07T11:17:17+08:00
-draft: true
+draft: false
 ---
 
 参照 https://blog.csdn.net/weixin_36511527/article/details/87865212

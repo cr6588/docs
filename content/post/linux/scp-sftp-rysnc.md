@@ -1,7 +1,7 @@
 ---
 title: "Scp Sftp Rysnc"
 date: 2021-09-26T22:54:20+08:00
-draft: true
+draft: false
 ---
 
 # scp、sftp、rsync

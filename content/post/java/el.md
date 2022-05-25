@@ -1,7 +1,7 @@
 ---
 title: "El"
 date: 2019-08-13T10:35:40+08:00
-draft: true
+draft: false
 ---
 
 js中使用el表达式，在null判断时若只有'',其结果如图

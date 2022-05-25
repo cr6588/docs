@@ -1,7 +1,7 @@
 ---
-title: "Test"
+title: "mysql性能测试"
 date: 2021-02-07T11:08:39+08:00
-draft: true
+draft: false
 ---
 # mysql性能测试
 

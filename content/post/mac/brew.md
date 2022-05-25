@@ -1,7 +1,7 @@
 ---
 title: "Brew"
 date: 2022-04-13T20:56:04+08:00
-draft: true
+draft: false
 ---
 
 # brew使用国内源

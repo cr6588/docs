@@ -1,7 +1,7 @@
 ---
 title: "记录一次复制hosts引发的问题"
 date: 2021-12-27T15:33:36+08:00
-draft: true
+draft: false
 ---
 
 ## 过程

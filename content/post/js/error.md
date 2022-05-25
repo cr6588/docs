@@ -1,7 +1,7 @@
 ---
 title: "Error"
 date: 2020-01-15T11:41:22+08:00
-draft: true
+draft: false
 ---
 
 #### 在linux中npm run build编译vue项目时大小写敏感
