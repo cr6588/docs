@@ -151,3 +151,5 @@ http://www.cnblogs.com/tonycody/p/3257601.html
     Ctrl+K，提交更改
     Ctrl+T，更新项目
     Ctrl+Alt+Shift+D，显示变化
+
+iter循环快捷键
