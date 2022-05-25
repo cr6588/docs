@@ -27,7 +27,7 @@ categories: ["hugo"]
 
     cd public
     git init
-    git remote add origin https://github.com/cr6588/cr6588.github.io.git
+    git remote add origin git@github.com:cr6588/cr6588.github.io.git
     git add -A
     git commit -m "first commit"
     git push -u origin master
