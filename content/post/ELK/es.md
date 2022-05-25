@@ -311,9 +311,9 @@ GET user/_search
 
 对于username: '你好啊',match_phrase:{username:你啊} slop属性，默认为0，不会命中。顺序不一致
 
-query_string:{query: "username:ab"}是将username的内容进行分词后，每一词是否含有ab，若其中有一个含有ab则返回。
+query_string:{query: "username:ab"}是将username的内容进行分词后，每一词是否等于ab，若其中有一个等于ab则返回。
 
-query_string:{query: "username:*ab*"}是将username的内容进行分词后，每一词是否含有*ab*，将*ab*整体作为一个词与原内容每个分词进行匹配，若其中有一个含有*ab*则返回。用中文做对比
+query_string:{query: "username:*ab*"}是将username的内容进行分词后，每一词是否等于*ab*，将*ab*整体作为一个词与原内容每个分词进行匹配，若其中有一个等于*ab*则返回。用中文做对比
 username: 你好啊 //分词后是'你'，'好'，'啊'
 query_string:{query: "username:你好"} 命中  //分词后是'你'，'好'
 query_string:{query: "username:*你好*"}不会命中，//分词后是'*你好*'
