@@ -66,3 +66,5 @@ Preferences->Version Controllol->Commit->Compile affected unload module取消勾
 ![x](/images/ide/junitIgnoreError3.png)
 ![x](/images/ide/junitIgnoreError4.png)
 
+##### 提示方法时显示参数
+![x](/images/ide/showPara.png)
