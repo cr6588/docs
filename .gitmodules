@@ -1,13 +1,7 @@
-[submodule "themes/code-editor"]
-	path = themes/code-editor
-	url = https://github.com/aubm/hugo-code-editor-theme.git
 [submodule "public"]
 	path = public
 	url = git@github.com:cr6588/cr6588.github.io.git
-[submodule "themes/docdock"]
-	path = themes/docdock
-	url = https://github.com/vjeantet/hugo-theme-docdock.git
+[submodule "themes/even"]
+	path = themes/even
+	url = https://github.com/olOwOlo/hugo-theme-even
 
-[submodule "themes/potato-dark"]
-	path = themes/potato-dark
-	url = https://github.com/surajmandalcell/potato-dark
